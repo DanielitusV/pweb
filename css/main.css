@@ -11,16 +11,20 @@
     font-family: 'Segoe UI', sans-serif;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
     background-color: var(--gris-fondo);
     display: flex;
     flex-direction: column;
-    height: 100vh;
 }
 
 .header, .footer{
     height: 60px;
     background-color: var(--azul);
+    flex-shrink: 0;
 }
 
 .main-content {
@@ -29,13 +33,27 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
     text-align: center;
+    padding: 1rem;
 }
 
 h1 {
     color: var(--azul);
     font-size: 1.8rem;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 1.2rem;
+    color: black;
+    font-weight: 600;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .buttons button {
