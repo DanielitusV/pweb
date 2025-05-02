@@ -19,9 +19,11 @@ body {
     background-color: var(--gris-fondo);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
 }
 
-.header, .footer{
+.header, .footer {
     height: 60px;
     background-color: var(--azul);
     flex-shrink: 0;
@@ -60,10 +62,10 @@ h2 {
     background-color : var(--azul);
     color: var(--blanco);
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 12px 24px;
     margin: 8px 0;
-    width: 200px;
+    width: 220px;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.2s ease;
@@ -71,9 +73,4 @@ h2 {
 
 .buttons button:hover {
     background-color: #2F4D89;
-}
-
-@media (min-width: 768px) {
-    h1 { font-size: 2.2rem; }
-    .buttons button {width: 250px; }
 }
