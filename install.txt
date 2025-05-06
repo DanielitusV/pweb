@@ -1,46 +1,20 @@
-# Instrucciones de instalación - Servidor INTERAQUIZ (Windows 11)
+Instalación resumida para levantar el repositorio
 
-Este archivo contiene las instrucciones para configurar una PC como 
-servidor del proyecto INTERAQUIZ.
+1. Clonar el repositorio
+git clone https://github.com/DanielitusV/pweb.git
+cd pweb
 
-El frontend es HTML/CSS/JS puro, pero también se necesita exponer el
-contenido a Internet y trabajar con base de datos (MongoDB)
+2. Instalar Ngrok con Chocolatey
+choco install ngrok
 
+3. Agregar authtoken a Ngrok
+ngrok config add-authtoken 2wWYQoouQl7qMlsqFtX3qjtfFY7_2Qriqga9QZV5m2xm9zToJ
 
-## Requisitos obligadorios para el servidor (PC Windows)
+4. Levantar el servidor local con Python (desde la raíz del proyecto)
+python -m http.server 3000
 
-1. **Visual Studio Code**
-    - Descargar desde: https//code.visualstudio.com/
+5. En otra terminal, exponer el proyecto con Ngrok
+ngrok http --url=constantly-top-goshawk.ngrok-free.app 3000
 
-2. **Extensión Live Server para VS Code**
-    - Abre VS Code -> Extensiones -> Buscar "Live Server" -> Instalar
-    - Con este componente se permite levantar el HTML en `localhost:5500`
-
-3. **Ngrok**
-    - Descargar desde: https://ngrok.com/download
-    - Crear cuenta gratuita
-    - Autenticarse con token:
-    ```bash
-    ngrok config add-authtoken <TOKEN-PROPIO>
-    ```
-
-4. **Git (opcional para clonar repositorio)**
-    - https://git-scm.com/download/win
-
-***
-
-## Como levanta el proyecto localmente
-
-1. Abre el proyecto en Visual Studio Code
-2. Abre `index.html` y haz clic derecho -> **"Open with Live Server"**
-3. El sitio estará corriendo en:
-    `http://localhost:5500`
-
-***
-
-## Cómo exponer el servidor por internet (Ngrok)
-
-1. En tu terminal, escribe:
-    ```bash
-    ngrok http 5500
-    ```
+6. Abrir el link generado por Ngrok (por ejemplo):
+http://constantly-top-goshawk.ngrok-free.app
