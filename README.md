@@ -33,7 +33,7 @@ python -m http.server 3000
 
 Cabe resaltar, que es necesario que esta terminal se mantenga activa para tener el servidor abierto, los siguientes pasos deben realizarse en otra terminal desde la raíz del repositorio
 
-### 2. Instalar y Configurar Ngrok
+### 3. Instalar y Configurar Ngrok
 
 Para empezar se necesita instalar `ngrok` via Chocolatey con el siguiente comando
 

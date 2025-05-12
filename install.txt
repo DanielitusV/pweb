@@ -1,8 +1,5 @@
-Instalación resumida para levantar el repositorio
 
-1. Clonar el repositorio
-git clone https://github.com/DanielitusV/pweb.git
-cd pweb
+
 
 2. Instalar Ngrok con Chocolatey
 choco install ngrok
