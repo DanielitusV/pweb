@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title> Puzzle Prueba - Interaquiz</title>
+        <link rel="stylesheet" href="../css/puzzle.css" />
+    </head>
+
+    <body>
+        <header class ="header">Rompecabezas 3x3</header>
+        
+        <main class ="main-content">
+            <section class="puzzle-board">
+                <!-- Tablero 3x3 vacío -->
+                <div class="grid">
+                    <div class="cell" data-pos="1"></div>
+                    <div class="cell" data-pos="2"></div>
+                    <div class="cell" data-pos="3"></div>
+                    <div class="cell" data-pos="4"></div>
+                    <div class="cell" data-pos="5"></div>
+                    <div class="cell" data-pos="6"></div>
+                    <div class="cell" data-pos="7"></div>
+                    <div class="cell" data-pos="8"></div>
+                    <div class="cell" data-pos="9"></div>
+                </div>
+
+                <div class="pieces">
+                    <div class="piece" draggable="true" data-piece="1">1</div>
+                    <div class="piece" draggable="true" data-piece="2">2</div>
+                    <div class="piece" draggable="true" data-piece="3">3</div>
+                    <div class="piece" draggable="true" data-piece="4">4</div>
+                    <div class="piece" draggable="true" data-piece="5">5</div>
+                    <div class="piece" draggable="true" data-piece="6">6</div>
+                    <div class="piece" draggable="true" data-piece="7">7</div>
+                    <div class="piece" draggable="true" data-piece="8">8</div>
+                    <div class="piece" draggable="true" data-piece="9">9</div>
+                </div>
+            </section>
+
+            <button onclick="location.href='home.html'">Volver al Home</button>
+        </main>
+
+        <footer class="footer">Interaquiz &copf; 2025</footer>
+
+        <script src="../js/puzzle.js"></script>
+    </body>
+</html>
