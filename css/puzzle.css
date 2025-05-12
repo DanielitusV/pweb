@@ -31,7 +31,6 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 80px);
     grid-template-rows: repeat(3, 80px);
-    gap: 10px;
 }
 
 .cell {
@@ -55,8 +54,8 @@ body {
 .piece {
     background-color: #34599e;
     color: white;
-    width: 60px;
-    height: 60px;
+    width: 75px;
+    height: 75px;
     display: flex;
     align-items: center;
     justify-content: center;
