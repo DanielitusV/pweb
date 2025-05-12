@@ -4,13 +4,6 @@
     --gris: #333;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
-}
-
 html, body {
     height: 100%;
 }
@@ -51,13 +44,21 @@ p {
 }
 
 button {
-    padding: 10px 20px;
+    width: 200px;
+    padding: 12px 24px;
     font-size: 1rem;
     background-color: var(--azul);
     color: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+}
+
+.button-group {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
 button:hover {
