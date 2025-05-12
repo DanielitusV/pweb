@@ -29,10 +29,11 @@ cells.forEach(cell => {
         const piece = document.querySelector(`.piece[data-piece='${pieceNumber}']`);
 
         if (!cell.hasChildNodes()) {
-        piece.style.position = 'static';
-        piece.style.left = '';
-        piece.style.top = '';
-        cell.appendChild(piece);
-    }
+            piece.style.position = 'static';
+            piece.style.left = '';
+            piece.style.top = '';
+            cell.appendChild(piece);
+            piece.classList.add('in-board');
+        }
     });
 });
