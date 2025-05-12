@@ -40,3 +40,18 @@ button {
 button:hover {
     background-color: #2d4d8c;
 }
+
+/* Mobile First: centrado, botones adaptables */
+@media (min-width: 600px) {
+    .main-content {
+        padding: 40px;
+    }    
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    button {
+        font-size: 1.2rem;
+    }
+}
