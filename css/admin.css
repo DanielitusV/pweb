@@ -71,3 +71,20 @@ button {
 button:hover {
     background-color: #2d4d8c;
 }
+
+/* Estilo Responsivo */
+
+@media (min-width: 600px) {
+    .main-content {
+        padding: 50px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .info-box {
+        width: 60%;
+        margin: 30px auto 0 auto;
+    }
+} 
