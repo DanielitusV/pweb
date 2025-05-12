@@ -1,8 +1,17 @@
 const pieces = document.querySelectorAll('.piece');
 const cells = document.querySelectorAll('.cell');
+const container = document.querySelector('.pieces');
+const maxX = container.clientWidth - 80;
+const maxY = container.clientHeight - 80;
 
-/* Evento de arrastrar inicio */
+/* Asignar posiciones aleatorias dentro de la canasta*/
 pieces.forEach(piece => {
+    const offsetX = Math.floor(Math.random() * maxX);
+    const offsetY = Math.floor(Math.random() * maxY);
+
+    piece.style.left = `${offsetX}px`;
+    piece.style.top = `${offsetY}px`;
+    
     piece.addEventListener('dragstart', e => {
         e.dataTransfer.setData('text/plain', piece.dataset.piece);
     });
@@ -20,7 +29,10 @@ cells.forEach(cell => {
         const piece = document.querySelector(`.piece[data-piece='${pieceNumber}']`);
 
         if (!cell.hasChildNodes()) {
-            cell.appendChild(piece);
-        }
+        piece.style.position = 'static';
+        piece.style.left = '';
+        piece.style.top = '';
+        cell.appendChild(piece);
+    }
     });
 });

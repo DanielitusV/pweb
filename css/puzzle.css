@@ -44,13 +44,29 @@ body {
     height: 78px;
 }
 
+/* Primera versión de la posición inicial de las piezas
 .pieces {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
 }
+*/
 
+.pieces {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin: auto;
+    border: 2px dashed #34599e;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0;
+}
+
+/* Primera versión de cada pieza
 .piece {
     background-color: #34599e;
     color: white;
@@ -60,6 +76,19 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 0px;
+    cursor: grab;
+} */
+
+.piece {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: #34599e;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
     cursor: grab;
 }
 
