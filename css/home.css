@@ -15,7 +15,7 @@ body {
     color: var(--gris);
     display: flex;
     flex-direction: column;
-    min-height: 100 vh;
+    min-height: 100vh;
 }
 
 .header, .footer {
@@ -23,7 +23,7 @@ body {
     color: white;
     text-align: center;
     padding: 20px;
-    height: 60px;
+    height: 40px;
     flex-shrink: 0;
 }
 
@@ -40,7 +40,7 @@ h1 {
 
 p {
     font-size: 1rem;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 
 button {
