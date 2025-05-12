@@ -13,20 +13,38 @@ pieces.forEach(piece => {
     piece.style.top = `${offsetY}px`;
     piece.dataset.originalX = offsetX;
     piece.dataset.originalY = offsetY;
+    piece.style.position = 'absolute';
 
     piece.addEventListener('mousedown', e => {
         e.preventDefault();
 
-        const shiftX = e.clientX - piece.getBoundingClientRect().left;
-        const shiftY = e.clientY - piece.getBoundingClientRect().top;
+        const isInBoard = piece.classList.contains('in-board');
+        const pieceRect = piece.getBoundingClientRect();
+        const shiftX = e.clientX - pieceRect.left;
+        const shiftY = e.clientY - pieceRect.top;
+
+        if (isInBoard) {
+            const currentX = pieceRect.left + window.scrollX;
+            const currentY = pieceRect.top + window.scrollY;
+
+            document.body.appendChild(piece); // Sacar del .cell al body
+            piece.style.left = `${currentX}px`;
+            piece.style.top = `${currentY}px`;
+            piece.style.position = 'absolute';
+            piece.classList.remove('in-board');
+        }
 
         piece.style.zIndex = '999';
-        piece.style.position = 'absolute';
         piece.classList.add('dragging');
 
         const moveAt = (pageX, pageY) => {
-            piece.style.left = `${pageX - shiftX - container.getBoundingClientRect().left}px`;
-            piece.style.top = `${pageY - shiftY - container.getBoundingClientRect().top}px`;
+            if (isInBoard) {
+                piece.style.left = `${pageX - shiftX}px`;
+                piece.style.top = `${pageY - shiftY}px`;
+            } else {
+                piece.style.left = `${pageX - shiftX - container.getBoundingClientRect().left}px`;
+                piece.style.top = `${pageY - shiftY - container.getBoundingClientRect().top}px`;
+            }
         };
 
         const onMouseMove = e => moveAt(e.pageX, e.pageY);
@@ -58,7 +76,7 @@ pieces.forEach(piece => {
                 }
             });
 
-            // Si no cayó en ninguna celda válida → vuelve a su lugar
+            // Si no cayó en ninguna celda → vuelve a la canasta
             if (!dropped) {
                 piece.style.left = `${piece.dataset.originalX}px`;
                 piece.style.top = `${piece.dataset.originalY}px`;
@@ -70,6 +88,6 @@ pieces.forEach(piece => {
         document.addEventListener('mouseup', onMouseUp);
     });
 
-    // Quitar el drag fantasma
+    // Evitar drag fantasma
     piece.addEventListener('dragstart', e => e.preventDefault());
 });
