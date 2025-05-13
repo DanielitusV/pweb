@@ -18,6 +18,8 @@ pieces.forEach(piece => {
     piece.addEventListener('mousedown', e => {
         e.preventDefault();
 
+        const originCell = piece.classList.contains('in-board') ? piece.parentElement : null;
+
         const isInBoard = piece.classList.contains('in-board');
         const pieceRect = piece.getBoundingClientRect();
         const shiftX = e.clientX - pieceRect.left;
@@ -39,11 +41,11 @@ pieces.forEach(piece => {
 
         const moveAt = (pageX, pageY) => {
             if (isInBoard) {
-                piece.style.left = `${pageX - shiftX}px`;
-                piece.style.top = `${pageY - shiftY}px`;
+                piece.style.left = (pageX - shiftX) + 'px';
+                piece.style.top  = (pageY - shiftY) + 'px';
             } else {
-                piece.style.left = `${pageX - shiftX - container.getBoundingClientRect().left}px`;
-                piece.style.top = `${pageY - shiftY - container.getBoundingClientRect().top}px`;
+                piece.style.left = (pageX - shiftX - container.getBoundingClientRect().left) + 'px';
+                piece.style.top = (pageY - shiftY - container.getBoundingClientRect().top) + 'px';
             }
         };
 
@@ -63,15 +65,29 @@ pieces.forEach(piece => {
                     e.clientY >= rect.top &&
                     e.clientY <= rect.bottom
                 ) {
-                    if (!cell.hasChildNodes()) {
-                        piece.style.position = 'static';
-                        piece.style.left = '';
-                        piece.style.top = '';
-                        piece.style.zIndex = '';
+                    if (!cell.firstElementChild) {
                         cell.appendChild(piece);
-                        piece.classList.add('in-board');
-                        dropped = true;
+                    } else {
+
+                        const old = cell.firstElementChild;
+                        if (originCell) {
+                            originCell.appendChild(old);
+                            old.classList.add('in-board');
+                        } else {
+                            container.appendChild(old);
+                            old.classList.remove('in-board');
+                            old.style.position = 'absolute';
+                            old.style.left = old.dataset.originalX + 'px';
+                            old.style.top = old.dataset.originalY + 'px';
+                        }
+                        cell.appendChild(piece);
                     }
+                    piece.style.position = 'static';
+                    piece.style.left = piece.style.top = '';
+                    piece.style.zIndex = '';
+                    piece.classList.add('in-board');
+
+                    dropped = true;
                 }
             });
 
@@ -83,8 +99,12 @@ pieces.forEach(piece => {
                     e.clientY >= basketRect.top &&
                     e.clientY <= basketRect.bottom
                 ) {
-                    const x = e.pageX - shiftX - basketRect.left;
-                    const y = e.pageY - shiftY - basketRect.top;
+                    let x = e.pageX - shiftX - basketRect.left;
+                    let y = e.pageY - shiftY - basketRect.top;
+
+                    x = Math.max(0, Math.min(x, basketRect.width - piece.offsetWidth));
+                    y = Math.max(0, Math.min(y, basketRect.height - piece.offsetHeight));
+
                     container.appendChild(piece);
                     piece.style.position = 'absolute';
                     piece.style.left = `${x}px`;
@@ -96,8 +116,10 @@ pieces.forEach(piece => {
             }
 
             if (!dropped) {
-                piece.style.left = `${piece.dataset.originalX}px`;
-                piece.style.top = `${place.dataset.originalY}px`;
+                piece.style.left = piece.dataset.originalX + 'px';
+                piece.style.top  = piece.dataset.originalY + 'px';
+                piece.classList.remove('in-board');
+                container.appendChild(piece);
             }
 
             piece.classList.remove('dragging');
