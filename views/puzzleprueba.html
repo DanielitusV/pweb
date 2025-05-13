@@ -47,5 +47,13 @@
         <footer class="footer">Interaquiz &copf; 2025</footer>
 
         <script src="../js/puzzle.js"></script>
+        
+        <script type="module">
+            import { resetPuzzle } from '../js/puzzle-scripts/puzzle-reset.js';
+
+            const pieces = document.querySelectorAll('.piece');
+            const container = document.querySelector('.basket');
+            document.getElementById("reset").addEventListener('click', () => resetPuzzle(pieces, container));
+        </script>
     </body>
 </html>
