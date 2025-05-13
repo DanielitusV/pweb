@@ -1,8 +1,15 @@
+import { resetPuzzle } from './puzzle-scripts/puzzle-reset.js';
+
 const pieces = document.querySelectorAll('.piece');
 const cells = document.querySelectorAll('.cell');
 const container = document.querySelector('.basket');
 const maxX = container.clientWidth - 80;
 const maxY = container.clientHeight - 80;
+
+/* Llamar a función de reset */
+document.getElementById("reset").addEventListener('click', () => {
+    resetPuzzle(pieces, container);
+});
 
 /* Asignar posiciones aleatorias dentro de la canasta */
 pieces.forEach(piece => {
