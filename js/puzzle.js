@@ -54,7 +54,6 @@ pieces.forEach(piece => {
             document.removeEventListener('mousemove', onMouseMove);
             document.removeEventListener('mouseup', onMouseUp);
 
-            // Verificamos si soltaste sobre una celda válida
             let dropped = false;
             cells.forEach(cell => {
                 const rect = cell.getBoundingClientRect();
@@ -76,7 +75,6 @@ pieces.forEach(piece => {
                 }
             });
 
-            // Si no cayó en ninguna celda → vuelve a la canasta
             if (!dropped) {
                 piece.style.left = `${piece.dataset.originalX}px`;
                 piece.style.top = `${piece.dataset.originalY}px`;
@@ -88,6 +86,27 @@ pieces.forEach(piece => {
         document.addEventListener('mouseup', onMouseUp);
     });
 
-    // Evitar drag fantasma
+    /* Evitar drag fantasma */
     piece.addEventListener('dragstart', e => e.preventDefault());
+});
+
+document.getElementById("reset").addEventListener('click', () => {
+    const containerRect = container.getBoundingClientRect();
+
+    pieces.forEach(piece => {
+        if (piece.classList.contains('in-board')) {
+            container.appendChild(piece);
+            piece.classList.remove('in-board');
+            piece.style.position = 'absolute';
+        }
+
+        const offsetX = Math.floor(Math.random() * (container.clientWidth - 80));
+        const offsetY = Math.floor(Math.random() * (container.clientHeight - 80));
+
+        piece.style.left = `${offsetX}px`;
+        piece.style.top = `${offsetY}px`;
+        piece.dataset.originalX = offsetX;
+        piece.dataset.originalY = offsetY;
+        piece.style.zIndex = '';
+    });
 });
