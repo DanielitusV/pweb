@@ -1,6 +1,6 @@
 const pieces = document.querySelectorAll('.piece');
 const cells = document.querySelectorAll('.cell');
-const container = document.querySelector('.pieces');
+const container = document.querySelector('.basket');
 const maxX = container.clientWidth - 80;
 const maxY = container.clientHeight - 80;
 
@@ -76,8 +76,28 @@ pieces.forEach(piece => {
             });
 
             if (!dropped) {
+                const basketRect = container.getBoundingClientRect();
+                if (
+                    e.clientX >= basketRect.left &&
+                    e.clientX <= basketRect.right &&
+                    e.clientY >= basketRect.top &&
+                    e.clientY <= basketRect.bottom
+                ) {
+                    const x = e.pageX - shiftX - basketRect.left;
+                    const y = e.pageY - shiftY - basketRect.top;
+                    container.appendChild(piece);
+                    piece.style.position = 'absolute';
+                    piece.style.left = `${x}px`;
+                    piece.style.top = `${y}px`;
+                    piece.dataset.originalX = x;
+                    piece.dataset.originalY = y;
+                    dropped = true;
+                }
+            }
+
+            if (!dropped) {
                 piece.style.left = `${piece.dataset.originalX}px`;
-                piece.style.top = `${piece.dataset.originalY}px`;
+                piece.style.top = `${place.dataset.originalY}px`;
             }
 
             piece.classList.remove('dragging');

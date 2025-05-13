@@ -53,10 +53,10 @@ body {
 }
 */
 
-.pieces {
+.basket {
     position: relative;
-    width: 300px;
-    height: 200px;
+    width: 500px;
+    height: 300px;
     margin: auto;
     border: 2px dashed #34599e;
     display: flex;
