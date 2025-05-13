@@ -1,3 +1,5 @@
+import { isPuzzleCorrect } from "./puzzle-check.js";
+
 export function enableDrag(pieces, cells, container) {
     pieces.forEach(piece => {
         piece.addEventListener('mousedown', e => {
@@ -40,7 +42,7 @@ export function enableDrag(pieces, cells, container) {
                 document.removeEventListener('mouseup', onMouseUp);
 
                 let dropped = false;
-                cells.forEach(cell => {
+                cells.forEach(async cell => {
                     const rect = cell.getBoundingClientRect();
                     if (
                         e.clientX >= rect.left && e.clientX <= rect.right &&
@@ -67,6 +69,12 @@ export function enableDrag(pieces, cells, container) {
                         piece.style.zIndex = '';
                         piece.classList.add('in-board');
                         dropped = true;
+                        
+                        /* Async temporal para comprobar que el puzzle está resuelto */
+                        const correct = await isPuzzleCorrect(cells);
+                        if (correct) {
+                            alert( "¡Puzzle completado!" );
+                        }
                     }
                 });
 
