@@ -1,6 +1,7 @@
 import { initPieces } from './puzzle-scripts/puzzle-init.js';
 import { enableDrag } from './puzzle-scripts/puzzle-drag.js';
 import { resetPuzzle } from './puzzle-scripts/puzzle-reset.js';
+import { setupImageUpload } from './puzzle-scripts/puzzle-image.js';
 
 const pieces = document.querySelectorAll('.piece');
 const cells = document.querySelectorAll('.cell');
@@ -12,3 +13,5 @@ enableDrag(pieces, cells, container);
 document.getElementById("reset").addEventListener('click', () => {
     resetPuzzle(pieces, container);
 });
+
+setupImageUpload('uploadInput', 'imagePreview', 'uploadMessage');

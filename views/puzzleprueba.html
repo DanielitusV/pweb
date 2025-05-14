@@ -42,8 +42,15 @@
                 <button onclick="location.href='home.html'">Volver al Home</button>
                 <button id="reset">Reiniciar Puzzle</button>
             </div>
-        </main>
 
+            <div id="upload-section">
+                <h2>Subir Imagen</h2>
+                <input type="file" id="uploadInput" accept="image/*">
+                <p id ="uploadMessage"></p>
+                <img id="imagePreview" src="" alt="Vista previa" style="display:none; max-width: 300px;">
+            </div>
+
+        </main>
         <footer class="footer">Interaquiz &copf; 2025</footer>
 
         <script type="module" src="../js/puzzle.js"></script>
