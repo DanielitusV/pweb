@@ -1,5 +1,7 @@
 # INTERAQUIZ - Editor de Preguntas Interactivas
 
+## Versión 1.01
+
 ## Descripción
 Aplicación web responsiva que permite a profesores crear proyectos de preguntas interactivas. Por el momento, se enfoca en un solo tipo de pregunta: rompecabezas a partir de una imagen.
 
@@ -13,6 +15,7 @@ La aplicación luego será accesible desde cualquier dispositivo a través de la
 - CSS
 - JavaScript
 - Python (Para levantar servidor local)
+- Flask (Para ejecutar server.py)
 - Ngrok (para exponer el sitio a internet)
 - MongoDB Atlas (persistencia futura)
 
@@ -25,10 +28,26 @@ cd pweb
 ```
 
 ### 2. Levantar el servidor local
-Es necesario tener **Python instalado**- Luego, ejecutar este comando desde la raíz del proyecto:
+Es necesario tener **Python instalado** 
+
+### Importante sobre el PATH:
+Antes de instalas dependencias como **Flask** o **requests**, asegurarse de que la instalación de **Python** y **pip** estén correctamente añadidas al **PATH** del sistema. Si no está bien configurado, los comandos posteriores pueden fallar o instalarse en ubicaciones incorrectas
+
+**Recomendaciones**:
+- Verificar que al ejecutar `python --version` y `pip --version` en la terminal, ambos funcionen correctamente.
+- Si muestra advertencias de que `pip` o `python` no se encuentran, revisa tu configuración de PATH o usa un entorno virtual.
+
+- Luego, también se necesita instalar Flask (como complemento de Python) para manejar peticiones en el servidor como un backend básico
 
 ```bash
-python -m http.server 3000
+    pip install flask requests
+```
+- Para acceder a la configuración básica de backend del servidor, revisar el archivo `server.py`.
+
+Luego de tener el instalado flask y el archivo del servidor configurados correctamente, ejecutamos el siguiente comando para arrancar el servidor local en Python.
+
+```bash
+    python server.py
 ```
 
 Cabe resaltar, que es necesario que esta terminal se mantenga activa para tener el servidor abierto, los siguientes pasos deben realizarse en otra terminal desde la raíz del repositorio
@@ -51,7 +70,7 @@ Ejecutar el siguiente comando para añadir el auto-token al archivo de configura
 En otra terminal, desde la raiz del archivo, ejecutar:
 
 ```bash
-    ngrok http --url=constantly-top-goshawk.ngrok-free.app 3000
+    ngrok http --url=constantly-top-goshawk.ngrok-free.app 5000
 ```
 
 Cuando ambas terminales estén ejecutandose (el de Python y el de Ngrok), será posible acceder a la aplicación desde:
