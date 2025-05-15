@@ -44,18 +44,10 @@ body {
     height: 80px;
 }
 
-/* Primera versión de la posición inicial de las piezas
-.pieces {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-}
-*/
-
 .basket {
     position: relative;
-    width: 500px;
+    width: 90%;
+    max-width: 500px;
     height: 300px;
     margin: auto;
     border: 2px dashed #34599e;
@@ -65,19 +57,6 @@ body {
     justify-content: center;
     gap: 0;
 }
-
-/* Primera versión de cada pieza
-.piece {
-    background-color: #34599e;
-    color: white;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0px;
-    cursor: grab;
-} */
 
 .piece {
     position: absolute;

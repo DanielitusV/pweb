@@ -15,3 +15,7 @@ document.getElementById("reset").addEventListener('click', () => {
 });
 
 setupImageUpload('uploadInput', 'imagePreview', 'uploadMessage');
+
+window.addEventListener('resize', () => {
+    initPieces(document.querySelectorAll('.piece'), document.querySelector('.basket'));
+});

@@ -1,6 +1,8 @@
 #upload-section {
     text-align: center;
     margin-top: 50px;
+    width: 90%;
+    max-width: 500px;
 }
 
 #upload-section h2 {
@@ -16,6 +18,8 @@
     cursor: pointer;
     font-size: 1rem;
     margin-right: 10px;
+    max-width: 500px;
+    width: 90%;
 }
 
 #uploadInput::-webkit-file-upload-button {
@@ -42,6 +46,7 @@
     display: block;
     margin: 20px auto;
     max-width: 300px;
+    width: 90%;
     border: 2px solid #2c4f94;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
