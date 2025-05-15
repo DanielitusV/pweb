@@ -1,0 +1,7 @@
+{
+    "_id": "ObjectId()",
+    "nombre": "John Doe",
+    "correo": "realmail@gmail.com",
+    "rol": "profesor",
+    "fecha_creacion": "ISODate()"
+}
