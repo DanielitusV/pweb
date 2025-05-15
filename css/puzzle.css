@@ -46,7 +46,7 @@ body {
 
 .basket {
     position: relative;
-    max-width: 500px;
+    width: 500px;
     height: 300px;
     margin: auto;
     border: 2px dashed #34599e;
@@ -54,7 +54,6 @@ body {
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: center;
-    gap: 0;
 }
 
 .piece {
