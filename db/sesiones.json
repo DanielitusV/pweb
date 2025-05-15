@@ -1,0 +1,9 @@
+{
+    "_id": "ObjectId()",
+    "usuario_id": "ObjectId()",
+    "inicio_sesion": "ISOData()",
+    "acciones": [
+        { "tipo": "crear_pregunta", "fecha": "ISODate()" },
+        { "tipo": "editar_pregunta", "fecha": "ISODate()" }
+    ]
+}

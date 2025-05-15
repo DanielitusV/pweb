@@ -1,0 +1,15 @@
+{
+    "_id": "ObjectId()",
+    "titulo": "Rompecabezas",
+    "nivel": "Dificil",
+    "descripcion": "Completa el puzzle",
+    "tipo": "puzzle",
+    "imagen": "puzzle.png",
+    "editor_id": "ObjectId()",
+    "fecha_creacion": "ISODate()",
+    "configuracion": {
+        "piezas": 9,
+        "tiempo_limite": 300,
+        "pistas": true
+    }
+}
