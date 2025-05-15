@@ -46,7 +46,6 @@ body {
 
 .basket {
     position: relative;
-    width: 90%;
     max-width: 500px;
     height: 300px;
     margin: auto;
@@ -97,4 +96,9 @@ button:hover {
     flex-direction: column;
     align-items: center;
     gap: 0px;
+}
+
+@media (max-width: 768px) {
+    .basket { width: 90%; height: 200px; }
+    .piece { width: 50px; height: 50px; }
 }
