@@ -116,9 +116,9 @@ button:hover {
 
 @media (max-width: 900px) {
     .basket {
-        width: 90vw;
+        width: 50vw;
         min-width: 240px;
-        max-width: 98vw;
+        max-width: 50vw;
         height: 220px;
     }
 }
