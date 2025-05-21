@@ -20,6 +20,14 @@ body {
     text-align: center;
 }
 
+.puzzle-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
 .puzzle-board {
     display: flex;
     flex-direction: column;
@@ -46,8 +54,8 @@ body {
 
 .basket {
     position: relative;
-    width: 500px;
-    height: 300px;
+    width: 320px;
+    height: 240px;
     margin: auto;
     border: 2px dashed #34599e;
     display: flex;
@@ -97,7 +105,20 @@ button:hover {
     background-color: #2d4d8c;
 }
 
-@media (max-width: 768px) {
-    .basket { width: 90%; height: 200px; }
-    .piece { width: 50px; height: 50px; }
+@media (min-width: 900px) {
+    .puzzle-layout {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 4rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .basket {
+        width: 90vw;
+        min-width: 240px;
+        max-width: 98vw;
+        height: 220px;
+    }
 }
