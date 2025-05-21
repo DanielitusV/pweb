@@ -46,11 +46,17 @@
                 </div>
             </section>
 
-            <div id="upload-section">
-                <h2>Subir Imagen</h2>
-                <input type="file" id="uploadInput" accept="image/*">
-                <p id ="uploadMessage"></p>
-                <img id="imagePreview" src="" alt="Vista previa" style="display:none; max-width: 300px;">
+            <div id="upload-section" class="upload-flex">
+                <div class="upload-controls">
+                    <h3>Sube una imagen para el Rompecabezas</h2>
+                    <input type="file" id="uploadInput" accept="image/*" />
+                    <p id="uploadMessage"></p>
+                </div>
+
+                <div class="upload-preview" id="uploadPreviewBox">
+                    <span id="uploadPlaceholder">Aqui se mostrará la imagen</span>
+                    <img id="imagePreview" src="" alt="Vista previa" style="display:none;">
+                </div>
             </div>
 
         </main>
