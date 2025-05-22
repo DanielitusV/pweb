@@ -11,8 +11,8 @@
     <body>
         <header class ="header">Rompecabezas 3x3</header>
         
-        <div class="button-group">
-            <button onclick="location.href='home.html'">Volver al Home</button>
+        <div class="button-row">
+            <button onclick="location.href='admin.html'">Volver al Home</button>
             <button id="reset">Reiniciar Puzzle</button>
         </div>
 
@@ -56,6 +56,12 @@
                 <div class="upload-preview" id="uploadPreviewBox">
                     <span id="uploadPlaceholder">Aqui se mostrará la imagen</span>
                     <img id="imagePreview" src="" alt="Vista previa" style="display:none;">
+                </div>
+
+                <div id="puzzlePreviewContainer">
+                    <h3>Vista previa del Puzzle</h3>
+                    <div id="puzzlePreviewGrid"></div>
+                    <button id="confirmarPuzzleBtn" style="display:none;">Confirmar Puzzle</button>
                 </div>
             </div>
 

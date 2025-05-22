@@ -92,6 +92,14 @@ body {
     margin-top: 15px;
 }
 
+.button-row {
+    margin-top: 15px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
 button {
     padding: 10px 20px;
     background-color: #34599e;
