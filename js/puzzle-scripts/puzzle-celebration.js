@@ -2,6 +2,12 @@ export function showCelebration() {
     const msg = document.getElementById("celebrationMsg");
     msg.style.display = "flex";
     launchConfetti();
+
+    msg.onclick = (e) => {
+        if (e.target === msg) hideCelebration();
+    }
+
+    document.getElementById("closeCelebration").onclick = hideCelebration;
 }
 
 function launchConfetti() {
@@ -40,4 +46,13 @@ function launchConfetti() {
         requestAnimationFrame(draw);
     }
     draw();
+
+    setTimeout(() => {
+        running = false;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }, 5000);
+}
+
+function hideCelebration() {
+    document.getElementById("celebrationMsg").style.display = "none";
 }
