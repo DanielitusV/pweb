@@ -54,6 +54,7 @@ export function enableDrag(pieces, cells, container) {
                     return;
                 }
 
+
                 let dropped = false;
                 cells.forEach(async cell => {
                     const rect = cell.getBoundingClientRect();

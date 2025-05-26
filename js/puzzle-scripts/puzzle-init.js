@@ -1,5 +1,7 @@
 export function initPieces(pieces, container) {
-    pieces.forEach(piece => {
+    pieces.forEach((piece, i) => {
+        piece.dataset.flipped = "false";
+        piece.setAttribute("data-piece", (i + 1).toString());
         setPieceRandomPosition(piece, container);
     });  
 }
