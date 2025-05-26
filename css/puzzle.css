@@ -181,7 +181,7 @@ button:hover {
 #loader {
     position: fixed;
     z-index: 99999;
-    background: rgba(245, 247, 251, 0.95);
+    background: rgb(96, 84, 255);
     top: 0; left: 0; width: 100vw; height: 100vh;
     display: flex;
     flex-direction: column;
@@ -190,13 +190,32 @@ button:hover {
     transition: 0.4s;
 }
 
-.spinner {
-    border: 6px solid #e3e6f0;
-    border-top: 6px solid #567cc1;
+.loader-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    background: #ffffff;
+    padding: 2.5rem 3.5rem;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px 0 rgba(86, 124, 193, 0.10);
+}
+
+.big-spinner {
+    width: 76px;
+    height: 76px;
+    border: 9px solid #c9dafb;
+    border-right: 9px solid #567cc1;
     border-radius: 50%;
-    width: 60px; height: 60px;
-    animation: spin 1s linear infinite;
-    margin-bottom: 16px;
+    animation: spin 1.4s linear infinite;
+    margin-right: 0.5rem;
+}
+
+.loader-text {
+    font-size: 2.2rem;
+    color: #34599e;
+    font-weight: 600;
+    letter-spacing: 0.04em;
 }
 
 @keyframes spin {
