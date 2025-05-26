@@ -27,13 +27,18 @@ export function setPieceImage(pieces, slices, mode, backImage) {
                 piece.dataset.flipped = "false";
             }
             piece.onclick = async function(e) {
-                if (piece.dataset.flipped === "true") {
-                    piece.style.backgroundImage = `url(${piece.dataset.front})`;
-                    piece.dataset.flipped = "false";
-                } else {
-                    piece.style.backgroundImage = `url(${piece.dataset.back})`;
-                    piece.dataset.flipped = "true";
-                }
+                piece.classList.add('flipping');
+
+                    setTimeout(() => {
+                        if (piece.dataset.flipped === "true") {
+                            piece.style.backgroundImage = `url(${piece.dataset.front})`;
+                            piece.dataset.flipped = "false";
+                        } else {
+                            piece.style.backgroundImage = `url(${piece.dataset.back})`;
+                            piece.dataset.flipped = "true";
+                        }
+                        piece.classList.remove('flipping');
+                    }, 250);
 
                 if (piece.classList.contains('in-board')) {
                     const cells = document.querySelectorAll('.cell');
