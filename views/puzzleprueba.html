@@ -9,6 +9,13 @@
     </head>
 
     <body>
+        <div id="loader">
+            <div class="loader-content">
+                <div class = "big-spinner"></div>
+                <span class="loader-text">Cargando...</span>
+            </div>
+        </div>
+
         <header class ="header">Rompecabezas 3x3</header>
         
         <div class="button-row">
@@ -61,10 +68,32 @@
                 <div id="puzzlePreviewContainer">
                     <h3>Vista previa del Puzzle</h3>
                     <div id="puzzlePreviewGrid"></div>
+
+                    <div id="puzzlePreviewModes" style="display:none; margin-bottom: 12px;">
+                        <label>
+                            <input type="radio" name="puzzleMode" value="easy" checked>
+                            Fácil
+                        </label>
+
+                        <label>
+                            <input type="radio" name="puzzleMode" value="intermediate">
+                            Intermedio
+                        </label>
+                    </div>
+
                     <button id="confirmarPuzzleBtn" style="display:none;">Confirmar Puzzle</button>
                 </div>
             </div>
 
+             <div id="celebrationMsg" style="display:none;">
+                <div class="celebration-content">
+                    <h2>¡Felicidades!</h2>
+                    <p>Has completado el rompecabezas.</p>
+                    <button onclick="location.reload()">Jugar otra vez</button>
+                    <button id="closeCelebration">Cerrar</button>
+                </div>
+                <canvas id="confettiCanvas"></canvas>
+            </div>
         </main>
         <footer class="footer">Interaquiz &copf; 2025</footer>
 

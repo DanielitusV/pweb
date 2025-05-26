@@ -1,6 +1,6 @@
 import { sliceImage } from './puzzle-image-slicer.js';
 
-export function setupImageUpload(inputId, previewId, messageId) {
+export function setupImageUpload(inputId, previewId, messageId, onSliced) {
     const input = document.getElementById(inputId);
     const preview = document.getElementById(previewId);
     const message = document.getElementById(messageId);
@@ -35,6 +35,9 @@ export function setupImageUpload(inputId, previewId, messageId) {
                     });
 
                     confirmarBtn.style.display = 'inline-block';
+                    document.getElementById('puzzlePreviewModes').style.display = 'block';
+
+                    if (onSliced) onSliced(pieces);
                 }
             };
             reader.readAsDataURL(file);
