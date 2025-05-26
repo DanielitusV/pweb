@@ -58,8 +58,15 @@ function launchConfetti() {
     setTimeout(() => {
         running = false;
         if (frameId) cancelAnimationFrame(frameId);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }, 5000);
+
+        canvas.style.opacity = "0";
+
+        setTimeout(() => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            canvas.style.opacity = "1";
+        }, 1200);
+        
+    }, 10000);
 }
 
 function hideCelebration() {
