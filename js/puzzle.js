@@ -7,6 +7,7 @@ import { setPieceImage } from './puzzle-scripts/puzzle-piece-image.js';
 const pieces = document.querySelectorAll('.piece');
 const cells = document.querySelectorAll('.cell');
 const container = document.querySelector('.basket');
+const BACK_IMAGE = "../assets/icons/back-card.png";
 let slices = [];
 
 initPieces(pieces, container);
@@ -19,7 +20,8 @@ document.getElementById("reset").addEventListener('click', () => {
 setupImageUpload('uploadInput', 'imagePreview', 'uploadMessage', (cutSlices) => {
     slices = cutSlices;
     document.getElementById("confirmarPuzzleBtn").onclick = function() {
-        setPieceImage(pieces, slices);
+        const mode = document.querySelector('input[name="puzzleMode"]:checked').value;
+        setPieceImage(pieces, slices, mode, BACK_IMAGE);
     }
 });
 
