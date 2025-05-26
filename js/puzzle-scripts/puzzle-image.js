@@ -35,6 +35,7 @@ export function setupImageUpload(inputId, previewId, messageId, onSliced) {
                     });
 
                     confirmarBtn.style.display = 'inline-block';
+                    document.getElementById('puzzlePreviewModes').style.display = 'block';
 
                     if (onSliced) onSliced(pieces);
                 }
