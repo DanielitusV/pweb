@@ -33,7 +33,12 @@ function launchConfetti() {
         });
     }
 
+    let running = true;
+    let frameId = null; 
+
     function draw() {
+        if (!running) return;
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for (const c of confetti) {
             ctx.save();
@@ -46,12 +51,13 @@ function launchConfetti() {
             c.angle += 0.05;
             if (c.y > canvas.height) c.y = -c.r;
         }
-        requestAnimationFrame(draw);
+        frameId = requestAnimationFrame(draw);
     }
     draw();
 
     setTimeout(() => {
         running = false;
+        if (frameId) cancelAnimationFrame(frameId);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }, 5000);
 }
