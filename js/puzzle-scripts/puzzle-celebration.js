@@ -1,6 +1,9 @@
 export function showCelebration() {
     const msg = document.getElementById("celebrationMsg");
     msg.style.display = "flex";
+
+    void msg.offsetWidth;
+    msg.classList.add("active");
     launchConfetti();
 
     msg.onclick = (e) => {
@@ -54,5 +57,9 @@ function launchConfetti() {
 }
 
 function hideCelebration() {
-    document.getElementById("celebrationMsg").style.display = "none";
+    const msg = document.getElementById("celebrationMsg");
+    msg.classList.remove("active");
+    setTimeout(() => {
+        msg.style.display = "none";
+    }, 400);
 }
