@@ -22,3 +22,12 @@ setupImageUpload('uploadInput', 'imagePreview', 'uploadMessage', (cutSlices) => 
         setPieceImage(pieces, slices);
     }
 });
+
+window.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+        document.getElementById("loader").style.opacity = "0";
+        setTimeout(() => {
+            document.getElementById("loader").style.display = "none";
+        }, 400); 
+    }, 400);
+});
