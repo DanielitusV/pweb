@@ -1,3 +1,5 @@
+import { showCelebration } from "./puzzle-celebration.js";
+
 export async function isPuzzleCorrect(cells) {
     await new Promise(resolve => setTimeout(resolve, 300));
 
@@ -7,5 +9,7 @@ export async function isPuzzleCorrect(cells) {
             return false;
         }
     }
+
+    showCelebration();
     return true;
 }

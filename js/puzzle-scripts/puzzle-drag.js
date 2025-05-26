@@ -73,9 +73,6 @@ export function enableDrag(pieces, cells, container) {
                 dropped = true;
 
                 const correct = await isPuzzleCorrect(cells);
-                if (correct) {
-                    alert("¡Puzzle completado!");
-                }
             }
         });
 
