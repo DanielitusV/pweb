@@ -46,6 +46,15 @@
   </div>
   <script src="/js/editor.js"></script>
 
+<!-- header -->
+<div id="header-placeholder"></div>
+<script>
+  fetch('./components/header.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('header-placeholder').innerHTML = data;
+    });
+</script>
 
 
 </body>
