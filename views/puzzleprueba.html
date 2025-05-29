@@ -79,6 +79,116 @@
                             <input type="radio" name="puzzleMode" value="intermediate">
                             Intermedio
                         </label>
+
+                          <label>
+                            <input type="radio" name="puzzleMode" value="avanzado">
+                            Avanzado
+                        </label>
+
+
+
+
+                    </div>
+
+                    <button id="confirmarPuzzleBtn" style="display:none;">Confirmar Puzzle</button>
+                </div>
+            </div>
+
+             <div id="celebrationMsg" style="display:none;">
+                <div class="celebration-content">
+                    <h2>¡Felicidades!</h2>
+                    <p>Has completado el rompecabezas.</p>
+                    <button onclick="location.reload()">Jugar otra vez</button>
+                    <button id="closeCelebration">Cerrar</button>
+                </div>
+                <canvas id="confettiCanvas"></canvas>
+            </div>
+        </main>
+        <footer class="footer">Interaquiz &copf; 2025</footer>
+
+        <script type="module" src="../js/puzzle.js"></script>
+    </body>
+</html><!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title> Puzzle Prueba - Interaquiz</title>
+        <link rel="stylesheet" href="../css/puzzle.css" />
+        <link rel="stylesheet" href="../css/upload-image.css" />
+    </head>
+
+    <body>
+        <div id="loader">
+            <div class="loader-content">
+                <div class = "big-spinner"></div>
+                <span class="loader-text">Cargando...</span>
+            </div>
+        </div>
+
+        <header class ="header">Rompecabezas 3x3</header>
+        
+        <div class="button-row">
+            <button onclick="location.href='admin.html'">Volver al Home</button>
+            <button id="reset">Reiniciar Puzzle</button>
+        </div>
+
+        <main class ="main-content">
+            <section class="puzzle-board">
+                <div class="puzzle-layout">
+                    <!-- Tablero 3x3 vacío -->
+                    <div class="grid">
+                        <div class="cell" data-pos="1"></div>
+                        <div class="cell" data-pos="2"></div>
+                        <div class="cell" data-pos="3"></div>
+                        <div class="cell" data-pos="4"></div>
+                        <div class="cell" data-pos="5"></div>
+                        <div class="cell" data-pos="6"></div>
+                        <div class="cell" data-pos="7"></div>
+                        <div class="cell" data-pos="8"></div>
+                        <div class="cell" data-pos="9"></div>
+                    </div>
+
+                    <div class="basket">
+                        <div class="piece" draggable="true" data-piece="1">1</div>
+                        <div class="piece" draggable="true" data-piece="2">2</div>
+                        <div class="piece" draggable="true" data-piece="3">3</div>
+                        <div class="piece" draggable="true" data-piece="4">4</div>
+                        <div class="piece" draggable="true" data-piece="5">5</div>
+                        <div class="piece" draggable="true" data-piece="6">6</div>
+                        <div class="piece" draggable="true" data-piece="7">7</div>
+                        <div class="piece" draggable="true" data-piece="8">8</div>
+                        <div class="piece" draggable="true" data-piece="9">9</div>
+                    </div>
+                </div>
+            </section>
+
+            <div id="upload-section" class="upload-flex">
+                <div class="upload-controls">
+                    <h3>Sube una imagen para el Rompecabezas</h2>
+                    <input type="file" id="uploadInput" accept="image/*" />
+                    <p id="uploadMessage"></p>
+                </div>
+
+                <div class="upload-preview" id="uploadPreviewBox">
+                    <span id="uploadPlaceholder">Aqui se mostrará la imagen</span>
+                    <img id="imagePreview" src="" alt="Vista previa" style="display:none;">
+                </div>
+
+                <div id="puzzlePreviewContainer">
+                    <h3>Vista previa del Puzzle</h3>
+                    <div id="puzzlePreviewGrid"></div>
+
+                    <div id="puzzlePreviewModes" style="display:none; margin-bottom: 12px;">
+                        <label>
+                            <input type="radio" name="puzzleMode" value="easy" checked>
+                            Fácil
+                        </label>
+
+                        <label>
+                            <input type="radio" name="puzzleMode" value="intermediate">
+                            Intermedio
+                        </label>
                     </div>
 
                     <button id="confirmarPuzzleBtn" style="display:none;">Confirmar Puzzle</button>
