@@ -5,46 +5,45 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>INTERAQUIZ - Inicio</title>
         <link rel="stylesheet" href="css/main.css"/>
-        <script src="js/app.js"></script>
+        <script defer src="js/app.js"></script>
     </head>
 
     <body class = "inicio ">
-      
-            
-            <header class="header">
-    <nav class="nav">
-        <h2 class="logo">INTERAQUIZ</h2>
-        <button class="menu-toggle" id="menuToggle">☰</button>
-        <ul class="nav-links" id="navLinks">
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Nosotros</a></li>
-        <li><a href="#">Contacto</a></li>
-        </ul>
-    </nav>
-    </header>
+        <header class="header">
+            <nav class="nav">
+                <h2 class="logo">INTERAQUIZ</h2>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
 
 
-        <div class="main-content">
-          
+        <main class="main-content">  
             <h2>Bienvenido a:</h2>
             <h1>INTERAQUIZ</h1>
-
             <div class="buttons">
                 <button onclick="location.href='views/home.html'">Soy Profesor</button>
                 <button onclick="location.href='views/admin.html'">Soy Administrador</button>
             </div>
 
-              <div class="content-container">
-                <h1 class="titulo-principal">Transformamos tu aprendisage</h1>
-                <p class="descripcion-principal">
+            <section class="content-container">
+                <h2 class="principal-title">Transformamos tu aprendizaje</h2>
+                <p class="principal-description">
                 Sabemos que captar la atención en clase no siempre es fácil, especialmente cuando
-                 el material es difícil o muy repetitivo. Por eso creamos esta plataforma sencilla y 
-                 divertida, que te ayuda a convertir imágenes en rompecabezas interactivos.
-                  Así, tus alumnos aprenderán jugando y participando activamente, desde cualquier dispositivo.
-                   ¡Haz que aprender sea una experiencia emocionante!
+                el material es difícil o muy repetitivo. Por eso creamos esta plataforma sencilla y 
+                divertida, que te ayuda a convertir imágenes en rompecabezas interactivos.
+                Así, tus alumnos aprenderán jugando y participando activamente, desde cualquier dispositivo.
+                ¡Haz que aprender sea una experiencia emocionante!
                 </p>
-                
+            </section>
+        </main> 
 
-        <footer class="footer"></footer>
+        <footer class="footer">
+            <p>Interaquiz © 2025</p>
+        </footer>
     </body>
  </html>
