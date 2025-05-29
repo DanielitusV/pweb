@@ -158,20 +158,20 @@ h2 {
 }
 
 @media (max-width: 600px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: var(--azul);
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 150px;
-    border-radius: 0 0 0 8px;
-  }
-  .nav-links.active {
-    display: flex;
-  }
-  .menu-toggle {
-    display: block;
-  }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: var(--azul);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 150px;
+        border-radius: 0 0 0 8px;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .menu-toggle {
+      display: block;
+    }
 }

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Profesor - Interaquiz</title>
+    <link rel="stylesheet" href="../css/professor.css" />
+</head>
+<body>
+
+    <header class="header">
+        <nav class="nav">
+            <h2 class="logo">INTERAQUIZ</h2>
+            <ul class="nav-links">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="professor.html">Profesor</a></li>
+                <li><a href="admin.html">Administrador</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="title-projects">
+        <h3>Mis Proyectos</h3>
+    </div>
+
+    <main class="main-content">
+        <section class="project-card">
+            <p><strong>Nombre del Proyecto:</strong> Proyecto 1</p>
+            <p><strong>Número de Preguntas:</strong> 2</p>
+            <p><strong>Última Edición:</strong> Ayer</p>
+            <div class="buttons-row">
+                <button class="edit">Editar</button>
+                <button class="delete">Borrar</button>
+            </div>
+        </section>
+
+        <button class="add-project" onclick="mostrarFormulario()">Agregar Proyecto</button>
+
+        <div id="formularioPregunta" class="form-container" style="display:none;">
+            <h2>Agregar / Editar Pregunta</h2>
+            <input type="text" placeholder="Título de la pregunta" />
+            <textarea placeholder="Descripción de la pregunta"></textarea>
+            <select>
+                <option disabled selected>Selecciona dificultad</option>
+                <option value="facil">Fácil</option>
+                <option value="media">Media</option>
+                <option value="dificil">Difícil</option>
+            </select>
+            <button onclick="location.href='../views/puzzleprueba.html'">Probar creación puzzle</button>
+            <br /><br />
+            <button>Guardar Pregunta</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        &copy; 2025 Interaquiz
+    </footer>
+
+    <script>
+        function mostrarFormulario() {
+            const form = document.getElementById('formularioPregunta');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+
+</body>
+</html>

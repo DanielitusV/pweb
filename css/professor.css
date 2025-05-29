@@ -1,0 +1,177 @@
+:root {
+    --azul-oscuro: #2d529c;
+    --azul-claro: #4969bd;
+    --verde-agua-oscuro: #2a6f75;
+    --verde-agua-claro: #4ca1a3;
+    --gris-fondo: #f0f7f7;
+    --blanco: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--gris-fondo);
+    color: #233238;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: var(--azul-oscuro);
+    padding: 1rem;
+    color: var(--blanco);
+}
+
+.logo {
+    color: var(--blanco);
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--verde-agua-claro);
+}
+
+.title-projects {
+    max-width: 1100px;
+    margin: 1rem auto 0 auto;
+    padding: 0 1rem;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: var(--verde-agua-oscuro);
+}
+
+.main-content {
+    max-width: 800px;    
+    margin: 0 auto;      
+    padding: 1rem;
+    text-align: center;  
+}
+
+.project-card {
+    background-color: var(--verde-agua-oscuro);
+    color: var(--blanco);
+    text-align: left;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 600px;
+    min-height: 150px;
+    box-sizing: border-box;
+    margin: 0 auto 1.5rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.buttons-row {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+button {
+    background-color: var(--verde-agua-claro);
+    color: var(--blanco);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--azul-claro);
+}
+
+.add-project {
+    display: block;
+    margin: 1rem auto 2rem auto;
+    width: 220px;
+}
+
+.form-container {
+    background-color: var(--blanco);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--verde-agua-claro);
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.footer {
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+}
+
+@media (max-width: 600px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project-card {
+        padding: 1rem;
+    }
+
+    .main-content {
+        padding: 0.5rem;
+    }
+
+    .form-container {
+        padding: 1rem;
+    }
+
+    .project-card {
+        width: 90%;
+        max-width: 90%;
+    }
+}
