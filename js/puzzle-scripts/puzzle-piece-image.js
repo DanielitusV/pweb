@@ -1,6 +1,6 @@
 export function setPieceImage(pieces, slices, mode, backImage) {
     let flippedIndexes = [];
-
+     //INTERMEDIARIO
     if (mode === 'intermediate') {
         const total = pieces.length;
         const nFlipped = Math.floor(total / 2);
