@@ -1,0 +1,153 @@
+:root {
+    --azul-oscuro: #2d529c;
+    --azul-claro: #4969bd;
+    --verde-agua-oscuro: #2a6f75;
+    --verde-agua-claro: #4ca1a3;
+    --gris-fondo: #f0f7f7;
+    --blanco: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--gris-fondo);
+    color: #233238;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: var(--azul-oscuro);
+    padding: 1rem;
+    color: var(--blanco);
+}
+
+.logo {
+    color: var(--blanco);
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--verde-agua-claro);
+}
+
+.main-content {
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.main-content h2 {
+    color: var(--verde-agua-oscuro);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+form#preguntaForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+form#preguntaForm input,
+form#preguntaForm textarea,
+form#preguntaForm select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1.5px solid var(--verde-agua-claro);
+    font-size: 1rem;
+    color: #333;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+form#preguntaForm input:focus,
+form#preguntaForm textarea:focus,
+form#preguntaForm select:focus {
+    outline: none;
+    border-color: var(--azul-claro);
+    box-shadow: 0 0 8px var(--azul-claro);
+}
+
+form#preguntaForm textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+form#preguntaForm button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: var(--verde-agua-claro);
+    color: var(--blanco);
+    transition: background-color 0.3s ease;
+}
+
+form#preguntaForm button:hover {
+    background-color: var(--azul-claro);
+}
+
+.buttons-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.buttons-group button {
+    width: 50%;
+}
+
+.footer {
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    .main-content {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    form#preguntaForm button {
+        width: 100%;
+    }
+}
