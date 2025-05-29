@@ -1,53 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Home Profesor - INTERAQUIZ</title>
-  <link rel="stylesheet" href="/css/main.css" />
-</head>
-<body class="home-profesor">
-  <header class="top-bar">
-    <button class="menu-btn">&#9776;</button>
-    <h1>INTERAQUIZ</h1>
-  </header>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Profesor - Interaquiz</title>
+        <link rel="stylesheet" href="../css/home.css" /> 
+    </head>
 
-  <main class="main-content">
-    <h2>Mis Proyectos</h2>
+    <body>
+        <header class="header"></header>
 
-    <section class="project-card">
-      <p><strong>Nombre del Proyecto:</strong> Proyecto 1</p>
-      <p><strong>Número de Preguntas:</strong> 2</p>
-      <p><strong>Última Edición:</strong> Ayer</p>
-      <div class="buttons-row">
-        <button class="edit">Editar</button>
-        <button class="delete">Borrar</button>
-      </div>
-     </section>
+        <main class="main-content">
+            <h1>Panel Principal</h1>
+            <p>Accede a las funciones de prueba</p>
+            <div class="button-group">
+                <button onclick="location.href='../index.html'">Volver al Inicio</button>
+            </div>
+        </main>
 
-     <!-- <button class="add-project">Agregar Proyecto</button>-->
-
-   <button class="add-project" onclick="mostrarFormulario()">Agregar Proyecto</button>
-
-    
-
-<!--toooooooooooooodddddddddoooo es el formulario-->
- <div id="formularioPregunta" class="form-container">
-    <h2>Agregar / Editar Pregunta</h2>
-    <input type="text" placeholder="Título de la pregunta" />
-    <textarea placeholder="Descripción de la pregunta"></textarea>
-    <select>
-      <option disabled selected>Selecciona dificultad</option>
-      <option value="facil">Fácil</option>
-      <option value="media">Media</option>
-      <option value="dificil">Difícil</option>
-    </select>
-    <button>Guardar Pregunta</button>
-  </div>
-  <script src="/js/editor.js"></script>
-
-
-
-</body>
-
-</html>   
+        <footer class="footer">
+            <p>Interaquiz &copy; 2025</p>
+        </footer>
+    </body>
+</html>
