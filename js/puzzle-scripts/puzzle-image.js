@@ -1,4 +1,4 @@
-import { sliceImage } from './puzzle-image-slicer.js';
+import { sliceImage } from './puzzle-slicer.js';
 
 export function setupImageUpload(inputId, previewId, messageId, onSliced) {
     const input = document.getElementById(inputId);
