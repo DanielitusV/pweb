@@ -1,6 +1,11 @@
 from flask import Flask, send_from_directory
+from flask_cors import CORS
+from backend.usuarios import usuarios_bp
 
 app = Flask(__name__, static_folder='.')
+CORS(app)
+
+app.register_blueprint(usuarios_bp)
 
 @app.route('/')
 def home():

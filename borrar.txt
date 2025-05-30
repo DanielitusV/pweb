@@ -1,1 +1,0 @@
-Queremos probar si al borrar la rama remota después de integrar los cambios al main se pierden los commits

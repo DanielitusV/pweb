@@ -1,1 +1,30 @@
-.vscode
+# Entornos virtuales Python
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.pyc
+
+# Archivos de entorno
+.env
+
+# Archivos de configuración VSCode
+.vscode/
+
+# Archivos de sistema y basura
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Archivos temporales
+*.swp
+*.swo
+
+# Archivos node (si usas node en algún momento)
+node_modules/
+
+# Otros
+*.sqlite3
