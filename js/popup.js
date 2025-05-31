@@ -1,87 +1,91 @@
 const apiBaseUrl = window.location.hostname === "localhost"
-  ? "http://localhost:5000"
-  : "https://constantly-top-goshawk.ngrok-free.app";
-
+    ? "http://localhost:5000"
+    : "https://constantly-top-goshawk.ngrok-free.app";
+  
 document.addEventListener('DOMContentLoaded', () => {
- 
     const btnProfesor = document.getElementById('btn-profesor');
     const popup = document.getElementById('popup-nombre');
     const inputNombre = document.getElementById('input-nombre');
-    const registrarNombre = document.getElementById('registrar-nombre');
-    const ingresarNombre = document.getElementById('ingresar-nombre');
+    const btnAccion = document.getElementById('btn-accion');
     const cerrarPopup = document.getElementById('cerrar-popup');
+    const cambiarModo = document.getElementById('cambiar-modo');
+    const popupTitulo = document.getElementById('popup-titulo');
+    const textoCambiar = document.getElementById('texto-cambiar');
     const errorNombre = document.getElementById('error-nombre');
 
-    if(btnProfesor) {
-        btnProfesor.onclick = () => {
-            inputNombre.value = '';
-            errorNombre.textContent = '';
-            popup.style.display = 'flex';
+    let modo = 'registrar';
+
+    btnProfesor.onclick = () => {
+        modo = 'registrar';
+        actualizarPopup();
+        popup.style.display = 'flex';
+        inputNombre.value = '';
+        errorNombre.textContent = '';
+        inputNombre.focus();
+    };
+
+    cerrarPopup.onclick = () => {
+        popup.style.display = 'none';
+    };
+
+    cambiarModo.onclick = (e) => {
+        e.preventDefault();
+        modo = (modo === 'registrar') ? 'ingresar' : 'registrar';
+        actualizarPopup();
+        errorNombre.textContent = '';
+        inputNombre.focus();
+    };
+
+    btnAccion.onclick = enviarNombre;
+
+    inputNombre.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') enviarNombre();
+    });
+
+    function actualizarPopup() {
+        if (modo === 'registrar') {
+            popupTitulo.textContent = 'Registrarse';
+            btnAccion.textContent = 'Registrarse';
+            textoCambiar.innerHTML = '¿Ya tienes cuenta? <a href="#" id="cambiar-modo">Inicia sesión</a>';
+        } else {
+            popupTitulo.textContent = 'Iniciar Sesión';
+            btnAccion.textContent = 'Ingresar';
+            textoCambiar.innerHTML = '¿No tienes cuenta? <a href="#" id="cambiar-modo">Regístrate</a>';
+        }
+
+        document.getElementById('cambiar-modo').onclick = cambiarModo.onclick;
+    }
+
+    async function enviarNombre() {
+        const nombre = inputNombre.value.trim();
+        errorNombre.textContent = '';
+        errorNombre.classList.remove('activo');
+
+        if (!nombre) {
+            errorNombre.textContent = 'Debes ingresar un nombre.';
+            errorNombre.classList.add('activo');
             inputNombre.focus();
-        };
-    }
+            return;
+        }
 
-    if(cerrarPopup) {
-        cerrarPopup.onclick = () => {
-            popup.style.display = 'none';
-        };
-    }
 
-    if(registrarNombre) {
-        registrarNombre.onclick = async () => {
-            const nombre = inputNombre.value.trim();
-            errorNombre.textContent = '';
-            if(!nombre){
-                errorNombre.textContent = 'Debes ingresar un nombre.';
-                inputNombre.focus();
-                return;
-            }
-            try {
-                const res = await fetch(`${apiBaseUrl}/usuarios/registrar`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ nombre })
-                })
-                
-                const data = await res.json();
+        const endpoint = modo === 'registrar' 
+            ? `${apiBaseUrl}/usuarios/registrar` 
+            : `${apiBaseUrl}/usuarios/ingresar`;
 
-                if (res.ok) {
-                    window.location.href = 'views/professor.html';
-                } else {
-                    errorNombre.textContent = data.error || 'Error al registrar el nombre.';
-                }
-            } catch (err) {
-                errorNombre.textContent = 'Error de conexión al servidor.'
-            }
-        };
-    }
+        const res = await fetch(endpoint, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({nombre})
+        });
 
-    if(ingresarNombre) {
-        ingresarNombre.onclick = async () => {
-            const nombre = inputNombre.value.trim();
-            errorNombre.textContent = '';
-            if(!nombre){
-                errorNombre.textContent = 'Debes ingresar un nombre.';
-                inputNombre.focus();
-                return;
-            }
-            try {
-                const res = await fetch(`${apiBaseUrl}/usuarios/ingresar`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ nombre })
-                });
-                
-                const data = await res.json();
+        const data = await res.json();
 
-                if (res.ok) {
-                    window.location.href = 'views/professor.html';
-                } else {
-                    errorNombre.textContent = data.error || 'Error al ingresar el nombre.';
-                }
-            } catch (err) {
-                errorNombre.textContent = 'Error de conexión al servidor.'
-            }
-        };
+        if (res.ok) {
+            window.location.href = 'views/professor.html';
+        } else {
+            errorNombrej.classList.add('activo');
+            errorNombre.textContent = data.error || 'Error en la operación.';
+        }
     }
 });

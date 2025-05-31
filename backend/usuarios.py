@@ -40,5 +40,5 @@ def ingresar_usuario():
     if usuario:
         return jsonify({'mensaje': 'Usuario encontrado', 'usuario': {'nombre': usuario['nombre'], 'rol': usuario['rol']}}), 200
     else:
-        return jsonify({'error': 'Nombre no registrado'}), 404
+        return jsonify({'error': 'Este usuario no existe'}), 404
 
