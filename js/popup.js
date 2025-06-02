@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = await res.json();
 
         if (res.ok) {
+            localStorage.setItem("usuario", JSON.stringify(data.usuario));
             window.location.href = 'views/professor.html';
         } else {
             errorNombre.classList.add('activo');

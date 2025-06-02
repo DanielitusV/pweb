@@ -38,7 +38,12 @@ def ingresar_usuario():
 
     usuario = usuarios_col.find_one({'nombre': nombre, 'rol': 'profesor'})
     if usuario:
-        return jsonify({'mensaje': 'Usuario encontrado', 'usuario': {'nombre': usuario['nombre'], 'rol': usuario['rol']}}), 200
+        return jsonify({'mensaje': 'Usuario encontrado',
+                        'usuario': {
+                            '_id': str(usuario['_id']),
+                            'nombre': usuario['nombre'],
+                            'rol': usuario['rol']
+                            }
+                        }), 200
     else:
         return jsonify({'error': 'Este usuario no existe'}), 404
-

@@ -62,6 +62,7 @@ body {
 .title-projects {
     max-width: 1100px;
     margin: 1rem auto 0 auto;
+    margin-top: 2rem;
     padding: 0 1rem;
     text-align: left;
     font-weight: bold;
@@ -74,30 +75,6 @@ body {
     margin: 0 auto;      
     padding: 1rem;
     text-align: center;  
-}
-
-.project-card {
-    background-color: var(--verde-agua-oscuro);
-    color: var(--blanco);
-    text-align: left;
-    padding: 1rem 1.5rem;
-    border-radius: 10px;
-    max-width: 600px;
-    width: 600px;
-    min-height: 150px;
-    box-sizing: border-box;
-    margin: 0 auto 1.5rem auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.buttons-row {
-    margin-top: 1rem;
-    display: flex;
-    gap: 1rem;
 }
 
 button {
@@ -115,10 +92,77 @@ button:hover {
     background-color: var(--azul-claro);
 }
 
+.proyectos-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.project-card {
+    background-color: #2e7d8a;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+
+.project-card {
+    background-color: #2e7d8a;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.project-card p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.buttons-row {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.project-card button {
+    padding: 0.5rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #4fb6be;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.project-card button:hover {
+    background-color: #3a989f;
+}
+
 .add-project {
     display: block;
-    margin: 1rem auto 2rem auto;
-    width: 220px;
+    margin: 0 auto;
+    background-color: #4fb6be;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.4rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.add-project:hover {
+    background-color: #3a989f;
 }
 
 .form-container {
@@ -129,19 +173,6 @@ button:hover {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-}
-
-input, textarea, select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid var(--verde-agua-claro);
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-textarea {
-    resize: vertical;
 }
 
 .footer {

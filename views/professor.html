@@ -24,32 +24,8 @@
     </div>
 
     <main class="main-content">
-        <section class="project-card">
-            <p><strong>Nombre del Proyecto:</strong> Proyecto 1</p>
-            <p><strong>Número de Preguntas:</strong> 2</p>
-            <p><strong>Última Edición:</strong> Ayer</p>
-            <div class="buttons-row">
-                <button class="edit">Editar</button>
-                <button class="delete">Borrar</button>
-            </div>
-        </section>
-
+        <div class="proyectos-container"></div>
         <button class="add-project" onclick="window.location.href='editor-preguntas.html'">Agregar Proyecto</button>
-
-        <div id="formularioPregunta" class="form-container" style="display:none;">
-            <h2>Agregar / Editar Pregunta</h2>
-            <input type="text" placeholder="Título de la pregunta" />
-            <textarea placeholder="Descripción de la pregunta"></textarea>
-            <select>
-                <option disabled selected>Selecciona dificultad</option>
-                <option value="facil">Fácil</option>
-                <option value="media">Media</option>
-                <option value="dificil">Difícil</option>
-            </select>
-            <button onclick="location.href='../views/puzzleprueba.html'">Probar creación puzzle</button>
-            <br /><br />
-            <button>Guardar Pregunta</button>
-        </div>
     </main>
 
     <footer class="footer">
@@ -62,6 +38,7 @@
             form.style.display = form.style.display === 'none' ? 'block' : 'none';
         }
     </script>
+    <script src="../js/professor.js"></script>
 
 </body>
 </html>
