@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', async() => {
             const sinProyectos = document.createElement('div');
             sinProyectos.className = 'no-proyectos';
             sinProyectos.innerHTML = `
-                <h2>No hay proyectos disponibles</h2>
-                <p>Actualmente no tienes proyectos creados.</p>
+                <h2 style="margin-bottom:0.5rem;">No hay proyectos disponibles</h2>
+                <p style="margin-bottom:1rem;">Actualmente no tienes proyectos creados.</p>
             `;
             contenedor.appendChild(sinProyectos);
             return;
@@ -89,15 +89,16 @@ function editarProyecto(id) {
 function eliminarProyecto(id) {
     if (!confirm('¿Estás seguro de que deseas eliminar este proyecto?')) return;
 
-    fetch(`${apiBaseUrl}/profesor/${id}`, {
+    fetch(`${apiBaseUrl}/proyectos/${id}`, {
         method: 'DELETE'
     })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
+    .then(async res => {
+        const data = await res.json();
+        if (res.ok || data.success) {
             alert('Proyecto eliminado correctamente.');
             window.location.reload();
         } else {
+            console.error('Error desde el backend:', data);
             alert('Error al eliminar el proyecto: ' + (data.error || 'Error desconocido.'));
         }
     })
