@@ -104,48 +104,43 @@ button:hover {
     background-color: #2e7d8a;
     color: white;
     padding: 1.5rem;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 600px;
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-
-.project-card {
-    background-color: #2e7d8a;
-    color: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 600px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    text-align: left;
+    max-width: 400px;
+    margin-inline: auto;
 }
 
 .project-card p {
-    margin: 0.5rem 0;
+    margin: 0.4rem 0;
     font-size: 1rem;
 }
 
+.project-card strong {
+    display: inline-block;
+    min-width: 150px;
+    font-weight: 600;
+}
+
 .buttons-row {
-    display: flex;
-    justify-content: flex-start;
-    gap: 1rem;
+    text-align: center;
     margin-top: 1rem;
 }
 
-.project-card button {
-    padding: 0.5rem 1.2rem;
-    border: none;
-    border-radius: 6px;
-    background-color: #4fb6be;
+.buttons-row button {
+    background-color: #38b2ac;
     color: white;
-    font-weight: 500;
+    border: none;
+    margin: 0 6px;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
     cursor: pointer;
     transition: background 0.2s;
 }
 
-.project-card button:hover {
-    background-color: #3a989f;
+.buttons-row button:hover {
+    background-color: #319795;
 }
 
 .add-project {

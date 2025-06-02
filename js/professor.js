@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async() => {
                     <button class="delete" onclick="eliminarProyecto('${p._id}')">Borrar</button>
                 </div>
             `;
-            contenedor.insertBefore(card, document.querySelector('.add-project'));
+            contenedor.insertBefore(card, contenedor.firstChild);
         });
 
     } catch (error) {
@@ -66,13 +66,14 @@ function formatearFecha(fechaISO) {
         month: '2-digit',
         day: '2-digit',
         hour: '2-digit',
-        minute: '2-digit'
+        minute: '2-digit',
+        hour12: false
     });
 }
 
 function editarProyecto(id) {
     localStorage.setItem('proyecto_editar', id);
-    window.location.href = 'views/editar_proyecto.html';
+    window.location.href = 'editor-proyecto.html';
 }
 
 function eliminarProyecto(id) {
