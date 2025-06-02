@@ -97,7 +97,6 @@ button:hover {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
-    margin-bottom: 2rem;
 }
 
 .project-card {
@@ -105,10 +104,10 @@ button:hover {
     color: white;
     padding: 1.5rem;
     border-radius: 12px;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     text-align: left;
-    max-width: 400px;
+    min-width: 400px;
     margin-inline: auto;
 }
 
@@ -142,6 +141,21 @@ button:hover {
 .buttons-row button:hover {
     background-color: #319795;
 }
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.3rem 0;
+}
+
+.info-row strong {
+    font-weight: 600;
+}
+
+.info-row span {
+    text-align: right;
+}
+
 
 .add-project {
     display: block;

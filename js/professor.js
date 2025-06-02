@@ -35,14 +35,24 @@ document.addEventListener('DOMContentLoaded', async() => {
             const card = document.createElement('section');
             card.className = 'project-card';
             card.innerHTML = `
-                <p><strong>Nombre del Proyecto:</strong> ${p.nombre}</p>
-                <p><strong>Número de Preguntas:</strong> ${p.total_preguntas || 0}</p>
-                <p><strong>Última Edición:</strong> ${formatearFecha(p.fecha_creacion)}</p>
+                <div class="info-row">
+                    <strong>Nombre del Proyecto:</strong>
+                    <span>${p.nombre}</span>
+                </div>
+                <div class="info-row">
+                    <strong>Número de Preguntas:</strong>
+                    <span>${p.total_preguntas || 0}</span>
+                </div>
+                <div class="info-row">
+                    <strong>Última Edición:</strong>
+                    <span>${formatearFecha(p.fecha_creacion)}</span>
+                </div>
                 <div class="buttons-row">
                     <button class="edit" onclick="editarProyecto('${p._id}')">Editar</button>
                     <button class="delete" onclick="eliminarProyecto('${p._id}')">Borrar</button>
                 </div>
-            `;
+`;
+
             contenedor.insertBefore(card, contenedor.firstChild);
         });
 
