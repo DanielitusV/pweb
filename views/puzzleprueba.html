@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <header class="header">Rompecabezas 3x3</header>
+    <header class="header" id="headerTitle">Rompecabezas 3x3</header>
 
     <div class="button-row">
         <button onclick="location.href='admin.html'">Volver al Home</button>
@@ -25,30 +25,22 @@
     <main class="main-content">
         <section class="puzzle-board">
             <div class="puzzle-layout">
-                <!-- Tablero 3x3 vacío -->
-                <div class="grid">
-                    <div class="cell" data-pos="1"></div>
-                    <div class="cell" data-pos="2"></div>
-                    <div class="cell" data-pos="3"></div>
-                    <div class="cell" data-pos="4"></div>
-                    <div class="cell" data-pos="5"></div>
-                    <div class="cell" data-pos="6"></div>
-                    <div class="cell" data-pos="7"></div>
-                    <div class="cell" data-pos="8"></div>
-                    <div class="cell" data-pos="9"></div>
+
+                <div class="size-selector">
+                    <label for="puzzleSize">Tamaño del Puzzle:</label>
+                    <select id="puzzleSize">
+                        <option value="2">2x2</option>
+                        <option value="3" selected>3x3</option>
+                        <option value="4">4x4</option>
+                        <option value="5">5x5</option>
+                        <option value="6">6x6</option>
+                        <option value="7">7x7</option>
+                    </select>
                 </div>
 
-                <div class="basket">
-                    <div class="piece" draggable="true" data-piece="1">1</div>
-                    <div class="piece" draggable="true" data-piece="2">2</div>
-                    <div class="piece" draggable="true" data-piece="3">3</div>
-                    <div class="piece" draggable="true" data-piece="4">4</div>
-                    <div class="piece" draggable="true" data-piece="5">5</div>
-                    <div class="piece" draggable="true" data-piece="6">6</div>
-                    <div class="piece" draggable="true" data-piece="7">7</div>
-                    <div class="piece" draggable="true" data-piece="8">8</div>
-                    <div class="piece" draggable="true" data-piece="9">9</div>
-                </div>
+                <div class="grid"></div>
+
+                <div class="basket"></div>
             </div>
         </section>
 
@@ -73,12 +65,10 @@
                         <input type="radio" name="puzzleMode" value="easy" checked />
                         Fácil
                     </label>
-
                     <label>
                         <input type="radio" name="puzzleMode" value="intermediate" />
                         Intermedio
                     </label>
-
                     <label>
                         <input type="radio" name="puzzleMode" value="avanzado" />
                         Avanzado
