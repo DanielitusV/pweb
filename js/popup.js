@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (res.ok) {
             window.location.href = 'views/professor.html';
         } else {
-            errorNombrej.classList.add('activo');
+            errorNombre.classList.add('activo');
             errorNombre.textContent = data.error || 'Error en la operación.';
         }
     }
