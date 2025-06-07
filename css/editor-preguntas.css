@@ -59,21 +59,50 @@ body {
     color: var(--verde-agua-claro);
 }
 
-.main-content {
-    max-width: 800px;
-    margin: 2rem auto;
-    background-color: var(--blanco);
+.main-content-flex {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
     padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.main-content h2 {
+.main-content-flex h2 {
     color: var(--verde-agua-oscuro);
     margin-bottom: 1.5rem;
     font-size: 2rem;
     text-align: center;
 }
+
+.pregunta-formulario, .puzzle-uploader {
+    flex: 1;
+    max-width: 500px;
+}
+
+.puzzle-uploader h3 {
+    margin-top: 1rem;
+}
+
+.upload-preview {
+    margin-top: 1rem;
+    border: 2px dashed #ccc;
+    padding: 10px;
+    text-align: center;
+    min-height: 150px;
+}
+
+.upload-preview img {
+    max-width: 100%;
+    height: auto;
+}
+
+.preview-grid {
+    margin-top: 1rem;
+    border: 1px solid #aaa;
+    height: 150px;
+    background-color: #f8f8f8;
+}
+
 
 form#preguntaForm {
     display: flex;

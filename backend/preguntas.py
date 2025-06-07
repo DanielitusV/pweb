@@ -20,14 +20,17 @@ def obtener_proyectos(usuario_id):
 def crear_proyecto():
     try:
         data = request.get_json()
-        proyecto = {
+        pregunta = {
             "nombre": data.get("nombre"),
             "descripcion": data.get("descripcion"),
             "dificultad": data.get("dificultad"),
+            "imagen": data.get("imagen"),
+            "opciones": data.get("opciones"),  # lista
+            "respuesta_correcta": data.get("respuesta_correcta"),
             "usuario_id": ObjectId(data.get("usuario_id")),
-            "fecha_creacion": data.get("fecha_creacion"),
-        }
-        result = proyectos_col.insert_one(proyecto)
+            "fecha_creacion": data.get("fecha_creacion")
+}
+        result = proyectos_col.insert_one(pregunta)
         return jsonify({"mensaje": "Pregunta creada", "id": str(result.inserted_id)}), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 500

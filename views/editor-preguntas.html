@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Editar Pregunta - Interaquiz</title>
     <link rel="stylesheet" href="../css/editor-preguntas.css" />
+    <link rel="stylesheet" href="../css/upload-image.css" />
+    <link rel="stylesheet" href="../css/puzzle.css" />
     </head>
 <body>
 
@@ -19,22 +21,59 @@
         </nav>
     </header>
 
-    <main class="main-content">
-        <h2>Agregar / Editar Pregunta</h2>
-        <form id="preguntaForm">
-            <input id="titulo" name="titulo" type="text" placeholder="Título de la Pregunta" required />
-            <textarea id="descripcion" name="descripcion" placeholder="Descripción de la Pregunta" required></textarea>
-            <select required id="dificultad" name="dificultad">
-                <option disabled selected>Selecciona la dificultad</option>
-                <option value="facil">Fácil</option>
-                <option value="medio">Intermedio</option>
-                <option value="dificil">Difícil</option>
-              </select>
-            <div class="buttons-group">
-                <button type="submit">Guardar</button>
-                <button type="button" onclick="window.location.href='professor.html'">Cancelar</button>
+    <main class="main-content-flex">
+        <div class = pregunta-formulario>
+            <h2>Agregar / Editar Pregunta</h2>
+            <form id="preguntaForm">
+                
+                <input id="titulo" name="titulo" type="text" placeholder="Título de la Pregunta" required />
+                <textarea id="descripcion" name="descripcion" placeholder="Descripción de la Pregunta" required></textarea>
+                <select required id="dificultad" name="dificultad">
+                    <option disabled selected>Selecciona la dificultad</option>
+                    <option value="facil">Fácil</option>
+                    <option value="medio">Intermedio</option>
+                    <option value="dificil">Difícil</option>
+                </select>
+
+                <input type="file" id="imagenPuzzle" accept="image/*" required />
+                <input type="text" id="opcion1" placeholder="Opción A" required />
+                <input type="text" id="opcion2" placeholder="Opción B" required />
+                <input type="text" id="opcion3" placeholder="Opción C" required />
+                <input type="text" id="opcion4" placeholder="Opción D" required />
+                <select id="respuestaCorrecta" name="respuestaCorrecta" required>
+                    <option disabled selected>Selecciona la respuesta correcta</option>
+                    <option value="opcion1">Opción A</option>
+                    <option value="opcion2">Opción B</option>
+                    <option value="opcion3">Opción C</option>
+                    <option value="opcion4">Opción D</option>
+                </select>
+
+                <div class="buttons-group">
+                    <button type="submit">Guardar</button>
+                    <button type="button" onclick="window.location.href='professor.html'">Cancelar</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="upload-section" class="upload-flex">    
+            <div class="upload-preview" id="uploadPreviewBox">
+                <span id="uploadPlaceholder">Aquí se mostrará la imagen</span>
+                <img id="imagePreview" src="" alt="Vista previa" style="display:none;" />
             </div>
-        </form>
+
+            <div id="puzzlePreviewContainer">
+                <h3>Vista previa del Puzzle</h3>
+                <div id="puzzlePreviewGrid"></div>
+
+                <div id="puzzlePreviewModes" style="display:none; margin-bottom: 12px;">
+                    <label><input type="radio" name="puzzleMode" value="easy" checked /> Fácil</label>
+                    <label><input type="radio" name="puzzleMode" value="intermediate" /> Intermedio</label>
+                    <label><input type="radio" name="puzzleMode" value="avanzado" /> Avanzado</label>
+                </div>
+
+                <button id="confirmarPuzzleBtn" style="display:none;">Confirmar Puzzle</button>
+            </div>
+        </div>
     </main>
 
     <footer class="footer">
@@ -42,5 +81,6 @@
     </footer>
 
     <script src="../js/editor-preguntas.js"></script>
+    <script src="../js/puzzle.js"></script>
 </body>
 </html>
