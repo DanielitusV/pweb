@@ -1,7 +1,7 @@
 from flask import Flask, send_from_directory
 from flask_cors import CORS
 from backend.usuarios import usuarios_bp
-from backend.proyectos import proyectos_bp
+from backend.preguntas import proyectos_bp
 
 app = Flask(__name__, static_folder='.')
 CORS(app)

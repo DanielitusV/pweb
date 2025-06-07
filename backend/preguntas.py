@@ -2,10 +2,10 @@ from flask import Blueprint, jsonify, request
 from backend.db import db
 from bson import ObjectId
 
-proyectos_bp = Blueprint('proyectos', __name__)
-proyectos_col = db['proyectos']
+proyectos_bp = Blueprint('preguntas', __name__)
+proyectos_col = db['preguntas']
 
-@proyectos_bp.route('/proyectos/<usuario_id>', methods=['GET'])
+@proyectos_bp.route('/preguntas/<usuario_id>', methods=['GET'])
 def obtener_proyectos(usuario_id):
     try:
         proyectos = list(proyectos_col.find({"usuario_id": ObjectId(usuario_id)}))
@@ -16,7 +16,7 @@ def obtener_proyectos(usuario_id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
-@proyectos_bp.route('/proyectos', methods=['POST'])
+@proyectos_bp.route('/preguntas', methods=['POST'])
 def crear_proyecto():
     try:
         data = request.get_json()
@@ -28,17 +28,17 @@ def crear_proyecto():
             "fecha_creacion": data.get("fecha_creacion"),
         }
         result = proyectos_col.insert_one(proyecto)
-        return jsonify({"mensaje": "Proyecto creado", "id": str(result.inserted_id)}), 201
+        return jsonify({"mensaje": "Pregunta creada", "id": str(result.inserted_id)}), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@proyectos_bp.route('/proyectos/del/<proyecto_id>', methods=['DELETE'])
+@proyectos_bp.route('/preguntas/del/<proyecto_id>', methods=['DELETE'])
 def eliminar_proyecto(proyecto_id):
     try:
         result = proyectos_col.delete_one({"_id": ObjectId(proyecto_id)})
         if result.deleted_count == 1:
-            return jsonify({"mensaje": "Proyecto eliminado"}), 200
+            return jsonify({"mensaje": "Pregunta eliminada"}), 200
         else:
-            return jsonify({"error": "Proyecto no encontrado"}), 404
+            return jsonify({"error": "Pregunta no encontrada"}), 404
     except Exception as e:
         return jsonify({"error": str(e)}), 500

@@ -59,7 +59,7 @@ body {
     color: var(--verde-agua-claro);
 }
 
-.title-projects {
+.title-questions {
     max-width: 1100px;
     margin: 1rem auto 0 auto;
     margin-top: 2rem;
@@ -92,14 +92,14 @@ button:hover {
     background-color: var(--azul-claro);
 }
 
-.proyectos-container {
+.questions-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
 }
 
-.project-card {
+.questions-card {
     background-color: #2e7d8a;
     color: white;
     padding: 1.5rem;
@@ -111,12 +111,12 @@ button:hover {
     margin-inline: auto;
 }
 
-.project-card p {
+.questions-card p {
     margin: 0.4rem 0;
     font-size: 1rem;
 }
 
-.project-card strong {
+.questions-card strong {
     display: inline-block;
     min-width: 150px;
     font-weight: 600;
@@ -156,8 +156,7 @@ button:hover {
     text-align: right;
 }
 
-
-.add-project {
+.add-question {
     display: block;
     margin: 0 auto;
     background-color: #4fb6be;
@@ -170,7 +169,7 @@ button:hover {
     transition: background-color 0.2s;
 }
 
-.add-project:hover {
+.add-question:hover {
     background-color: #3a989f;
 }
 

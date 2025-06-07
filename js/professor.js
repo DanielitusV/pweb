@@ -3,7 +3,7 @@ const apiBaseUrl = window.location.hostname === "localhost"
     : "https://constantly-top-goshawk.ngrok-free.app";
 
 document.addEventListener('DOMContentLoaded', async() => {
-    const contenedor = document.querySelector('.proyectos-container');
+    const contenedor = document.querySelector('.questions-container');
     const usuario = JSON.parse(localStorage.getItem('usuario'));
 
     if (!usuario || !usuario.nombre) {
@@ -17,41 +17,37 @@ document.addEventListener('DOMContentLoaded', async() => {
     }
 
     try {
-        const res = await fetch(`${apiBaseUrl}/proyectos/${usuario._id}`);
-        const proyectos = await res.json();
+        const res = await fetch(`${apiBaseUrl}/preguntas/${usuario._id}`);
+        const preguntas = await res.json();
 
-        if (!Array.isArray(proyectos) || proyectos.length === 0) {
-            const sinProyectos = document.createElement('div');
-            sinProyectos.className = 'no-proyectos';
-            sinProyectos.innerHTML = `
-                <h2 style="margin-bottom:0.5rem;">No hay proyectos disponibles</h2>
-                <p style="margin-bottom:1rem;">Actualmente no tienes proyectos creados.</p>
+        if (!Array.isArray(preguntas) || preguntas.length === 0) {
+            const sinPreguntas = document.createElement('div');
+            sinPreguntas.className = 'no-preguntas';
+            sinPreguntas.innerHTML = `
+                <h2 style="margin-bottom:0.5rem;">No hay preguntas disponibles</h2>
+                <p style="margin-bottom:1rem;">Actualmente no tienes preguntas creadas.</p>
             `;
-            contenedor.appendChild(sinProyectos);
+            contenedor.appendChild(sinPreguntas);
             return;
         }
 
-        proyectos.forEach(p => {
+        preguntas.forEach(p => {
             const card = document.createElement('section');
-            card.className = 'project-card';
+            card.className = 'questions-card';
             card.innerHTML = `
                 <div class="info-row">
-                    <strong>Nombre del Proyecto:</strong>
+                    <strong>Nombre de la Pregunta:</strong>
                     <span>${p.nombre}</span>
-                </div>
-                <div class="info-row">
-                    <strong>Número de Preguntas:</strong>
-                    <span>${p.total_preguntas || 0}</span>
                 </div>
                 <div class="info-row">
                     <strong>Última Edición:</strong>
                     <span>${formatearFecha(p.fecha_creacion)}</span>
                 </div>
                 <div class="buttons-row">
-                    <button class="edit" onclick="editarProyecto('${p._id}')">Editar</button>
-                    <button class="delete" onclick="eliminarProyecto('${p._id}')">Borrar</button>
+                    <button class="edit" onclick="editarPregunta('${p._id}')">Editar</button>
+                    <button class="delete" onclick="eliminarPregunta('${p._id}')">Borrar</button>
                 </div>
-`;
+            `;
 
             contenedor.insertBefore(card, contenedor.firstChild);
         });
@@ -81,29 +77,29 @@ function formatearFecha(fechaISO) {
     });
 }
 
-function editarProyecto(id) {
-    localStorage.setItem('proyecto_editar', id);
-    window.location.href = 'editor-proyecto.html';
+function editarPregunta(id) {
+    localStorage.setItem('pregunta_editar', id);
+    window.location.href = 'editor-preguntas.html';
 }
 
-function eliminarProyecto(id) {
-    if (!confirm('¿Estás seguro de que deseas eliminar este proyecto?')) return;
+function eliminarPregunta(id) {
+    if (!confirm('¿Estás seguro de que deseas eliminar esta pregunta?')) return;
 
-    fetch(`${apiBaseUrl}/proyectos/${id}`, {
+    fetch(`${apiBaseUrl}/preguntas/del/${id}`, {
         method: 'DELETE'
     })
     .then(async res => {
         const data = await res.json();
         if (res.ok || data.success) {
-            alert('Proyecto eliminado correctamente.');
+            alert('Pregunta eliminada correctamente.');
             window.location.reload();
         } else {
             console.error('Error desde el backend:', data);
-            alert('Error al eliminar el proyecto: ' + (data.error || 'Error desconocido.'));
+            alert('Error al eliminar la pregunta: ' + (data.error || 'Error desconocido.'));
         }
     })
     .catch(error => {
-        console.error('Error al eliminar el proyecto:', error);
-        alert('Error al eliminar el proyecto. Inténtalo de nuevo más tarde.');
+        console.error('Error al eliminar la pregunta:', error);
+        alert('Error al eliminar la pregunta. Inténtalo de nuevo más tarde.');
     });
 }
