@@ -30,7 +30,7 @@ setupImageUpload('uploadInput', 'imagePreview', 'uploadMessage', (cutSlices) => 
         if (!puzzleRadios) {
             mode = dificultadSelect.value === 'facil' ? 'easy' 
                 : dificultadSelect.value === 'medio' ? 'intermediate' 
-                : 'avanzado';
+                : 'advanced';
         } else if (puzzleRadios) {
             mode = puzzleRadios.value;
         }

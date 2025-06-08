@@ -48,7 +48,7 @@ export function setPieceImage(pieces, slices, mode, backImage) {
                 }
             };
 
-        } else if (mode === 'avanzado') {
+        } else if (mode === 'advanced') {
             piece.style.backgroundImage = `url(${slices[i].toDataURL()})`;
             piece.dataset.rotation = [0, 90, 180, 270][Math.floor(Math.random() * 4)];
             piece.style.transform = `rotate(${piece.dataset.rotation}deg)`;
