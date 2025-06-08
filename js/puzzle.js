@@ -3,6 +3,7 @@ import { enableDrag } from './puzzle-scripts/puzzle-drag.js';
 import { resetPuzzle } from './puzzle-scripts/puzzle-reset.js';
 import { setupImageUpload } from './puzzle-scripts/puzzle-image.js';
 import { setPieceImage } from './puzzle-scripts/puzzle-piece-image.js';
+import { subirImagenImgur } from './puzzle-scripts/puzzle-imgur.js';
 
 const pieces = document.querySelectorAll('.piece');
 const cells = document.querySelectorAll('.cell');
@@ -39,7 +40,6 @@ setupImageUpload('uploadInput', 'imagePreview', 'uploadMessage', (cutSlices) => 
     };
 });
 
-
 window.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
         document.getElementById("loader").style.opacity = "0";
@@ -47,4 +47,18 @@ window.addEventListener("DOMContentLoaded", () => {
             document.getElementById("loader").style.display = "none";
         }, 400); 
     }, 400);
+});
+
+const input = document.getElementById('uploadInput');
+input.addEventListener('change', async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        try {
+            const link = await subirImagenImgur(file, '49d9fdd5af67b74');
+            console.log('Image uploaded to Imgur:', link);
+            document.getElementById('imagePreview').src = link;
+        } catch (error) {
+            console.error('Error uploading image:', error);
+        }
+    }
 });

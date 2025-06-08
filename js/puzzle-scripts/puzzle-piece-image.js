@@ -21,6 +21,7 @@ export function setPieceImage(pieces, slices, mode, backImage) {
         piece.dataset.back = backImage;
 
         if (mode === 'intermediate') {
+            piece.style.transform = "rotate(0deg)";
             if (flippedIndexes.includes(i)) {
                 piece.style.backgroundImage = `url(${backImage})`;
                 piece.dataset.flipped = "true";
@@ -68,6 +69,7 @@ export function setPieceImage(pieces, slices, mode, backImage) {
             piece.style.backgroundImage = `url(${slices[i].toDataURL()})`;
             piece.dataset.flipped = "false";
             piece.onclick = null;
+            piece.style.transform = "rotate(0deg)";
         }
 
         piece.style.backgroundSize = "cover";

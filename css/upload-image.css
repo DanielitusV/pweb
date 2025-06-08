@@ -91,6 +91,12 @@
     gap: 1rem;
 }
 
+#uploadMessage {
+    color: #34599e;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
 .puzzle-image {
     display: flex;
     flex-direction: row;
