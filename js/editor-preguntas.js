@@ -1,3 +1,6 @@
+import { subirAImgbb } from "./puzzle-scripts/puzzle-imgbb.js";
+
+const API_KEY_IMGBB = "4c5c9937ecf5372e5aa92076c7147fa7";
 const apiBaseUrl = window.location.hostname === "localhost"
     ? "http://localhost:5000"
     : "https://constantly-top-goshawk.ngrok-free.app";
@@ -9,7 +12,6 @@ function mostrarFormulario() {
 
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("preguntaForm");
-    let imagePuzzleBase64 = "";
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -20,23 +22,27 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const imagen = document.getElementById("imagenPuzzle").files[0];
-        const formData = new FormData();
-        formData.append("imagen", imagen);
+        const imagen = document.getElementById("uploadInput").files[0];
+        let urlImg = "";
 
-        const resImg = await fetch(`${apiBaseUrl}/upload`, {
-            method: "POST",
-            body: formData
-        });
+        if (imagen) {
+            try {
+                urlImg = await subirAImgbb(imagen, API_KEY_IMGBB);
+            } catch (error) {
+                console.error("Error al subir la imagen:", error);
+                alert("Ocurrió un error al subir la imagen. Por favor, inténtalo de nuevo.");
+                return;
+            }
+        }
 
         const pregunta = {
             nombre: document.getElementById("titulo").value.trim(),
             descripcion: document.getElementById("descripcion").value.trim(),
-            dificultad: document.getElementById("dificultad").value,
+            dificultad: document.getElementById("puzzlePreviewModes").value,
             usuario_id: usuario._id,
             fecha_creacion: new Date().toISOString(),
 
-            imagen: imagePuzzleBase64,
+            imagen: urlImg,
             opciones: [
                 document.getElementById("opcion1").value.trim(),
                 document.getElementById("opcion2").value.trim(),
