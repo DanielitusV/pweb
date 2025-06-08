@@ -22,7 +22,7 @@ body {
 
 .puzzle-layout {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 2rem;
@@ -155,7 +155,6 @@ button:hover {
     color: #b8e1ff;
 }
 
-
 .celebration-content button {
     background: #34599e;
     color: #fff;
@@ -227,22 +226,4 @@ button:hover {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
-
-@media (min-width: 900px) {
-    .puzzle-layout {
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: center;
-        gap: 4rem;
-    }
-}
-
-@media (max-width: 900px) {
-    .basket {
-        width: 50vw;
-        min-width: 240px;
-        max-width: 50vw;
-        height: 220px;
-    }
 }

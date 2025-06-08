@@ -6,11 +6,11 @@
     gap: 2rem;
 }
 
-
 .upload-controls {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    gap: 1rem;
 }
 
 .upload-preview {
@@ -82,6 +82,21 @@
 
 #confirmPuzzleBtn:hover {
     background: #2d4d8c;
+}
+
+.upload-section-complete {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.puzzle-image {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 50px;
 }
 
 @media (max-width: 900px) {

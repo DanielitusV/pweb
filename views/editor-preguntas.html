@@ -2,13 +2,19 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Editar Pregunta - Interaquiz</title>
     <link rel="stylesheet" href="../css/editor-preguntas.css" />
     <link rel="stylesheet" href="../css/upload-image.css" />
     <link rel="stylesheet" href="../css/puzzle.css" />
     </head>
 <body>
+    <div id="loader">
+        <div class="loader-content">
+            <div class="big-spinner"></div>
+            <span class="loader-text">Cargando...</span>
+        </div>
+    </div>
 
     <header class="header">
         <nav class="nav">
@@ -22,20 +28,19 @@
     </header>
 
     <main class="main-content-flex">
-        <div class = pregunta-formulario>
+        <div class="pregunta-formulario">
             <h2>Agregar / Editar Pregunta</h2>
             <form id="preguntaForm">
                 
                 <input id="titulo" name="titulo" type="text" placeholder="Título de la Pregunta" required />
                 <textarea id="descripcion" name="descripcion" placeholder="Descripción de la Pregunta" required></textarea>
-                <select required id="dificultad" name="dificultad">
+                <select required id="puzzlePreviewModes" name="dificultad">
                     <option disabled selected>Selecciona la dificultad</option>
                     <option value="facil">Fácil</option>
                     <option value="medio">Intermedio</option>
                     <option value="dificil">Difícil</option>
                 </select>
 
-                <input type="file" id="imagenPuzzle" accept="image/*" required />
                 <input type="text" id="opcion1" placeholder="Opción A" required />
                 <input type="text" id="opcion2" placeholder="Opción B" required />
                 <input type="text" id="opcion3" placeholder="Opción C" required />
@@ -55,32 +60,71 @@
             </form>
         </div>
 
-        <div id="upload-section" class="upload-flex">    
-            <div class="upload-preview" id="uploadPreviewBox">
-                <span id="uploadPlaceholder">Aquí se mostrará la imagen</span>
-                <img id="imagePreview" src="" alt="Vista previa" style="display:none;" />
-            </div>
-
-            <div id="puzzlePreviewContainer">
-                <h3>Vista previa del Puzzle</h3>
-                <div id="puzzlePreviewGrid"></div>
-
-                <div id="puzzlePreviewModes" style="display:none; margin-bottom: 12px;">
-                    <label><input type="radio" name="puzzleMode" value="easy" checked /> Fácil</label>
-                    <label><input type="radio" name="puzzleMode" value="intermediate" /> Intermedio</label>
-                    <label><input type="radio" name="puzzleMode" value="avanzado" /> Avanzado</label>
+        <div id="upload-section">
+            <!-- Sección subir imagen -->
+            <div class="upload-controls">
+                <h3>Sube una imagen para el rompecabezas</h3>
+                <div class="upload-instructions">
+                    <input type="file" id="uploadInput" accept="image/*" />
+                <p id="uploadMessage"></p>
                 </div>
+                
+                <!-- Vista previa imagen y puzzle -->
+                <div class="puzzle-image" id="">
+                    <div class="upload-preview" id="uploadPreviewBox">
+                        <span id="uploadPlaceholder">Aquí se mostrará la imagen</span>
+                        <img id="imagePreview" src="" alt="Vista previa" style="display:none;" />
+                    </div>
 
-                <button id="confirmarPuzzleBtn" style="display:none;">Confirmar Puzzle</button>
+                    <div id="puzzlePreviewContainer">
+                        <h3>Vista previa del Puzzle</h3>
+                        <div id="puzzlePreviewGrid"></div>
+                </div>
             </div>
-        </div>
+            
+            <!-- Rompecabezas -->
+            <section class="puzzle-board">
+                <div class="puzzle-layout">
+                    <!-- Tablero 3x3 vacío -->
+                    <div class="grid">
+                        <div class="cell" data-pos="1"></div>
+                        <div class="cell" data-pos="2"></div>
+                        <div class="cell" data-pos="3"></div>
+                        <div class="cell" data-pos="4"></div>
+                        <div class="cell" data-pos="5"></div>
+                        <div class="cell" data-pos="6"></div>
+                        <div class="cell" data-pos="7"></div>
+                        <div class="cell" data-pos="8"></div>
+                        <div class="cell" data-pos="9"></div>
+                    </div>
+
+                    <div class="basket">
+                        <div class="piece" draggable="true" data-piece="1">1</div>
+                        <div class="piece" draggable="true" data-piece="2">2</div>
+                        <div class="piece" draggable="true" data-piece="3">3</div>
+                        <div class="piece" draggable="true" data-piece="4">4</div>
+                        <div class="piece" draggable="true" data-piece="5">5</div>
+                        <div class="piece" draggable="true" data-piece="6">6</div>
+                        <div class="piece" draggable="true" data-piece="7">7</div>
+                        <div class="piece" draggable="true" data-piece="8">8</div>
+                        <div class="piece" draggable="true" data-piece="9">9</div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="button-row">
+                <button id="confirmarPuzzleBtn">Confirmar Puzzle</button>
+                <button id="reset">Reiniciar Puzzle</button>
+            </div>
+        <div>
+
     </main>
 
     <footer class="footer">
         &copy; 2025 Interaquiz
     </footer>
 
-    <script src="../js/editor-preguntas.js"></script>
-    <script src="../js/puzzle.js"></script>
+    <script type="module" src="../js/editor-preguntas.js"></script>
+    <script type="module" src="../js/puzzle.js"></script>
 </body>
 </html>

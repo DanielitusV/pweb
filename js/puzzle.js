@@ -20,10 +20,25 @@ document.getElementById("reset").addEventListener('click', () => {
 setupImageUpload('uploadInput', 'imagePreview', 'uploadMessage', (cutSlices) => {
     slices = cutSlices;
     document.getElementById("confirmarPuzzleBtn").onclick = function() {
-        const mode = document.querySelector('input[name="puzzleMode"]:checked').value;
+        
+        let mode = 'easy';
+        
+        const dificultadSelect = document.getElementById('puzzlePreviewModes');
+        const puzzleRadios = document.querySelector('input[name="puzzleMode"]:checked');
+        console.log(dificultadSelect, puzzleRadios);
+
+        if (!puzzleRadios) {
+            mode = dificultadSelect.value === 'facil' ? 'easy' 
+                : dificultadSelect.value === 'medio' ? 'intermediate' 
+                : 'avanzado';
+        } else if (puzzleRadios) {
+            mode = puzzleRadios.value;
+        }
+        
         setPieceImage(pieces, slices, mode, BACK_IMAGE);
-    }
+    };
 });
+
 
 window.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {

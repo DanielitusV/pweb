@@ -65,24 +65,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    document.getElementById("uploadInput").addEventListener("change", function () {
-        const file = this.files[0];
-        if (!file) return;
+    document.getElementById('uploadInput').addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        const preview = document.getElementById('imagePreview');
+        const placeholder = document.getElementById('uploadPlaceholder');
 
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            imagenPuzzleBase64 = e.target.result;
-
-            const preview = document.getElementById("imagePreview");
-            preview.src = imagenPuzzleBase64;
-            preview.style.display = "block";
-
-            document.getElementById("uploadPlaceholder").style.display = "none";
-            document.getElementById("uploadMessage").textContent = "Imagen subida correctamente.";
-            document.getElementById("puzzlePreviewModes").style.display = "block";
-            document.getElementById("confirmarPuzzleBtn").style.display = "block";
-        };
-        reader.readAsDataURL(file);
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                preview.src = event.target.result;
+                preview.style.display = 'block';
+                placeholder.style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '';
+            preview.style.display = 'none';
+            placeholder.style.display = 'block';
+        }
     });
-
 });
