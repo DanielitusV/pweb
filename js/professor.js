@@ -35,14 +35,23 @@ document.addEventListener('DOMContentLoaded', async() => {
             const card = document.createElement('section');
             card.className = 'questions-card';
             card.innerHTML = `
-                <div class="info-row">
-                    <strong>Nombre de la Pregunta:</strong>
-                    <span>${p.nombre}</span>
+                <div class="card-top">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; font-size: 1.2rem;">
+                            <b>Título:</b>
+                            <span style="margin-left: 2rem; font-weight: bold; text-align: right; flex: 1;">${p.nombre}</span>
+                        </div>
+                        <div class="info-row"><b>Dificultad:</b> ${p.dificultad || '-'}</div>
+                        <div class="info-row"><b>Última Edición:</b> ${formatearFecha(p.fecha_creacion)}</div>
+                    </div>
                 </div>
                 <div class="info-row">
-                    <strong>Última Edición:</strong>
-                    <span>${formatearFecha(p.fecha_creacion)}</span>
+                    <b>Opciones:</b>
+                    <ul>
+                        ${p.opciones && Array.isArray(p.opciones) ? p.opciones.map((op, i) => `<li><b>${String.fromCharCode(65+i)}:</b> ${op}</li>`).join('') : ''}
+                    </ul>
                 </div>
+                <div class="info-row"><b>Respuesta Correcta:</b> <span>${p.respuesta_correcta || '-'}</span></div>
                 <div class="buttons-row">
                     <button class="edit" onclick="editarPregunta('${p._id}')">Editar</button>
                     <button class="delete" onclick="eliminarPregunta('${p._id}')">Borrar</button>
