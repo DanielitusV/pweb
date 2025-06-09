@@ -34,7 +34,7 @@
                 
                 <input id="titulo" name="titulo" type="text" placeholder="Título de la Pregunta" required />
                 <textarea id="descripcion" name="descripcion" placeholder="Descripción de la Pregunta" required></textarea>
-                <select required id="puzzlePreviewModes" name="dificultad">
+                <select required id="puzzlePreviewModes" name="dificultad" required>
                     <option disabled selected>Selecciona la dificultad</option>
                     <option value="Novato">Novato</option>
                     <option value="Intermedio">Intermedio</option>
@@ -65,7 +65,7 @@
             <div class="upload-controls">
                 <h3>Sube una imagen para el rompecabezas</h3>
                 <div class="upload-instructions">
-                    <input type="file" id="uploadInput" accept="image/*" />
+                    <input type="file" id="uploadInput" accept="image/*" required />
                 <p id="uploadMessage"></p>
                 </div>
                 
@@ -113,7 +113,16 @@
             </section>
 
             <div class="button-row">
-                <button id="confirmarPuzzleBtn">Confirmar Puzzle</button>
+                <span id="puzzle-help" class="help-icon" tabindex="0">
+                    <svg witdh="22" height="22" viewBox="0 0 24 24" fill="#4ca1a3">
+                        <circle cx="12" cy="12" r="12" stroke="#000"/>
+                        <text x="12" y="18" text-anchor="middle" fill="#fff" font-size="16" font-family="Arial" font-weight="bold">?</text>
+                    </svg>
+                    <span class="tooltip" id="puzzle-tooltip">
+                        Para probar el puzzle debes subir una imagen y seleccionar la dificultad.
+                    </span>
+                </span>
+                <button id="confirmarPuzzleBtn" disabled>Probar Puzzle</button>
                 <button id="reset">Reiniciar Puzzle</button>
             </div>
         <div>

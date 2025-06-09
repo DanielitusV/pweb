@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async() => {
                 </div>
             `;
 
-            contenedor.insertBefore(card, contenedor.firstChild);
+            contenedor.appendChild(card);
         });
 
     } catch (error) {

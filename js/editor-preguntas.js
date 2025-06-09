@@ -5,10 +5,22 @@ const apiBaseUrl = window.location.hostname === "localhost"
     ? "http://localhost:5000"
     : "https://constantly-top-goshawk.ngrok-free.app";
 
-function mostrarFormulario() {
-    const form = document.getElementById("formularioPregunta");
-    form.style.display = form.style.display === "none" ? "block" : "none";
+const uploadInput = document.getElementById("uploadInput");
+const difficult = document.getElementById("puzzlePreviewModes");
+const confirmBtn = document.getElementById("confirmarPuzzleBtn");
+const helpIcon=  document.getElementById("puzzle-help");
+
+function checkConfirmarPuzzle() {
+    const uploadedImage = uploadInput.files.length > 0;
+    const validDifficult = difficult.value && difficult.value !== "" && difficult.value !== "Selecciona la dificultad";
+    const shouldShowIcon = !(uploadedImage && validDifficult);
+    
+    confirmBtn.disabled = shouldShowIcon;
+    helpIcon.hidden = !shouldShowIcon;
 }
+
+uploadInput.addEventListener("change", checkConfirmarPuzzle);
+difficult.addEventListener("change", checkConfirmarPuzzle);
 
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("preguntaForm");
@@ -16,9 +28,28 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         
+        const validImage = uploadInput.files.length > 0;
+        const validDifficult = difficult.value && difficult.value !== "";
+        const isRightAnswer = document.getElementById("respuestaCorrecta").value;
         const usuario = JSON.parse(localStorage.getItem("usuario"));
+
         if (!usuario || !usuario._id) {
             alert("No se ha encontrado un usuario válido. Por favor, inicia sesión.");
+            return;
+        }
+
+        if (!validImage) {
+            alert("Por favor, sube una imagen antes de enviar el formulario.");
+            return;
+        }
+
+        if (!validDifficult || validDifficult === "Selecciona la dificultad") {
+            alert("Por favor, selecciona una dificultad válida.");
+            return;
+        }
+
+        if (!isRightAnswer || isRightAnswer === "Selecciona la respuesta correcta") {
+            alert("Por favor, selecciona una respuesta correcta.");
             return;
         }
 
@@ -78,6 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const file = e.target.files[0];
         const preview = document.getElementById('imagePreview');
         const placeholder = document.getElementById('uploadPlaceholder');
+        const confirmarBtn = document.getElementById('confirmarPuzzleBtn');
 
         if (file) {
             const reader = new FileReader();
@@ -85,12 +117,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 preview.src = event.target.result;
                 preview.style.display = 'block';
                 placeholder.style.display = 'none';
+                if (difficult.value && difficult.value !== "Selecciona la dificultad") {
+                    confirmarBtn.disabled = false
+                }
+                
             };
             reader.readAsDataURL(file);
         } else {
             preview.src = '';
             preview.style.display = 'none';
             placeholder.style.display = 'block';
+            confirmarBtn.disabled = true;
         }
     });
 });

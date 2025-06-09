@@ -151,6 +151,16 @@ form#preguntaForm button:hover {
     background-color: var(--azul-claro);
 }
 
+button:disabled,
+button[disabled] {
+    background-color: #b0b0b0 !important;
+    color: #fff !important;
+    cursor: not-allowed;
+    opacity: 0.7;
+    border: none;
+    box-shadow: none;
+}
+
 .buttons-group {
     display: flex;
     gap: 1rem;
@@ -158,6 +168,45 @@ form#preguntaForm button:hover {
 
 .buttons-group button {
     width: 50%;
+}
+
+.help-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.help-icon svg {
+    display: block;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    left: 2.3em;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #323232;
+    color: #fff;
+    padding: 0.65em 1.1em;
+    border-radius: 7px;
+    font-size: 1em;
+    white-space: nowrap;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    z-index: 100;
+    pointer-events: none;
+}
+
+.help-icon:focus .tooltip,
+.help-icon:hover .tooltip {
+    display: block;
+}
+
+.help-icon[hidden] {
+    display: none !important;
 }
 
 .footer {
