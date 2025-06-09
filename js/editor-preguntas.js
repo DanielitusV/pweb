@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
         }
-
+        const base64 = await fileToBase64(imagen);
         const pregunta = {
             nombre: document.getElementById("titulo").value.trim(),
             descripcion: document.getElementById("descripcion").value.trim(),
@@ -60,6 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             if (res.ok) {
+                const data = await res.json();
+                const idPregunta = data._id;
+                localStorage.setItem(`img_${idPregunta}`, base64);
                 window.location.href = "professor.html";
             } else {
                 const error = await res.json();
@@ -91,3 +94,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+    });
+}

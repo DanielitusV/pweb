@@ -25,11 +25,10 @@ setupImageUpload('uploadInput', 'imagePreview', 'uploadMessage', (cutSlices) => 
         
         const dificultadSelect = document.getElementById('puzzlePreviewModes');
         const puzzleRadios = document.querySelector('input[name="puzzleMode"]:checked');
-        console.log(dificultadSelect, puzzleRadios);
 
         if (!puzzleRadios) {
-            mode = dificultadSelect.value === 'facil' ? 'easy' 
-                : dificultadSelect.value === 'medio' ? 'intermediate' 
+            mode = dificultadSelect.value === 'Novato' ? 'easy' 
+                : dificultadSelect.value === 'Intermedio' ? 'intermediate' 
                 : 'advanced';
         } else if (puzzleRadios) {
             mode = puzzleRadios.value;

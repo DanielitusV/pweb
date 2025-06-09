@@ -5,6 +5,7 @@ from bson import ObjectId
 proyectos_bp = Blueprint('preguntas', __name__)
 proyectos_col = db['preguntas']
 
+
 @proyectos_bp.route('/preguntas/<usuario_id>', methods=['GET'])
 def obtener_proyectos(usuario_id):
     try:
@@ -15,7 +16,8 @@ def obtener_proyectos(usuario_id):
         return jsonify(proyectos), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-    
+
+
 @proyectos_bp.route('/preguntas', methods=['POST'])
 def crear_proyecto():
     try:
@@ -35,6 +37,7 @@ def crear_proyecto():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+
 @proyectos_bp.route('/preguntas/del/<proyecto_id>', methods=['DELETE'])
 def eliminar_proyecto(proyecto_id):
     try:
@@ -43,5 +46,18 @@ def eliminar_proyecto(proyecto_id):
             return jsonify({"mensaje": "Pregunta eliminada"}), 200
         else:
             return jsonify({"error": "Pregunta no encontrada"}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+
+@proyectos_bp.route('/preguntas/ver/<pregunta_id>', methods=['GET'])
+def obtener_pregunta(pregunta_id):
+    try:
+        pregunta = proyectos_col.find_one({"_id": ObjectId(pregunta_id)})
+        if not pregunta:
+            return jsonify({"error": "Pregunta no encontrada"}), 404
+        pregunta['_id'] = str(pregunta['_id'])
+        pregunta['usuario_id'] = str(pregunta['usuario_id'])
+        return jsonify(pregunta), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500

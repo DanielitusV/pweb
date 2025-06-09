@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', async() => {
                 </div>
                 <div class="info-row"><b>Respuesta Correcta:</b> <span>${p.respuesta_correcta || '-'}</span></div>
                 <div class="buttons-row">
+                    <button class="view" onclick="verPregunta('${p._id}')">Ver</button>
                     <button class="edit" onclick="editarPregunta('${p._id}')">Editar</button>
                     <button class="delete" onclick="eliminarPregunta('${p._id}')">Borrar</button>
                 </div>
@@ -111,4 +112,9 @@ function eliminarPregunta(id) {
         console.error('Error al eliminar la pregunta:', error);
         alert('Error al eliminar la pregunta. Inténtalo de nuevo más tarde.');
     });
+}
+
+function verPregunta(id) {
+    localStorage.setItem('pregunta_ver', id);
+    window.location.href = 'ver-preguntas.html';
 }
