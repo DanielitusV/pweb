@@ -228,3 +228,67 @@ button[disabled] {
         width: 100%;
     }
 }
+/*AQUI AGREGUE PARA POER TIEMPO*/
+
+
+.tiempo-opciones {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+
+.tiempo-btn {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 0.2s ease;
+}
+
+.tiempo-btn:hover {
+    background-color: #e0f7fa;
+}
+
+.tiempo-btn.active {
+    background-color: #b2ebf2;
+    border-color: #00acc1;
+    font-weight: bold;
+}
+/*SE AGREGO MAS*/
+
+
+/* ==== BOTONES DE TIEMPO ==== */
+.tiempo-selector {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tiempo-btn {
+    background-color: #4ca1a3;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.tiempo-btn:hover {
+    background-color: #3a8788;
+    transform: scale(1.05);
+}
+
+.tiempo-btn.selected {
+    background-color: #2f6465;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+}
