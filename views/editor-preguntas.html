@@ -58,13 +58,47 @@
                 <input type="hidden" id="tiempoSeleccionado" name="tiempoSeleccionado" />
 
                 <!-- Botones de selección de tiempo -->
-                <div class="tiempo-selector">
-                    <button type="button" class="tiempo-btn" data-tiempo="30">30s</button>
-                    <button type="button" class="tiempo-btn" data-tiempo="60">60s</button>
-                    <button type="button" class="tiempo-btn" data-tiempo="90">90s</button>
-                </div>
+             
+
+
+<!-- Botón para mostrar/ocultar las opciones de tiempo -->
+<div class="seccion-tiempo">
+  <button type="button" id="btnAgregarTiempo">Agregar tiempo</button>
+
+  <!-- Opciones de tiempo ocultas por defecto -->
+  <div class="tiempo-selector" id="timeOptions" style="display: none;">
+    <button type="button" class="tiempo-btn" data-time="30">30s</button>
+    <button type="button" class="tiempo-btn" data-time="60">60s</button>
+    <button type="button" class="tiempo-btn" data-time="90">90s</button>
+  </div>
+
+  <!-- Campo oculto para enviar el valor del tiempo -->
+  <input type="hidden" id="tiempoSeleccionado" name="tiempoSeleccionado" />
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 <div class="buttons-group">
+
+
+
+
+                    
+
+
+
+
                     <button type="submit">Guardar</button>
                     <button type="button" onclick="window.location.href='professor.html'">Cancelar</button>
                 </div>
