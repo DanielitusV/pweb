@@ -292,3 +292,86 @@ button[disabled] {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     transform: scale(1.1);
 }
+
+
+.time-control {
+  margin: 20px 0;
+  text-align: center;
+}
+
+#btnAgregarTiempo {
+  background-color: #4ca1a3;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#btnAgregarTiempo:hover {
+  background-color: #3a8788;
+}
+
+.tiempo-selector {
+  margin-top: 15px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tiempo-btn {
+  background-color: #4ca1a3;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.tiempo-btn:hover {
+  background-color: #3a8788;
+  transform: scale(1.05);
+}
+
+.tiempo-btn.selected {
+  background-color: #2f6465;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+}
+.seccion-tiempo {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#btnAgregarTiempo {
+  padding: 0.5rem 1rem;
+  background-color: #4ca1a3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tiempo-btn {
+  padding: 0.4rem 1rem;
+  border: 1px solid #4ca1a3;
+  border-radius: 6px;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.tiempo-btn.selected {
+  background-color: #4ca1a3;
+  color: white;
+  font-weight: bold;
+}
