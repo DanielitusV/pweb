@@ -142,17 +142,33 @@ function fileToBase64(file) {
     });
 }
 
-// 🧩 Control de botones de tiempo
-const tiempoBtns = document.querySelectorAll(".tiempo-btn");
+// 🎯 Mostrar/Ocultar opciones de tiempo
+const btnAgregarTiempo = document.getElementById("btnAgregarTiempo");
+const timeOptions = document.getElementById("timeOptions");
 const tiempoSeleccionadoInput = document.getElementById("tiempoSeleccionado");
+const tiempoBtns = timeOptions.querySelectorAll(".tiempo-btn");
+
+btnAgregarTiempo.addEventListener("click", () => {
+    const visible = timeOptions.style.display === "flex";
+    timeOptions.style.display = visible ? "none" : "flex";
+    btnAgregarTiempo.textContent = visible ? "Agregar tiempo" : "Ocultar opciones de tiempo";
+
+    if (!visible) {
+        // Reset selección anterior al mostrar
+        tiempoBtns.forEach(btn => btn.classList.remove("selected"));
+        tiempoSeleccionadoInput.value = "";
+    }
+});
 
 tiempoBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-        tiempoBtns.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        tiempoSeleccionadoInput.value = btn.getAttribute("data-tiempo");
+        tiempoBtns.forEach(b => b.classList.remove("selected"));
+        btn.classList.add("selected");
+        tiempoSeleccionadoInput.value = btn.getAttribute("data-time");
     });
 });
+
+
 /*import { subirAImgbb } from "./puzzle-scripts/puzzle-imgbb.js";
 
 const API_KEY_IMGBB = "4c5c9937ecf5372e5aa92076c7147fa7";
