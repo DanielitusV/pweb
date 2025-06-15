@@ -21,11 +21,12 @@ document.addEventListener('DOMContentLoaded', async() => {
         const preguntas = await res.json();
 
         if (!Array.isArray(preguntas) || preguntas.length === 0) {
+            contenedor.classList.add('no-preguntas-center');
             const sinPreguntas = document.createElement('div');
             sinPreguntas.className = 'no-preguntas';
             sinPreguntas.innerHTML = `
                 <h2 style="margin-bottom:0.5rem;">No hay preguntas disponibles</h2>
-                <p style="margin-bottom:1rem;">Actualmente no tienes preguntas creadas.</p>
+                <p>Actualmente no tienes preguntas creadas.</p>
             `;
             contenedor.appendChild(sinPreguntas);
             return;
