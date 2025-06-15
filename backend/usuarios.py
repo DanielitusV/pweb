@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from backend.db import db
+from bson import ObjectId
 import bcrypt
 
 usuarios_bp = Blueprint('usuarios_bp', __name__)
@@ -79,7 +80,7 @@ def ingresar_usuario():
     
 # Función para actualizar la contraseña de un usuario
 @usuarios_bp.route('/usuarios/cambiar_password', methods=['POST'])
-def actualizar_password():
+def cambiar_password():
     data = request.get_json()
     usuario_id = data.get('usuario_id')
     password = data.get('password')
@@ -89,7 +90,7 @@ def actualizar_password():
 
     hashed_pw = hash_password(password)
     result = usuarios_col.update_one(
-        {'_id': db.ObjectId(usuario_id)},
+        {'_id': ObjectId(usuario_id)},
         {'$set': {'password': hashed_pw}}
     )
 

@@ -44,18 +44,18 @@
             </section>
         </main> 
 
-        <div id ="popup-nombre" class="popup-nombre" style="display:none;">
+       <div id ="popup-nombre" class="popup-nombre" style="display:none;">
             <div class="popup-content">
-                <h3 id="popup-titulo">Registrar cuenta</h3>
+                <h3 id="popup-titulo">Iniciar Sesión</h3>
                 <input id="input-nombre" placeholder="Ingrese su usuario" autocomplete="off"/>
-
-                <button id="btn-accion">Registrarse</button>
+                <input id="input-password" type="password" placeholder="Contraseña" autocomplete="off" style="margin-top:10px;" />               
+                <input id="input-password-repeat" type="password" placeholder="Repite la contraseña" autocomplete="off" style="margin-top:10px; display:none;" />
+                
+                <button id="btn-accion">Ingresar</button>
                 <button id="cerrar-popup" class="cerrar-popup">Cancelar</button>
-            
                 <p id="texto-cambiar">
-                    ¿Ya tienes cuenta? <a href="#" id="cambiar-modo">Inicia sesión</a>
+                    ¿No tienes cuenta? <a href="#" id="cambiar-modo">Regístrate</a>
                 </p>
-
                 <div id="error-nombre" class="error-popup"></div>
             </div>
         </div>
