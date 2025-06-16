@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async() => {
     }
 
     document.getElementById("tituloPregunta").textContent = p.nombre;
-    document.getElementById("descripcionPregunta").textContent = p.descripcion;
+    document.getElementById("descripcionPregunta").innerHTML = p.descripcion;
     document.getElementById("dificultadPregunta").textContent = "Dificultad: " + p.dificultad.charAt(0).toUpperCase() + p.dificultad.slice(1);
 
     const letras = ['A', 'B', 'C', 'D'];

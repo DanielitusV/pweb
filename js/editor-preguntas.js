@@ -24,10 +24,25 @@ difficult.addEventListener("change", checkConfirmarPuzzle);
 
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("preguntaForm");
+    var quill = new Quill('#descripcion', {
+        theme: 'snow',
+        placeholder: 'Descripción de la Pregunta',
+        modules: {
+            toolbar: [
+            [{ 'header': [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike'],
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            ['link', 'image'],
+            ['clean']
+            ]
+        }
+    });
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        
+        const descHTML = quill.root.innerHTML;
+        document.getElementById("descripcion").value = descHTML;
+
         const validImage = uploadInput.files.length > 0;
         const validDifficult = difficult.value && difficult.value !== "";
         const isRightAnswer = document.getElementById("respuestaCorrecta").value;
