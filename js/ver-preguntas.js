@@ -2,6 +2,17 @@ const apiBaseUrl = window.location.hostname === "localhost"
     ? "http://localhost:5000"
     : "https://constantly-top-goshawk.ngrok-free.app";
 
+document.addEventListener('DOMContentLoaded', () => {
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    const divNombre = document.getElementById('nombreProfesor');
+
+    if (usuario && usuario.nombre) {
+        divNombre.textContent = `👤 ${usuario.nombre}`;
+    } else {
+        divNombre.textContent = '👤 Invitado';
+    }
+});
+
 document.addEventListener("DOMContentLoaded", async() => {
     const id = localStorage.getItem("pregunta_ver");
     if (!id) {

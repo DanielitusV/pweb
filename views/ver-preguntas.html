@@ -18,6 +18,7 @@
                 <li><a href="professor.html">Profesor</a></li>
                 <li><a href="admin.html">Administrador</a></li>
             </ul>
+             <div id="nombreProfesor" class="nombre-profesor"></div>
         </nav>
     </header>
 
@@ -39,18 +40,18 @@
             ← Volver al panel del profesor
         </button>
 
+        <div class="question-details">
+            <div class="question-title" id="tituloPregunta">Título de la Pregunta</div>
+            <div class="question-description" id="descripcionPregunta">Descripción de la Pregunta</div>
+            <div class="question-difficulty" id="dificultadPregunta">Dificultad</div>
+        </div>
+
         <div class="question-top">
             <img id="imagePreview" class="question-image" src="" alt="Imagen de la pregunta" style="display: none;" />
             <div class="puzzle-flex">
                 <div id="puzzle-container" class="question-puzzle"></div>
                 <div id ="basket-container" class="puzzle-basket"></div>
             </div>
-        </div>
-
-        <div class="question-details">
-            <div class="question-title" id="tituloPregunta">Título de la Pregunta</div>
-            <div class="question-description" id="descripcionPregunta">Descripción de la Pregunta</div>
-            <div class="question-difficulty" id="dificultadPregunta">Dificultad</div>
             <div class="question-options" id="opcionesContainer"></div>
             <div class="question-msg" id="respuestaMsg"></div>
         </div>
