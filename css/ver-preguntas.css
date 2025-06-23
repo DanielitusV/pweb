@@ -1,4 +1,399 @@
 body {
+    background-color: #e7fbe8;
+    font-family: 'Nunito', 'Arial Rounded MT Bold', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+ .header {
+    background-color: #1c57d6;
+    color: #fff;
+    text-align: center;
+    padding: 1.3em 0 1em 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+
+footer {
+    background-color: #3759b4;
+    color: #fff;
+    text-align: center;
+    padding: 1.3em 0 1em 0;
+    width: 100%;
+    margin-top: auto;
+    z-index: 999;
+}
+/* esto sirve para enviarlo al lado derecho */
+.nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* esto hace que se veaseparado los linkc comoincio profesor administrador*/
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+ /* yesto hace que se vea bonitoblaco cfuando me acerquecon elcursos se vuelve como opaco*/
+.nav-links a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+/* y aquique color quieres que se opaque  cuando tu cursos se dirijaahi*/
+.nav-links a:hover {
+    color: #afd6de;
+}
+
+.question-container {
+    max-width: 550px;
+    background: #ffffff;
+    margin: 2.5em, auto, 2em, auto;
+    border-radius: 24px;
+    box-shadow: 0 6px 24px #24247322;
+    padding: 2em 2em 1em 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* esto hace que el cuadra no se vaya tan arriba*/
+.question-top {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.question-image {
+    width: 160px;
+    height: 160px;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 4px 16px #22222222;
+    margin-bottom: 1.2em;
+}
+
+/* el titulo  de la pregunta*/
+.question-title {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin: 0.1em 0 0.1em 0;
+    color: #3759b4;
+    text-align: center;
+}
+
+.question-details {
+    font-size: 1.1em;
+    color: #3759b4;
+    text-align: center;
+    align-items: center;
+}
+/* el color de la dificultad*/
+.question-difficulty {
+    font-size: 1em;
+    color: #3759b4;
+    margin-bottom: 2em;
+    text-align: center;
+}
+/* esto hace que  se  ven en cuadraditos bonitos*/
+.question-options {
+    width: 50%;
+    justify-self: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em 1.5em;
+    margin-bottom: 1em;
+    cursor: pointer;
+    
+}
+
+.question-option {
+    padding: 1.2em 0.5em;
+    border-radius: 16px;
+    font-size: 1.1em;
+    font-weight: bold;
+    background: #dbeafe;
+    color: #223;
+    text-align: center;
+    border: 2px solid #1ea10a;
+    cursor: pointer;
+    transition: background 0.2, color 0.2s;
+    box-shadow: 0 2px 8px #3759b422;
+    user-select: none;
+}
+
+
+
+
+
+
+
+
+
+/* eesot es para la pregunta    ls ocpions mulcitples */
+
+
+
+
+/* Estilo base de todas las opciones */
+/*********************************************************/
+@keyframes floatAnimation {
+    0%, 100% {
+        transform: translateY(0);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    50% {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    }
+}
+
+.question-option {
+    background: #ffffff;
+    border: 2px solid #ccc;
+    color: #333;
+    border-radius: 10px;
+    padding: 1em;
+    margin: 0.5em 0;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+    animation: floatAnimation 0.9s ease-in-out 0.1s infinite alternate forwards;
+}
+
+.question-option.multiple-selected {
+    animation: floatAnimation 1.5s ease-in-out 0.1s infinite alternate forwards;
+}
+
+
+
+
+.question-option:hover {
+    background: radial-gradient(circle at 20% 20%, #d4fff5, transparent 60%),
+                radial-gradient(circle at 80% 80%, #cce0ff, transparent 60%),
+                #e0f7fa;
+    border-color: #1d72b8;
+    color: #0a2c5e;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-10px);
+    animation-play-state: paused; /* pausa la animación mientras haces hover */
+}
+
+.question-option.selected {
+    background: #b1e0fc;
+    border-color: #087bda;
+    color: #1d195b;
+    box-shadow: 0 8px 20px #36b37e33;
+}
+
+
+/****************************************************/
+
+
+/* es el diseno  para que la respuesta el mensaje de la respuesta correcta*/
+.question-msg {
+    margin-top: 2em;
+    font-size: 1.2em;
+    background: #e0ff9e;
+    color: #1d583c;
+    border-radius: 12px;
+    padding: 0.8em 1em;
+    text-align: center;
+    box-shadow: 0 2px 8 px #14151422;
+    display: none;
+}
+/* esto es el puzzles es decir en donde se armara como estara el fondo de ello*/
+
+/*************************************************************************************/
+.question-puzzle {
+    display: grid;
+    grid-template-columns: repeat(3, 96px);
+    grid-template-rows: repeat(3, 96px);
+    gap: 8px;
+    margin: 0 auto 1.5em auto;
+    min-width: 304px;
+    min-height: 304px;
+    background-color: #c3d0e4;
+    border-radius: 12px;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    font-family: Arial, sans-serif;
+}
+
+/* Cada pieza */
+.question-puzzle > div {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #2a3a5d;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Al pasar el mouse */
+.question-puzzle > div:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    cursor: grabbing;
+}
+
+/* Al hacer clic */
+.question-puzzle > div:active {
+    transform: scale(1.08);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    cursor: grabbing;
+}
+/**********************************************************************************/
+/* es el color de las letras de la descripcion*/
+
+.question-description {
+    font-size: 1.1em;
+    color: #3759b4;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+.puzzle-piece-img {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 0.5px 3px #bbb3;
+}
+/* hace que el puzzles se ve vertical yno horizontal */
+.puzzle-flex {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5em;
+    margin-bottom: 2em;
+}
+
+.puzzle-basket {
+    min-width: 408px; min-height: 304px;
+    background: #ffe6f6;
+    border: 2px dashed #007763;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px #fcab0b33;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2em; color: #f59e42;
+}
+
+
+
+.btn-volver {
+    position: absolute;
+    top: 18px;
+    left: 30px;
+    padding: 0.7em 1.6em;
+    background: #11b89c;
+    color: #ffffff;
+    border: 2px solid #3759b4;
+    border-radius: 20px;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 0 1px 8px #3459c426;
+    z-index: 1000;
+}
+/*desde aqui en adelante es para el puzzles**************************************************/
+.basket {
+    background-color: #e6fbff;         /* Fondo azul muy suave */
+    border: 2px dashed #188fcb;       /* Borde punteado amarillo */
+    border-radius: 12px;               /* Bordes redondeados */
+    min-height: 300px;                 /* Altura mínima */
+    padding: 15px;                     /* Espacio interno */
+    box-shadow: 0 4px 8px rgba(27, 159, 183, 0.3); /* Sombra suave amarilla */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Aplica los efectos solo a las imágenes dentro de .basket */
+.basket img {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    cursor: grab;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Hover para las imágenes */
+.basket img:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 8px 16px rgba(14, 173, 185, 0.5);
+    cursor: grabbing;
+}
+
+/* Activo (cuando se arrastran o hacen click) */
+.basket img:active {
+    transform: scale(1.1) translateY(-8px);
+    box-shadow: 0 12px 24px rgba(21, 141, 192, 0.7);
+    cursor: grabbing;
+}
+
+/* Cuando la canasta está en estado drag-over, opcionalmente también podemos cambiar fondo */
+.basket.drag-over {
+    background-color: #d0f7ff;        /* Fondo azul más claro */
+    border-color: #d9a800;            /* Borde amarillo más oscuro */
+    box-shadow: 0 6px 12px rgba(16, 131, 173, 0.5);
+}
+/*******************************************************************/
+
+
+
+
+
+
+
+
+
+
+/* Estilo para el nombre del profesor */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*body {
     background-color: #e7f1fb;
     font-family: 'Nunito', 'Arial Rounded MT Bold', Arial, sans-serif;
     margin: 0;
@@ -247,3 +642,4 @@ footer {
     max-width: 100%;
     height: auto;
 }
+*/
