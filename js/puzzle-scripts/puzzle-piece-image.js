@@ -3,7 +3,7 @@ import { isPuzzleCorrect } from './puzzle-check.js';
 export function setPieceImage(pieces, slices, mode, backImage) {
     let flippedIndexes = [];
 
-    if (mode === 'intermediate') {
+    if (mode === 'intermediate'|| mode === 'advanced') {
         const total = pieces.length;
         const nFlipped = Math.floor(total / 2);
         const indexes = [...Array(total).keys()];
@@ -50,15 +50,35 @@ export function setPieceImage(pieces, slices, mode, backImage) {
             };
 
         } else if (mode === 'advanced') {
-            piece.style.backgroundImage = `url(${slices[i].toDataURL()})`;
-            piece.dataset.rotation = [0, 90, 180, 270][Math.floor(Math.random() * 4)];
-            piece.style.transform = `rotate(${piece.dataset.rotation}deg)`;
+            // Rotación aleatoria
+            const rotation = [0, 90, 180, 270][Math.floor(Math.random() * 4)];
+            piece.dataset.rotation = rotation;
+            piece.style.transform = `rotate(${rotation}deg)`;
+
+            // Volteo aleatorio al inicio
+            if (flippedIndexes.includes(i)) {
+                piece.style.backgroundImage = `url(${backImage})`;
+                piece.dataset.flipped = "true";
+            } else {
+                piece.style.backgroundImage = `url(${piece.dataset.front})`;
+                piece.dataset.flipped = "false";
+            }
 
             piece.onclick = () => {
-                let current = parseInt(piece.dataset.rotation);
-                current = (current + 90) % 360;
-                piece.dataset.rotation = current;
-                piece.style.transform = `rotate(${current}deg)`;
+                piece.classList.add('flipping');
+                setTimeout(() => {
+                    let current = parseInt(piece.dataset.rotation);
+                    current = (current + 90) % 360;
+                    piece.dataset.rotation = current;
+                    piece.style.transform = `rotate(${current}deg)`;
+
+                    if (piece.dataset.flipped === "true") {
+                        piece.style.backgroundImage = `url(${piece.dataset.front})`;
+                        piece.dataset.flipped = "false";
+                    }
+
+                    piece.classList.remove('flipping');
+                }, 250);
 
                 if (piece.classList.contains('in-board')) {
                     const cells = document.querySelectorAll('.cell');

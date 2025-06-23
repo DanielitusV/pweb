@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/editor-preguntas.css" />
     <link rel="stylesheet" href="../css/upload-image.css" />
     <link rel="stylesheet" href="../css/puzzle.css" />
-    </head>
+</head>
 <body>
     <div id="loader">
         <div class="loader-content">
@@ -35,7 +35,6 @@
         <div class="pregunta-formulario">
             <h2>Agregar / Editar Pregunta</h2>
             <form id="preguntaForm">
-                
                 <input id="titulo" name="titulo" type="text" placeholder="Título de la Pregunta" required />
                 
                 <div id="descripcion-container">
@@ -54,6 +53,7 @@
                 <input type="text" id="opcion2" placeholder="Opción B" required />
                 <input type="text" id="opcion3" placeholder="Opción C" required />
                 <input type="text" id="opcion4" placeholder="Opción D" required />
+
                 <select id="respuestaCorrecta" name="respuestaCorrecta" required>
                     <option disabled selected>Selecciona la respuesta correcta</option>
                     <option value="Opción A">Opción A</option>
@@ -62,7 +62,51 @@
                     <option value="Opción D">Opción D</option>
                 </select>
 
+                <!-- Campo oculto para guardar el tiempo seleccionado -->
+                <input type="hidden" id="tiempoSeleccionado" name="tiempoSeleccionado" />
+
+                <!-- Botones de selección de tiempo -->
+             
+
+
+<!-- Botón para mostrar/ocultar las opciones de tiempo -->
+<div class="seccion-tiempo">
+  <button type="button" id="btnAgregarTiempo">Agregar tiempo</button>
+
+  <!-- Opciones de tiempo ocultas por defecto -->
+  <div class="tiempo-selector" id="timeOptions" style="display: none;">
+    <button type="button" class="tiempo-btn" data-time="30">30s</button>
+    <button type="button" class="tiempo-btn" data-time="60">60s</button>
+    <button type="button" class="tiempo-btn" data-time="90">90s</button>
+  </div>
+
+  <!-- Campo oculto para enviar el valor del tiempo -->
+  <input type="hidden" id="tiempoSeleccionado" name="tiempoSeleccionado" />
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <div class="buttons-group">
+
+
+
+
+                    
+
+
+
+
                     <button type="submit">Guardar</button>
                     <button type="button" onclick="window.location.href='professor.html'">Cancelar</button>
                 </div>
@@ -70,15 +114,13 @@
         </div>
 
         <div id="upload-section">
-            <!-- Sección subir imagen -->
             <div class="upload-controls">
                 <h3>Sube una imagen para el rompecabezas</h3>
                 <div class="upload-instructions">
                     <input type="file" id="uploadInput" accept="image/*" required />
-                <p id="uploadMessage"></p>
+                    <p id="uploadMessage"></p>
                 </div>
-                
-                <!-- Vista previa imagen y puzzle -->
+
                 <div class="puzzle-image">
                     <div class="upload-preview" id="uploadPreviewBox">
                         <span id="uploadPlaceholder">Aquí se mostrará la imagen</span>
@@ -88,13 +130,12 @@
                     <div id="puzzlePreviewContainer">
                         <h3>Vista previa del Puzzle</h3>
                         <div id="puzzlePreviewGrid"></div>
+                    </div>
                 </div>
             </div>
-            
-            <!-- Rompecabezas -->
+
             <section class="puzzle-board">
                 <div class="puzzle-layout">
-                    <!-- Tablero 3x3 vacío -->
                     <div class="grid">
                         <div class="cell" data-pos="1"></div>
                         <div class="cell" data-pos="2"></div>
@@ -123,7 +164,7 @@
 
             <div class="button-row">
                 <span id="puzzle-help" class="help-icon" tabindex="0">
-                    <svg witdh="22" height="22" viewBox="0 0 24 24" fill="#4ca1a3">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="#4ca1a3">
                         <circle cx="12" cy="12" r="12" stroke="#000"/>
                         <text x="12" y="18" text-anchor="middle" fill="#fff" font-size="16" font-family="Arial" font-weight="bold">?</text>
                     </svg>
@@ -134,15 +175,19 @@
                 <button id="confirmarPuzzleBtn" disabled>Probar Puzzle</button>
                 <button id="reset">Reiniciar Puzzle</button>
             </div>
-        <div>
-
+        </div>
     </main>
 
     <footer class="footer">
         &copy; 2025 Interaquiz
     </footer>
 
+    <!-- SCRIPTS -->
     <script type="module" src="../js/editor-preguntas.js"></script>
     <script type="module" src="../js/puzzle.js"></script>
 </body>
 </html>
+
+
+
+

@@ -10,9 +10,6 @@ const difficult = document.getElementById("puzzlePreviewModes");
 const confirmBtn = document.getElementById("confirmarPuzzleBtn");
 const helpIcon = document.getElementById("puzzle-help");
 
-let preguntaExistente = null;
-
-// Habilitar/deshabilitar el botón según validez de campos
 function checkConfirmarPuzzle() {
   const uploadedImage = uploadInput.files.length > 0;
   const validDifficult = difficult.value && difficult.value !== "" && difficult.value !== "Selecciona la dificultad";
@@ -21,13 +18,68 @@ function checkConfirmarPuzzle() {
   confirmBtn.disabled = shouldShowIcon;
   helpIcon.hidden = !shouldShowIcon;
 }
-
 uploadInput.addEventListener("change", checkConfirmarPuzzle);
 difficult.addEventListener("change", checkConfirmarPuzzle);
 
+const btnAgregarTiempo = document.getElementById("btnAgregarTiempo");
+const timeOptions = document.getElementById("timeOptions");
+const tiempoSeleccionadoInput = document.getElementById("tiempoSeleccionado");
+const tiempoBtns = timeOptions ? timeOptions.querySelectorAll(".tiempo-btn") : [];
+
+if (btnAgregarTiempo && timeOptions && tiempoSeleccionadoInput) {
+  btnAgregarTiempo.addEventListener("click", () => {
+    const visible = timeOptions.style.display === "flex";
+    timeOptions.style.display = visible ? "none" : "flex";
+    btnAgregarTiempo.textContent = visible ? "Agregar tiempo" : "Ocultar opciones de tiempo";
+    if (!visible) {
+      // Reset selección anterior al mostrar
+      tiempoBtns.forEach(btn => btn.classList.remove("selected"));
+      tiempoSeleccionadoInput.value = "";
+    }
+  });
+
+  tiempoBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      tiempoBtns.forEach(b => b.classList.remove("selected"));
+      btn.classList.add("selected");
+      tiempoSeleccionadoInput.value = btn.getAttribute("data-time");
+    });
+  });
+}
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+    reader.readAsDataURL(file);
+  });
+}
+
+function precargarFormulario(p, quill) {
+  document.getElementById("titulo").value = p.nombre || "";
+  quill.root.innerHTML = p.descripcion || "";
+  document.getElementById("puzzlePreviewModes").value = p.dificultad || "Selecciona la dificultad";
+  const opciones = Array.isArray(p.opciones) ? p.opciones : [];
+  document.getElementById("opcion1").value = opciones[0] || "";
+  document.getElementById("opcion2").value = opciones[1] || "";
+  document.getElementById("opcion3").value = opciones[2] || "";
+  document.getElementById("opcion4").value = opciones[3] || "";
+  document.getElementById("respuestaCorrecta").value = p.respuesta_correcta || "";
+  if (p.tiempo && document.getElementById("tiempoSeleccionado")) {
+    document.getElementById("tiempoSeleccionado").value = p.tiempo;
+  }
+  if (p.imagen) {
+    const preview = document.getElementById("imagePreview");
+    const placeholder = document.getElementById("uploadPlaceholder");
+    preview.src = p.imagen;
+    preview.style.display = "block";
+    placeholder.style.display = "none";
+  }
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   const form = document.getElementById("preguntaForm");
-
   // Iniciar Quill
   const quill = new Quill('#descripcion', {
     theme: 'snow',
@@ -43,7 +95,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  // Precargar si es edición
+  let preguntaExistente = null;
   const preguntaId = localStorage.getItem("pregunta_editar");
   const usuario = JSON.parse(localStorage.getItem("usuario"));
   if (!usuario || !usuario._id) {
@@ -64,7 +116,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  // Submit: creación y edición
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -104,6 +155,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("opcion4").value.trim()
       ],
       respuesta_correcta: document.getElementById("respuestaCorrecta").value.trim(),
+      tiempo: document.getElementById("tiempoSeleccionado")?.value?.trim() || null
     };
 
     try {
@@ -119,9 +171,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
 
       if (res.ok) {
-        if (imagen) {
-          const base64 = await fileToBase64(imagen);
-        }
         alert("Pregunta guardada correctamente.");
         localStorage.removeItem("pregunta_editar");
         window.location.href = "professor.html";
@@ -155,32 +204,3 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 });
-
-function precargarFormulario(p, quill) {
-  document.getElementById("titulo").value = p.nombre || "";
-  quill.root.innerHTML = p.descripcion || "";
-  document.getElementById("puzzlePreviewModes").value = p.dificultad || "Selecciona la dificultad";
-  const opciones = Array.isArray(p.opciones) ? p.opciones : [];
-  document.getElementById("opcion1").value = opciones[0] || "";
-  document.getElementById("opcion2").value = opciones[1] || "";
-  document.getElementById("opcion3").value = opciones[2] || "";
-  document.getElementById("opcion4").value = opciones[3] || "";
-  document.getElementById("respuestaCorrecta").value = p.respuesta_correcta || "";
-
-  if (p.imagen) {
-    const preview = document.getElementById("imagePreview");
-    const placeholder = document.getElementById("uploadPlaceholder");
-    preview.src = p.imagen;
-    preview.style.display = "block";
-    placeholder.style.display = "none";
-  }
-}
-
-function fileToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-    reader.readAsDataURL(file);
-  });
-}
