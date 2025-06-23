@@ -50,12 +50,10 @@ export function setPieceImage(pieces, slices, mode, backImage) {
             };
 
         } else if (mode === 'advanced') {
-            // Rotación aleatoria
             const rotation = [0, 90, 180, 270][Math.floor(Math.random() * 4)];
             piece.dataset.rotation = rotation;
-            piece.style.transform = `rotate(${rotation}deg)`;
+            piece.style.setProperty('--rot', `${rotation}deg`);
 
-            // Volteo aleatorio al inicio
             if (flippedIndexes.includes(i)) {
                 piece.style.backgroundImage = `url(${backImage})`;
                 piece.dataset.flipped = "true";
@@ -64,19 +62,20 @@ export function setPieceImage(pieces, slices, mode, backImage) {
                 piece.dataset.flipped = "false";
             }
 
-            piece.onclick = () => {
+            piece.onclick = (e) => {
+                e.preventDefault();
                 piece.classList.add('flipping');
                 setTimeout(() => {
-                    let current = parseInt(piece.dataset.rotation);
-                    current = (current + 90) % 360;
-                    piece.dataset.rotation = current;
-                    piece.style.transform = `rotate(${current}deg)`;
-
+                    let filpAngle;
                     if (piece.dataset.flipped === "true") {
+                        filpAngle = 180;
                         piece.style.backgroundImage = `url(${piece.dataset.front})`;
                         piece.dataset.flipped = "false";
+                    } else {
+                        filpAngle = 0;
+                        piece.style.backgroundImage = `url(${piece.dataset.back})`;
+                        piece.dataset.flipped = "true";
                     }
-
                     piece.classList.remove('flipping');
                 }, 250);
 
@@ -85,6 +84,48 @@ export function setPieceImage(pieces, slices, mode, backImage) {
                     isPuzzleCorrect(cells);
                 }
             };
+
+            piece.oncontextmenu = (e) => {
+                e.preventDefault();
+                piece.classList.add('rotating');
+                setTimeout(() => {
+                    let current = parseInt(piece.dataset.rotation);
+                    current = (current + 90);
+                    piece.dataset.rotation = current;
+                    piece.style.transform = `rotate(${current}deg)`;
+                    current = current % 360;
+
+                    piece.classList.remove('rotating');
+                }, 250);
+
+                if (piece.classList.contains('in-board')) {
+                    const cells = document.querySelectorAll('.cell');
+                    isPuzzleCorrect(cells);
+                }
+                return false;
+            };
+
+            piece.addEventListener('auxclick', function(e) {
+                if (e.button === 1) {
+                    e.preventDefault();
+                    piece.classList.add('rotating');
+                    setTimeout(() => {
+                        let current = parseInt(piece.dataset.rotation);
+                        current = (current - 90);
+                        piece.dataset.rotation = current;
+                        piece.style.transform = `rotate(${current}deg)`;
+
+                        current = Math.abs(current % 360);
+                        piece.classList.remove('rotating');
+                    }, 250);
+                }
+
+                if (piece.classList.contains('in-board')) {
+                    const cells = document.querySelectorAll('.cell');
+                    isPuzzleCorrect(cells);
+                }
+            });
+
         } else {
             piece.style.backgroundImage = `url(${slices[i].toDataURL()})`;
             piece.dataset.flipped = "false";
