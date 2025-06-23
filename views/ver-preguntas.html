@@ -18,21 +18,23 @@
             </ul>
         </nav>
     </header>
-    <main class="container" id="question-container">
+    <main class="container" id="question-container" style="max-width: 1500px; margin: 1em auto; display: flex; gap: 2em; align-items: flex-start;">
         <button onclick="window.location.href='professor.html'" class="btn-volver">
             ← Volver al panel del profesor
         </button>
-        <div class="question-top">
+
+        <div class="question-details" style="min-width: 380px;">
+            <div class="question-title" id="tituloPregunta">Título de la Pregunta</div>
+            <div class="question-description" id="descripcionPregunta">Descripción de la Pregunta</div>
+        </div>
+        
+        <div class="question-top" style="margin-top: 1rem;">
+            <div class="question-difficulty" id="dificultadPregunta">Dificultad</div>
             <img id="imagePreview" class="question-image" src="" alt="Imagen de la pregunta" style="display: none;" />
             <div class="puzzle-flex">
                 <div id="puzzle-container" class="question-puzzle"></div>
                 <div id="basket-container" class="basket"></div>
             </div>
-        </div>
-        <div class="question-details">
-            <div class="question-title" id="tituloPregunta">Título de la Pregunta</div>
-            <div class="question-description" id="descripcionPregunta">Descripción de la Pregunta</div>
-            <div class="question-difficulty" id="dificultadPregunta">Dificultad</div>
             <div class="question-options" id="opcionesContainer"></div>
             <div class="question-msg" id="respuestaMsg"></div>
         </div>
