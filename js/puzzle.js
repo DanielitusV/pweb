@@ -60,13 +60,15 @@ function modoDificultad() {
     return mode;
 }
 
-puzzleSizeSelector.addEventListener("change", (e) => {
+if (puzzleSizeSelector) {
+  puzzleSizeSelector.addEventListener("change", (e) => {
     const size = parseInt(e.target.value);
     headerTitle.textContent = `Rompecabezas ${size}x${size}`;
     generarGrid(size);
     generarPiezas(size);
     reinicializarPiezas();
-});
+  });
+}
 
 document.getElementById("reset").addEventListener('click', () => {
     const piezas = document.querySelectorAll('.piece');
@@ -88,8 +90,15 @@ window.addEventListener("DOMContentLoaded", () => {
         document.getElementById("loader").style.display = "none";
     }, 400);
 
-    const size = parseInt(puzzleSizeSelector.value);
-    generarGrid(size);
-    generarPiezas(size);
-    reinicializarPiezas();
+    if (typeof puzzleSizeSelector !== "undefined" && puzzleSizeSelector !== null) {
+        const size = parseInt(puzzleSizeSelector.value);
+        generarGrid(size);
+        generarPiezas(size);
+        reinicializarPiezas();
+    } else {
+        const defaultSize = 3;
+        generarGrid(defaultSize);
+        generarPiezas(defaultSize);
+        reinicializarPiezas();
+    }
 });

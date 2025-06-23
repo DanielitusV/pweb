@@ -11,7 +11,7 @@ def hash_password(password):
 def check_password(password, hashed):
     return bcrypt.checkpw(password.encode('utf-8'), hashed)
 
-# Función para registar un usuario
+
 @usuarios_bp.route('/usuarios/registrar', methods=['POST'])
 def registrar_usuario():
     data = request.get_json()
@@ -43,7 +43,7 @@ def registrar_usuario():
         'usuario': response_usuario
     }), 200
 
-# Función para ingresar un usuario
+
 @usuarios_bp.route('/usuarios/ingresar', methods=['POST'])
 def ingresar_usuario():
     data = request.get_json()
@@ -78,7 +78,7 @@ def ingresar_usuario():
     else:
         return jsonify({'error': 'Usuario o Contraseña Incorrectos'}), 401
     
-# Función para actualizar la contraseña de un usuario
+
 @usuarios_bp.route('/usuarios/cambiar_password', methods=['POST'])
 def cambiar_password():
     data = request.get_json()

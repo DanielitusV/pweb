@@ -34,25 +34,25 @@
     <main class="main-content-flex">
         <div class="pregunta-formulario">
             <h2>Agregar / Editar Pregunta</h2>
-            <form id="preguntaForm">
+            <form id="preguntaForm" autocomplete="off">
                 <input id="titulo" name="titulo" type="text" placeholder="Título de la Pregunta" required />
-                
+
                 <div id="descripcion-container">
                     <div id="descripcion-toolbar"></div>
                     <div id="descripcion"></div>
                 </div>
 
-                <select required id="puzzlePreviewModes" name="dificultad" required>
+                <select required id="puzzlePreviewModes" name="dificultad">
                     <option disabled selected>Selecciona la dificultad</option>
                     <option value="Novato">Novato</option>
                     <option value="Intermedio">Intermedio</option>
                     <option value="Avanzado">Avanzado</option>
                 </select>
 
-                <input type="text" id="opcion1" placeholder="Opción A" required />
-                <input type="text" id="opcion2" placeholder="Opción B" required />
-                <input type="text" id="opcion3" placeholder="Opción C" required />
-                <input type="text" id="opcion4" placeholder="Opción D" required />
+                <input type="text" id="opcion1" name="opcion1" placeholder="Opción A" required />
+                <input type="text" id="opcion2" name="opcion2" placeholder="Opción B" required />
+                <input type="text" id="opcion3" name="opcion3" placeholder="Opción C" required />
+                <input type="text" id="opcion4" name="opcion4" placeholder="Opción D" required />
 
                 <select id="respuestaCorrecta" name="respuestaCorrecta" required>
                     <option disabled selected>Selecciona la respuesta correcta</option>
@@ -66,47 +66,18 @@
                 <input type="hidden" id="tiempoSeleccionado" name="tiempoSeleccionado" />
 
                 <!-- Botones de selección de tiempo -->
-             
+                <div class="seccion-tiempo">
+                    <button type="button" id="btnAgregarTiempo">Agregar tiempo</button>
 
-
-<!-- Botón para mostrar/ocultar las opciones de tiempo -->
-<div class="seccion-tiempo">
-  <button type="button" id="btnAgregarTiempo">Agregar tiempo</button>
-
-  <!-- Opciones de tiempo ocultas por defecto -->
-  <div class="tiempo-selector" id="timeOptions" style="display: none;">
-    <button type="button" class="tiempo-btn" data-time="30">30s</button>
-    <button type="button" class="tiempo-btn" data-time="60">60s</button>
-    <button type="button" class="tiempo-btn" data-time="90">90s</button>
-  </div>
-
-  <!-- Campo oculto para enviar el valor del tiempo -->
-  <input type="hidden" id="tiempoSeleccionado" name="tiempoSeleccionado" />
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    <!-- Opciones de tiempo ocultas por defecto -->
+                    <div class="tiempo-selector" id="timeOptions" style="display: none;">
+                        <button type="button" class="tiempo-btn" data-time="30" id="tiempoBtn30">30s</button>
+                        <button type="button" class="tiempo-btn" data-time="60" id="tiempoBtn60">60s</button>
+                        <button type="button" class="tiempo-btn" data-time="90" id="tiempoBtn90">90s</button>
+                    </div>
+                </div>
 
                 <div class="buttons-group">
-
-
-
-
-                    
-
-
-
-
                     <button type="submit">Guardar</button>
                     <button type="button" onclick="window.location.href='professor.html'">Cancelar</button>
                 </div>
@@ -117,7 +88,7 @@
             <div class="upload-controls">
                 <h3>Sube una imagen para el rompecabezas</h3>
                 <div class="upload-instructions">
-                    <input type="file" id="uploadInput" accept="image/*" required />
+                    <input type="file" id="uploadInput" accept="image/*" required name="uploadInput" />
                     <p id="uploadMessage"></p>
                 </div>
 
@@ -187,7 +158,3 @@
     <script type="module" src="../js/puzzle.js"></script>
 </body>
 </html>
-
-
-
-
