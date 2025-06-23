@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../css/professor.css" />
 </head>
 <body>
-
     <header class="header">
         <nav class="nav">
             <h2 class="logo">INTERAQUIZ</h2>
@@ -26,20 +25,15 @@
 
     <main class="main-content">
         <div class="questions-container"></div>
-        <button class="add-question" onclick="window.location.href='./editor-preguntas.html'">Agregar Pregunta</button>
+        <button class="add-question" onclick="window.location.href='./editor-preguntas.html'">
+            Agregar Pregunta
+        </button>
     </main>
 
     <footer class="footer">
         &copy; 2025 Interaquiz
     </footer>
 
-    <script>
-        function mostrarFormulario() {
-            const form = document.getElementById('formularioPregunta');
-            form.style.display = form.style.display === 'none' ? 'block' : 'none';
-        }
-    </script>
     <script src="../js/professor.js"></script>
-
 </body>
 </html>

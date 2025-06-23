@@ -25,7 +25,6 @@
     <main class="main-content">
         <section class="puzzle-board">
             <div class="puzzle-layout">
-
                 <div class="size-selector">
                     <label for="puzzleSize">Tamaño del Puzzle:</label>
                     <select id="puzzleSize">
@@ -39,7 +38,6 @@
                 </div>
 
                 <div class="grid"></div>
-
                 <div class="basket"></div>
             </div>
         </section>
@@ -50,16 +48,13 @@
                 <input type="file" id="uploadInput" accept="image/*" />
                 <p id="uploadMessage"></p>
             </div>
-
             <div class="upload-preview" id="uploadPreviewBox">
                 <span id="uploadPlaceholder">Aquí se mostrará la imagen</span>
                 <img id="imagePreview" src="" alt="Vista previa" style="display:none;" />
             </div>
-
             <div id="puzzlePreviewContainer">
                 <h3>Vista previa del Puzzle</h3>
                 <div id="puzzlePreviewGrid"></div>
-
                 <div id="puzzlePreviewModes" style="display:none; margin-bottom: 12px;">
                     <label>
                         <input type="radio" name="puzzleMode" value="easy" checked />
@@ -74,7 +69,6 @@
                         Avanzado
                     </label>
                 </div>
-
                 <button id="confirmarPuzzleBtn" style="display:none;">Confirmar Puzzle</button>
             </div>
         </div>

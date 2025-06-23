@@ -62,14 +62,10 @@
                     <option value="Opción D">Opción D</option>
                 </select>
 
-                <!-- Campo oculto para guardar el tiempo seleccionado -->
                 <input type="hidden" id="tiempoSeleccionado" name="tiempoSeleccionado" />
 
-                <!-- Botones de selección de tiempo -->
                 <div class="seccion-tiempo">
                     <button type="button" id="btnAgregarTiempo">Agregar tiempo</button>
-
-                    <!-- Opciones de tiempo ocultas por defecto -->
                     <div class="tiempo-selector" id="timeOptions" style="display: none;">
                         <button type="button" class="tiempo-btn" data-time="30" id="tiempoBtn30">30s</button>
                         <button type="button" class="tiempo-btn" data-time="60" id="tiempoBtn60">60s</button>
@@ -88,16 +84,14 @@
             <div class="upload-controls">
                 <h3>Sube una imagen para el rompecabezas</h3>
                 <div class="upload-instructions">
-                    <input type="file" id="uploadInput" accept="image/*" required name="uploadInput" />
+                    <input type="file" id="uploadInput" accept="image/*" name="uploadInput" />
                     <p id="uploadMessage"></p>
                 </div>
-
                 <div class="puzzle-image">
                     <div class="upload-preview" id="uploadPreviewBox">
                         <span id="uploadPlaceholder">Aquí se mostrará la imagen</span>
                         <img id="imagePreview" src="" alt="Vista previa" style="display:none;" />
                     </div>
-
                     <div id="puzzlePreviewContainer">
                         <h3>Vista previa del Puzzle</h3>
                         <div id="puzzlePreviewGrid"></div>
@@ -105,31 +99,11 @@
                 </div>
             </div>
 
+            <!-- Puzzle interactivo: contenedores vacíos -->
             <section class="puzzle-board">
                 <div class="puzzle-layout">
-                    <div class="grid">
-                        <div class="cell" data-pos="1"></div>
-                        <div class="cell" data-pos="2"></div>
-                        <div class="cell" data-pos="3"></div>
-                        <div class="cell" data-pos="4"></div>
-                        <div class="cell" data-pos="5"></div>
-                        <div class="cell" data-pos="6"></div>
-                        <div class="cell" data-pos="7"></div>
-                        <div class="cell" data-pos="8"></div>
-                        <div class="cell" data-pos="9"></div>
-                    </div>
-
-                    <div class="basket">
-                        <div class="piece" draggable="true" data-piece="1">1</div>
-                        <div class="piece" draggable="true" data-piece="2">2</div>
-                        <div class="piece" draggable="true" data-piece="3">3</div>
-                        <div class="piece" draggable="true" data-piece="4">4</div>
-                        <div class="piece" draggable="true" data-piece="5">5</div>
-                        <div class="piece" draggable="true" data-piece="6">6</div>
-                        <div class="piece" draggable="true" data-piece="7">7</div>
-                        <div class="piece" draggable="true" data-piece="8">8</div>
-                        <div class="piece" draggable="true" data-piece="9">9</div>
-                    </div>
+                    <div class="grid"></div>
+                    <div class="basket"></div>
                 </div>
             </section>
 
@@ -152,8 +126,6 @@
     <footer class="footer">
         &copy; 2025 Interaquiz
     </footer>
-
-    <!-- SCRIPTS -->
     <script type="module" src="../js/editor-preguntas.js"></script>
     <script type="module" src="../js/puzzle.js"></script>
 </body>
