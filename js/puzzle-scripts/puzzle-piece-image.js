@@ -21,7 +21,7 @@ export function setPieceImage(pieces, slices, mode, backImage) {
         piece.dataset.back = backImage;
 
         if (mode === 'intermediate') {
-            piece.style.transform = "rotate(0deg)";
+            piece.style.setProperty('--rot', '0deg');
             if (flippedIndexes.includes(i)) {
                 piece.style.backgroundImage = `url(${backImage})`;
                 piece.dataset.flipped = "true";
@@ -49,6 +49,8 @@ export function setPieceImage(pieces, slices, mode, backImage) {
                 }
             };
 
+            piece.oncontextmenu = (e) => {}
+
         } else if (mode === 'advanced') {
             const rotation = [0, 90, 180, 270][Math.floor(Math.random() * 4)];
             piece.dataset.rotation = rotation;
@@ -66,13 +68,10 @@ export function setPieceImage(pieces, slices, mode, backImage) {
                 e.preventDefault();
                 piece.classList.add('flipping');
                 setTimeout(() => {
-                    let filpAngle;
                     if (piece.dataset.flipped === "true") {
-                        filpAngle = 180;
                         piece.style.backgroundImage = `url(${piece.dataset.front})`;
                         piece.dataset.flipped = "false";
                     } else {
-                        filpAngle = 0;
                         piece.style.backgroundImage = `url(${piece.dataset.back})`;
                         piece.dataset.flipped = "true";
                     }
@@ -88,27 +87,8 @@ export function setPieceImage(pieces, slices, mode, backImage) {
             piece.oncontextmenu = (e) => {
                 e.preventDefault();
                 piece.classList.add('rotating');
-                setTimeout(() => {
-                    let current = parseInt(piece.dataset.rotation);
-                    current = (current + 90);
-                    piece.dataset.rotation = current;
-                    piece.style.transform = `rotate(${current}deg)`;
-                    current = current % 360;
-
-                    piece.classList.remove('rotating');
-                }, 250);
-
-                if (piece.classList.contains('in-board')) {
-                    const cells = document.querySelectorAll('.cell');
-                    isPuzzleCorrect(cells);
-                }
-                return false;
-            };
-
-            piece.addEventListener('auxclick', function(e) {
-                if (e.button === 1) {
-                    e.preventDefault();
-                    piece.classList.add('rotating');
+                
+                if (e.shiftKey) {
                     setTimeout(() => {
                         let current = parseInt(piece.dataset.rotation);
                         current = (current - 90);
@@ -118,19 +98,32 @@ export function setPieceImage(pieces, slices, mode, backImage) {
                         current = Math.abs(current % 360);
                         piece.classList.remove('rotating');
                     }, 250);
+                } else {
+                    setTimeout(() => {
+                        let current = parseInt(piece.dataset.rotation);
+                        current = (current + 90);
+                        piece.dataset.rotation = current;
+                        piece.style.transform = `rotate(${current}deg)`;
+                        current = current % 360;
+
+                        piece.classList.remove('rotating');
+                    }, 250);
                 }
 
                 if (piece.classList.contains('in-board')) {
                     const cells = document.querySelectorAll('.cell');
                     isPuzzleCorrect(cells);
                 }
-            });
+                return false;
+            };
 
         } else {
             piece.style.backgroundImage = `url(${slices[i].toDataURL()})`;
             piece.dataset.flipped = "false";
             piece.onclick = null;
-            piece.style.transform = "rotate(0deg)";
+            piece.style.setProperty('--rot', '0deg');
+            piece.oncontextmenu = (e) => {
+            }
         }
 
         piece.style.backgroundSize = "cover";
