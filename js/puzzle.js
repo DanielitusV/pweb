@@ -1,5 +1,7 @@
-import { initPieces } from './puzzle-scripts/puzzle-init.js';
-import { enableDrag } from './puzzle-scripts/puzzle-drag.js';
+import { generarGrid } from './puzzle-scripts/puzzle-grid.js';
+import { generarPiezas } from './puzzle-scripts/puzzle-pieces.js';
+import { reinicializarPiezas } from './puzzle-scripts/puzzle-utils.js';
+import { modoDificultad } from './puzzle-scripts/puzzle-difficulty.js';
 import { resetPuzzle } from './puzzle-scripts/puzzle-reset.js';
 import { setupImageUpload } from './puzzle-scripts/puzzle-image.js';
 import { setPieceImage } from './puzzle-scripts/puzzle-piece-image.js';
@@ -8,66 +10,17 @@ const container = document.querySelector('.basket');
 const BACK_IMAGE = "../assets/icons/back-card.png";
 let slices = [];
 
-function generarGrid(size) {
-    const grid = document.querySelector(".grid");
-    grid.innerHTML = "";
-    grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-    grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
-
-    for (let i = 1; i <= size * size; i++) {
-        const cell = document.createElement("div");
-        cell.className = "cell";
-        cell.dataset.pos = i;
-        grid.appendChild(cell);
-    }
-}
-
-function generarPiezas(size) {
-    const basket = document.querySelector(".basket");
-    basket.innerHTML = "";
-
-    for (let i = 1; i <= size * size; i++) {
-        const piece = document.createElement("div");
-        piece.className = "piece";
-        piece.draggable = true;
-        piece.dataset.piece = i;
-        piece.textContent = i;
-        basket.appendChild(piece);
-    }
-}
-
-function reinicializarPiezas() {
-    const nuevasPiezas = document.querySelectorAll('.piece');
-    const celdas = document.querySelectorAll('.cell');
-    initPieces(nuevasPiezas, container);
-    enableDrag(nuevasPiezas, celdas, container);
-}
-
 const puzzleSizeSelector = document.getElementById("puzzleSize");
 const headerTitle = document.getElementById("headerTitle");
 
-function modoDificultad() {
-    let mode = 'easy';
-    const dificultadSelect = document.getElementById('puzzlePreviewModes');
-    const puzzleRadios = document.querySelector('input[name="puzzleMode"]:checked');
-    if (!puzzleRadios) {
-        mode = dificultadSelect.value === 'Novato' ? 'easy'
-            : dificultadSelect.value === 'Intermedio' ? 'intermediate'
-            : 'advanced';
-    } else {
-        mode = puzzleRadios.value;
-    }
-    return mode;
-}
-
 if (puzzleSizeSelector) {
-  puzzleSizeSelector.addEventListener("change", (e) => {
-    const size = parseInt(e.target.value);
-    headerTitle.textContent = `Rompecabezas ${size}x${size}`;
-    generarGrid(size);
-    generarPiezas(size);
-    reinicializarPiezas();
-  });
+    puzzleSizeSelector.addEventListener("change", (e) => {
+        const size = parseInt(e.target.value);
+        headerTitle.textContent = `Rompecabezas ${size}x${size}`;
+        generarGrid(size);
+        generarPiezas(size);
+        reinicializarPiezas();
+    });
 }
 
 document.getElementById("reset").addEventListener('click', () => {
@@ -90,15 +43,11 @@ window.addEventListener("DOMContentLoaded", () => {
         document.getElementById("loader").style.display = "none";
     }, 400);
 
-    if (typeof puzzleSizeSelector !== "undefined" && puzzleSizeSelector !== null) {
-        const size = parseInt(puzzleSizeSelector.value);
-        generarGrid(size);
-        generarPiezas(size);
-        reinicializarPiezas();
-    } else {
-        const defaultSize = 3;
-        generarGrid(defaultSize);
-        generarPiezas(defaultSize);
-        reinicializarPiezas();
+    let size = 3;
+    if (puzzleSizeSelector && puzzleSizeSelector.value) {
+        size = parseInt(puzzleSizeSelector.value);
     }
+    generarGrid(size);
+    generarPiezas(size);
+    reinicializarPiezas();
 });
