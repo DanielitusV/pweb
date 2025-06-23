@@ -30,7 +30,7 @@ body {
 .main-content {
     flex-grow: 1;
     padding: 30px 20px;
-    text-align: center; 
+    text-align: center;
 }
 
 h1 {
@@ -55,7 +55,7 @@ button {
 }
 
 .button-group {
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
@@ -65,16 +65,13 @@ button:hover {
     background-color: #2d4d8c;
 }
 
-/* Mobile First: centrado, botones adaptables */
 @media (min-width: 600px) {
     .main-content {
         padding: 50px;
-    }    
-
+    }
     h1 {
         font-size: 2rem;
     }
-
     button {
         font-size: 1.1rem;
     }

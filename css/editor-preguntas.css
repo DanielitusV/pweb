@@ -170,7 +170,6 @@ button[disabled] {
     width: 50%;
 }
 
-/* Tooltip y ayuda */
 .help-icon {
     position: relative;
     display: inline-flex;
@@ -179,9 +178,11 @@ button[disabled] {
     cursor: pointer;
     user-select: none;
 }
+
 .help-icon svg {
     display: block;
 }
+
 .tooltip {
     display: none;
     position: absolute;
@@ -198,15 +199,16 @@ button[disabled] {
     z-index: 100;
     pointer-events: none;
 }
+
 .help-icon:focus .tooltip,
 .help-icon:hover .tooltip {
     display: block;
 }
+
 .help-icon[hidden] {
     display: none !important;
 }
 
-/* Quill estilos */
 #descripcion-container {
     background-color: white;
     border: 1px solid #ccc;
@@ -214,14 +216,17 @@ button[disabled] {
     overflow: hidden;
     width: 100%;
 }
+
 #descripcion-toolbar {
     border-bottom: 1px solid #ddd;
     background-color: #f7f7f7;
 }
+
 #descripcion {
     min-height: 150px;
     padding: 10px;
 }
+
 .ql-toolbar {
     border-bottom: 1px solid #ddd !important;
     background-color: #f7f7f7 !important;
@@ -229,6 +234,7 @@ button[disabled] {
     gap: 4px !important;
     justify-content: flex-start !important;
 }
+
 .ql-toolbar button, .ql-toolbar .ql-picker {
     display: inline-block !important;
     width: auto !important;
@@ -236,24 +242,29 @@ button[disabled] {
     padding: 5px !important;
     vertical-align: middle !important;
 }
+
 .ql-toolbar button svg, .ql-toolbar .ql-picker svg {
     width: 20px !important;
     height: 20px !important;
 }
+
 .ql-toolbar .ql-picker-label {
     padding: 0px 20px !important;
     font-size: 0.8rem !important;
 }
+
 .ql-editor.ql-blank::before {
     pointer-events: none !important;
     user-select: none !important;
     left: 27px !important;
 }
+
 .ql-editor h1, .ql-editor h2, .ql-editor h3 {
     text-align: left !important;
     margin: 0 !important;
     padding: 0 !important;
 }
+
 .ql-container {
     font-size: 1rem !important;
     padding: 10px !important;
@@ -262,13 +273,11 @@ button[disabled] {
     min-height: 150px !important;
 }
 
-/* ==== TIEMPO Y BOTONES DE TIEMPO ==== */
 .seccion-tiempo {
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
 }
-
 #btnAgregarTiempo {
     padding: 0.5rem 1rem;
     background-color: #4ca1a3;
@@ -280,6 +289,7 @@ button[disabled] {
     font-size: 16px;
     transition: background-color 0.3s;
 }
+
 #btnAgregarTiempo:hover {
     background-color: #3a8788;
 }
@@ -304,11 +314,13 @@ button[disabled] {
     box-shadow: 0 4px 8px rgba(0,0,0,0.07);
     transition: background-color 0.2s, color 0.2s, transform 0.2s;
 }
+
 .tiempo-btn:hover {
     background-color: #e0f7fa;
     color: #2a6f75;
     transform: scale(1.05);
 }
+
 .tiempo-btn.selected,
 .tiempo-btn.active {
     background-color: #4ca1a3;
@@ -318,7 +330,6 @@ button[disabled] {
     box-shadow: 0 4px 12px rgba(0,0,0,0.14);
 }
 
-/* Responsive */
 @media (max-width: 600px) {
     .main-content {
         margin: 1rem;

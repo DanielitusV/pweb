@@ -14,10 +14,10 @@
 }
 
 .upload-preview {
-    min-width: 200px;
-    min-height: 200px;
     width: 220px;
     height: 220px;
+    min-width: 200px;
+    min-height: 200px;
     background: #e8eaf6;
     border: 2px dashed #34599e;
     border-radius: 10px;
@@ -44,7 +44,7 @@
     position: absolute;
     width: 100%;
     left: 0;
-    top: 45%;
+    top: 50%;
     transform: translateY(-50%);
     color: #789;
     opacity: 0.8;

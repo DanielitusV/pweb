@@ -22,10 +22,27 @@ body {
     flex-shrink: 0;
 }
 
+.header {
+    height: 60px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 50px;
+    z-index: 900;
+}
+
+.header-title {
+    font-size: 22px;
+    color: rgb(233, 224, 224);
+}
+
 .main-content {
     flex-grow: 1;
     padding: 30px 20px;
     text-align: center;
+    margin-left: 0;
+    transition: margin-left 0.3s;
 }
 
 h1 {
@@ -51,7 +68,7 @@ p {
     font-size: 1.2rem;
 }
 
-.info-box u1 {
+.info-box ul {
     list-style: disc inside;
     padding: 0;
     margin: 0;
@@ -72,61 +89,12 @@ button:hover {
     background-color: #2d4d8c;
 }
 
-/* Estilo Responsivo */
-
-@media (min-width: 600px) {
-    .main-content {
-        padding: 50px;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    .info-box {
-        width: 60%;
-        margin: 30px auto 0 auto;
-    }
-} 
-
-
-
-
-
-
-
-
-
-
-/*SE AGREGO ESTO MAS EN LA VISTA DE ADMINISTRADOR PARA LA BARRA DE MENUS*/
-
-
-        /* Color de fondo del header */
-    .header {
-    height: 60px;
-    background-color: #34599e;;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: 50px; /* evita que el botón ☰ se cruce */
-    z-index: 900;
-}
-
-
-
-.header-title {
-    font-size: 22px;
-    color: rgb(233, 224, 224);
-}
-
-        /* Botón de menú */
-   .open-btn {
+/* Sidebar y menú */
+.open-btn {
     position: fixed;
     top: -17px;
- /* más arriba */
     left: 10px;
-    background-color: #34599e;; /* azul oscuro */
+    background-color: var(--azul);
     color: white;
     border: none;
     padding: 8px 14px;
@@ -137,57 +105,61 @@ button:hover {
     transition: 0.3s;
 }
 
+.open-btn:hover {
+    background-color: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.9);
+}
 
-        .open-btn:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* Menú lateral */
-    .sidebar {
+.sidebar {
     height: 100%;
     width: 250px;
     position: fixed;
     top: 0;
     left: -250px;
-    background-color:  #34599e; /* azul oscuro igual que el header */
+    background-color: var(--azul);
     overflow-x: hidden;
     transition: 0.3s;
-    padding-top: 60px; /* espacio debajo del header */
+    padding-top: 60px;
     z-index: 1000;
 }
 
+.sidebar a {
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.2s;
+}
 
-        .sidebar a {
-            padding: 10px 20px;
-            text-decoration: none;
-            font-size: 18px;
-            color: white;
-            display: block;
-            transition: 0.2s;
-        }
+.sidebar a:hover {
+    background-color: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.8);
+}
 
-        .sidebar a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.8);
-        }
+.sidebar.open {
+    left: 0;
+}
 
-        .main-content {
-            margin-left: 0;
-            transition: margin-left 0.3s;
-        }
+.main-content.shifted {
+    margin-left: 250px;
+}
 
-        .sidebar.open {
-            left: 0;
-        }
+@media (min-width: 600px) {
+    .main-content {
+        padding: 50px;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .info-box {
+        width: 60%;
+        margin: 30px auto 0 auto;
+    }
+}
 
-        .main-content.shifted {
-            margin-left: 250px;
-        }
-
-        @media screen and (max-width: 768px) {
-            .main-content.shifted {
-                margin-left: 0;
-            }
-        }
-    
+@media screen and (max-width: 768px) {
+    .main-content.shifted {
+        margin-left: 0;
+    }
+}

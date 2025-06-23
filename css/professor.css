@@ -4,7 +4,7 @@
     --verde-agua-oscuro: #2a6f75;
     --verde-agua-claro: #4ca1a3;
     --gris-fondo: #f0f7f7;
-    --blanco: #ffffff;
+    --blanco: #fff;
 }
 
 * {
@@ -54,7 +54,7 @@ body {
     color: var(--blanco);
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s ease;
+    transition: color 0.3s;
 }
 
 .nav-links a:hover {
@@ -63,8 +63,7 @@ body {
 
 .title-questions {
     max-width: 1100px;
-    margin: 1rem auto 0 auto;
-    margin-top: 2rem;
+    margin: 2rem auto 0 auto;
     padding: 0 1rem;
     text-align: left;
     font-weight: bold;
@@ -80,7 +79,7 @@ button {
     border-radius: 6px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
 button:hover {
@@ -90,19 +89,18 @@ button:hover {
 .questions-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2em 2em;
+    gap: 2em;
     justify-content: center;
     align-items: start;
     max-width: 1140px;
     width: 100%;
     margin: 2.5em auto 2em auto;
-    padding: 0 0;
     box-sizing: border-box;
 }
 
 .questions-card {
     background-color: #2e7d8a;
-    color: white;
+    color: #fff;
     padding: 1.3em 1.2em 1em 1.2em;
     border-radius: 12px;
     margin-bottom: 1rem;
@@ -133,7 +131,7 @@ button:hover {
 
 .buttons-row button {
     background-color: #38b2ac;
-    color: white;
+    color: #fff;
     border: none;
     margin: 0 6px;
     padding: 0.5rem 1.2rem;
@@ -162,10 +160,9 @@ button:hover {
 
 .add-question {
     display: block;
-    margin: 0 auto;
-    margin-bottom: 1.5rem;
+    margin: 0 auto 1.5rem auto;
     background-color: #4fb6be;
-    color: white;
+    color: #fff;
     border: none;
     padding: 0.7rem 1.4rem;
     font-size: 1rem;
@@ -196,6 +193,7 @@ button:hover {
     min-height: 50px;
     width: 100%;
 }
+
 .no-preguntas {
     text-align: center;
 }
