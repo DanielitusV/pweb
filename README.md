@@ -40,11 +40,12 @@ Antes de instalas dependencias como **Flask** o **requests**, asegurarse de que 
 - Luego, también se necesita instalar Flask (como complemento de Python) para manejar peticiones en el servidor como un backend básico
 
 ```bash
-    pip install flask requests
+    pip install flask requests bycrypt mongopy dotenv
 ```
 - Para acceder a la configuración básica de backend del servidor, revisar el archivo `server.py`.
+- Revisar si falta instalar alguna dependencia adicional desde consola que no ha sigo marcado en el readme.
 
-Luego de tener el instalado flask y el archivo del servidor configurados correctamente, ejecutamos el siguiente comando para arrancar el servidor local en Python.
+Luego de tener el instalado las dependencias de python y el archivo del servidor configurados correctamente, ejecutamos el siguiente comando para arrancar el servidor local en Python.
 
 ```bash
     python server.py

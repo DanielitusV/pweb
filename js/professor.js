@@ -2,6 +2,20 @@ const apiBaseUrl = window.location.hostname === "localhost"
     ? "http://localhost:5000"
     : "https://constantly-top-goshawk.ngrok-free.app";
 
+document.addEventListener('DOMContentLoaded', () => {
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    const divNombre = document.getElementById('nombreProfesor');
+
+    if (usuario && usuario.nombre) {
+        divNombre.textContent = `👤 ${usuario.nombre}`;
+    } else {
+        divNombre.textContent = '👤 Invitado';
+    }
+
+    localStorage.removeItem('pregunta_editar');
+    localStorage.removeItem('pregunta_ver');
+});
+
 document.addEventListener('DOMContentLoaded', async() => {
     const contenedor = document.querySelector('.questions-container');
     const usuario = JSON.parse(localStorage.getItem('usuario'));
@@ -21,11 +35,12 @@ document.addEventListener('DOMContentLoaded', async() => {
         const preguntas = await res.json();
 
         if (!Array.isArray(preguntas) || preguntas.length === 0) {
+            contenedor.classList.add('no-preguntas-center');
             const sinPreguntas = document.createElement('div');
             sinPreguntas.className = 'no-preguntas';
             sinPreguntas.innerHTML = `
                 <h2 style="margin-bottom:0.5rem;">No hay preguntas disponibles</h2>
-                <p style="margin-bottom:1rem;">Actualmente no tienes preguntas creadas.</p>
+                <p>Actualmente no tienes preguntas creadas.</p>
             `;
             contenedor.appendChild(sinPreguntas);
             return;

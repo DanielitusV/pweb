@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Editar Pregunta - Interaquiz</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.min.js"></script>
+
     <link rel="stylesheet" href="../css/editor-preguntas.css" />
     <link rel="stylesheet" href="../css/upload-image.css" />
     <link rel="stylesheet" href="../css/puzzle.css" />
@@ -33,7 +37,12 @@
             <form id="preguntaForm">
                 
                 <input id="titulo" name="titulo" type="text" placeholder="Título de la Pregunta" required />
-                <textarea id="descripcion" name="descripcion" placeholder="Descripción de la Pregunta" required></textarea>
+                
+                <div id="descripcion-container">
+                    <div id="descripcion-toolbar"></div>
+                    <div id="descripcion"></div>
+                </div>
+
                 <select required id="puzzlePreviewModes" name="dificultad" required>
                     <option disabled selected>Selecciona la dificultad</option>
                     <option value="Novato">Novato</option>
