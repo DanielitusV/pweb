@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="../css/ver-preguntas.css" />
   <link rel="stylesheet" href="../css/puzzle.css" />
 </head>
+
 <body>
   <header class="header">
     <nav class="nav">
@@ -24,26 +26,28 @@
       ← Volver al panel del profesor
     </button>
 
-<div class="puzzle-flex">
-  <div id="puzzle-container" class="question-puzzle">
-    <div style="width:96px; height:96px; background:#aaf;">Pieza</div>
-  </div>
-  <div id="basket-container" class="basket">
-    <div style="width:96px; height:96px; background:#faa;">Canasta</div>
-  </div>
-</div>
+    <div class="question-top">
+      <!-- Imagen de la pregunta (si existe) -->
+      <img id="imagePreview" class="question-image" src="" alt="Imagen de la pregunta" style="display: none;" />
 
+      <!-- Contenedor de rompecabezas y piezas -->
+      <div class="puzzle-flex">
+        <div id="puzzle-container" class="question-puzzle">
+          <div style="width:96px; height:96px; background:#aaf;">Pieza</div>
+        </div>
+        <div id="basket-container" class="basket">
+          <div style="width:96px; height:96px; background:#faa;">Canasta</div>
+        </div>
+      </div>
+    </div>
 
-    <div class="question-text">
+    <div class="question-details">
       <div class="question-title" id="tituloPregunta">Título de la Pregunta</div>
       <div class="question-description" id="descripcionPregunta">Descripción de la Pregunta</div>
       <div class="question-difficulty" id="dificultadPregunta">Dificultad</div>
+      <div class="question-options" id="opcionesContainer"></div>
+      <div class="question-msg" id="respuestaMsg"></div>
     </div>
-
-    <img id="imagePreview" class="question-image" src="" alt="Imagen de la pregunta" style="display: none;" />
-
-    <div class="question-options" id="opcionesContainer"></div>
-    <div class="question-msg" id="respuestaMsg"></div>
   </main>
 
   <footer class="footer">
@@ -54,4 +58,5 @@
 
   <script type="module" src="../js/ver-preguntas.js"></script>
 </body>
+
 </html>
