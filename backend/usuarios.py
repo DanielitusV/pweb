@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from backend.db import db
 from bson import ObjectId
 import bcrypt
-
+# ES COMO SI TUVIERAN SUS RUTAS Y SUS CONTROLADORES 
 usuarios_bp = Blueprint('usuarios_bp', __name__)
 usuarios_col = db['usuarios']
 
