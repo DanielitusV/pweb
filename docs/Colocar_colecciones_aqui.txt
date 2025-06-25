@@ -1,0 +1,5 @@
+En esta carpeta se deben colocar las colecciones base:
+    "InteraquizDB.usuarios.json"
+    "InteraquizDB.preguntas.json"
+
+De este modo, se podrá utilizar el script en "import-mongo-db.py"
