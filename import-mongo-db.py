@@ -13,7 +13,7 @@ client = MongoClient(MONGO_URI)
 db = client.get_database()
 
 colecciones = {
-    "usuarios" : "docs/InteraquizDB.preguntas.json",
+    "usuarios" : "docs/InteraquizDB.usuarios.json",
     "preguntas" : "docs/InteraquizDB.preguntas.json"
 }
 

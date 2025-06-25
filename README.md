@@ -59,7 +59,7 @@ Las siguientes cuentas fueron pobladas con preguntas para el usuario y pueden se
 **Usuario**: Daniel **Contraseña**: danielitus
 
 
-**Usuario**: Bruno **Contraseña**: qwerty123
+**Usuario**: Bruno **Contraseña**: Qwerty123
 
 
 **Usuario**: Sebastian **Contraseña**: qwerty123
