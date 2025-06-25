@@ -176,7 +176,7 @@ python server.py
         ```
         Y debe contener solo está línea
         ```bash
-        window.API_BASE_URL = "https://<colocar-link-ngrok-aqui>";
+        window.API_BASE_URL = "https://<colocar-link-ngrok-aqui>.ngrok-free.app";
         ```
 
         Luego este archivo debe se señalado en un .gitignore para evitar subir la credencial por error:
