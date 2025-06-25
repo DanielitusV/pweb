@@ -10,8 +10,7 @@ if not MONGO_URI:
     raise ValueError("ERROR: No se encontró la variable MONGO_URI en el archivo .env")
 
 client = MongoClient(MONGO_URI)
-db_name = MONGO_URI.split('/')[-1].split('?')[0]
-db = client[db_name]
+db = client.get_database()
 
 colecciones = {
     "usuarios" : "docs/InteraquizDB.preguntas.json",
@@ -29,6 +28,10 @@ for coleccion, archivo in colecciones.items():
 
         if not isinstance(datos, list):
             datos = [datos]
+
+        for d in datos:
+            if '_id' in d:
+                del d['_id']
 
     db[coleccion].delete_many({})
 
