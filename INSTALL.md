@@ -170,16 +170,19 @@ python server.py
     5. ##### Modificar archivo /js/app.js
         Para finalizar es necesario crear un archivo que no se subirá al repositorio que contiene el link de ngrok, de modo que las llamadas al backend se hagan a través de ese link, caso contrario la aplicación fallará si se utiliza con la dirección ip pública.
 
-        El archivo debe ubicarse en `/js` y contener solo la siguiente línea:
+        El archivo debe ubicarse en `/js`:
         ```bash
-        nano js/init.js
+        nano js/init-ngrok.js
+        ```
+        Y debe contener solo está línea
+        ```bash
         window.API_BASE_URL = "https://<colocar-link-ngrok-aqui>";
         ```
-        Luego este archivo debe se señalado en un .gitignore para evitar subir la credencial por error:
 
+        Luego este archivo debe se señalado en un .gitignore para evitar subir la credencial por error:
         ```bash
         # En .gitignore
-        /js/init
+        /js/init-ngrok.js
         ```
 
         Se debe colocar el link de ngrok generado en el espacio marcado sin los caracteres '<' y '>'.
