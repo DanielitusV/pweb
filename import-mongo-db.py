@@ -10,7 +10,7 @@ if not MONGO_URI:
     raise ValueError("ERROR: No se encontró la variable MONGO_URI en el archivo .env")
 
 client = MongoClient(MONGO_URI)
-db_name = MONGO_URI.splirt('/')[-1].split('?')[0]
+db_name = MONGO_URI.split('/')[-1].split('?')[0]
 db = client[db_name]
 
 colecciones = {
