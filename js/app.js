@@ -1,5 +1,3 @@
-window.API_BASE_URL = "https://<colocar-link-ngrok-aqui>";
-
 document.addEventListener("DOMContentLoaded", () => {
     console.log("INTERAQUIZ cargado");
 

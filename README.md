@@ -1,105 +1,53 @@
 # INTERAQUIZ - Editor de Preguntas Interactivas
 
-## Versión 1.01
+## Versión 1.1
 
 ## Descripción
-Aplicación web responsiva que permite a profesores crear proyectos de preguntas interactivas. Por el momento, se enfoca en un solo tipo de pregunta: rompecabezas a partir de una imagen.
+**Interaquiz** es una aplicación web interactiva que permite a docentes crear, editar y gestionar preguntas tipo rompecabezas a partir de imágenes. El objetivo es facilitar el aprendizaje lúdico y visual en entornos educativos, haciendo que el proceso de responder preguntas sea más atractivo para estudiantes.
 
-El deployado del proyecto está pensado para ejecutar en Windows 11, las siguientes indicaciones están planteado para ser ejecutadas en dicho sistema operativo. 
+- Sistema orientado a la gamificación y actividades dinámicas.
+- Cada pregunta integra un rompecabezas visual que el usuario debe armar para responder.
+- Pensado para profesores de nivel escolar y preuniversitario.
 
-La aplicación luego será accesible desde cualquier dispositivo a través de la URL generada por Ngrok.
+## Características principales
+- Editor visual de preguntas y respuestas con imágenes.
+- Soporte para puzzles y validación de respuestas.
+- Acceso multiusuario (profesor, administrador).
+- Backend en Python (Flask) y frontend HTML, CSS y JS vanilla.
+- Almacenamiento de datos en MongoDB Atlas (cloud).
+- Exposición del sitio web a internet mediante Ngrok.
 
-### Tecnologías usadas:
-- Windows 11
-- HTML
-- CSS
-- JavaScript
-- Python (Para levantar servidor local)
-- Flask (Para ejecutar server.py)
-- Ngrok (para exponer el sitio a internet)
-- MongoDB Atlas (persistencia futura)
+## Capturas de Pantalla
 
-## Instrucciones para ejecutar el proyecto
+<p align="center">
+  <img src="assets/images/demo1.png" alt="Ejemplo de pregunta" width="400"/>
+  <img src="assets/images/demo2.png" alt="Interfaz de profesor" width="400"/>
+</p>
 
-### 1. Clonar el repositorio
-```bash
-git clone https://github.com/DanielitusV/pweb.git
-cd pweb
-```
+## Documentación y Manual de Instalación
 
-### 2. Levantar el servidor local
-Es necesario tener **Python instalado** 
+Para ver el **manual de instalación completo y detallado** revisa el archivo [INSTALL.md](./INSTALL.md).
 
-### Importante sobre el PATH:
-Antes de instalas dependencias como **Flask** o **requests**, asegurarse de que la instalación de **Python** y **pip** estén correctamente añadidas al **PATH** del sistema. Si no está bien configurado, los comandos posteriores pueden fallar o instalarse en ubicaciones incorrectas
+## Estructura del Proyecto
 
-**Recomendaciones**:
-- Verificar que al ejecutar `python --version` y `pip --version` en la terminal, ambos funcionen correctamente.
-- Si muestra advertencias de que `pip` o `python` no se encuentran, revisa tu configuración de PATH o usa un entorno virtual.
-
-- Luego, también se necesita instalar Flask (como complemento de Python) para manejar peticiones en el servidor como un backend básico
-
-```bash
-    pip install flask requests bycrypt mongopy dotenv
-```
-- Para acceder a la configuración básica de backend del servidor, revisar el archivo `server.py`.
-- Revisar si falta instalar alguna dependencia adicional desde consola que no ha sigo marcado en el readme.
-
-Luego de tener el instalado las dependencias de python y el archivo del servidor configurados correctamente, ejecutamos el siguiente comando para arrancar el servidor local en Python.
-
-```bash
-    python server.py
-```
-
-Cabe resaltar, que es necesario que esta terminal se mantenga activa para tener el servidor abierto, los siguientes pasos deben realizarse en otra terminal desde la raíz del repositorio
-
-### 3. Instalar y Configurar Ngrok
-
-Para empezar se necesita instalar `ngrok` via Chocolatey con el siguiente comando (en terminal con permisos de administrador)
-
-```bash
-choco install ngrok
-```
-
-Ejecutar el siguiente comando para añadir el auto-token al archivo de configuración `ngrok.yml`. Las credenciales son generadas en base a una cuenta ya creada en `ngrok`.
-
-```bash
-    ngrok config add-authtoken 2wWYQoouQl7qMlsqFtX3qjtfFY7_2Qriqga9QZV5m2xm9zToJ
-```
-
-
-En otra terminal, desde la raiz del archivo, ejecutar:
-
-```bash
-    ngrok http --url=constantly-top-goshawk.ngrok-free.app 5000
-```
-
-Cuando ambas terminales estén ejecutandose (el de Python y el de Ngrok), será posible acceder a la aplicación desde:
-
-http://constantly-top-goshawk.ngrok-free.app
-
-## 3. Estructura del Proyecto
-
-```Proyecto
-
-/PWEB/
+```text
+/pweb/
 ├── assets/
-│ ├── icons/
-│ └── images/
+│   ├── icons/
+│   └── images/
 ├── css/
-│ └── main.css
+│   └── ver-preguntas.css
 ├── docs/
 ├── js/
-│ ├── app.js
-│ ├── rompecabezas.js
-│ └── ui.js
+│   ├── app.js
+│   ├── ver-preguntas.js
+│   └── ...
 ├── views/
-│ ├── home.html
-│ ├── editor.html
-│ ├── admin.html
-│ └── config.html
-├── index.html
-├── install.txt
+│   ├── ver-preguntas.html
+│   ├── editor-preguntas.html
+│   └── ...
+├── server.py
+├── requirements.txt
+├── .env.example
+├── INSTALL.md
 └── README.md
-
-```
