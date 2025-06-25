@@ -167,6 +167,23 @@ python server.py
         ### Nota:
         Saldrá una advertencia de seguridad (por ser la versión gratuita). Haz clic en "Visit Site" para continuar.
 
+    5. ##### Modificar archivo /js/app.js
+        Para finalizar es necesario colocar el link de ngrok en el archivo app.js, de modo que las llamadas al backend se hagan a través de ese link, caso contrario la aplicación fallará si se utiliza con la dirección ip pública.
+
+        El archivo original contiene la siguiente línea:
+        ```bash
+        window.API_BASE_URL = "https://<colocar-link-ngrok-aqui>";
+        ```
+        Se debe hacer el cambio con el siguiente comando desde una terminal que está trabajando en la raíz del proyecto:
+
+        ```bash
+        nano js/app.js
+        ```
+
+        En la primera línea se debe colocar el link de ngrok generado en el espacio marcado sin los caracteres '<' y '>'.
+
+Finalmente, con este último paso se podrá ingresar a la aplicación a través de internet.
+
 &nbsp;
 
 # Recomendaciones
