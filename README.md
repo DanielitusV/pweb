@@ -51,3 +51,15 @@ Para ver el **manual de instalación completo y detallado** revisa el archivo [I
 ├── .env.example
 ├── INSTALL.md
 └── README.md
+```
+
+# Cuentas de Prueba
+Las siguientes cuentas fueron pobladas con preguntas para el usuario y pueden ser probadas en caso de que no se quiera trabajar con cuentas nuevas:
+
+**Usuario**: Daniel **Contraseña**: danielitus
+
+
+**Usuario**: Bruno **Contraseña**: qwerty123
+
+
+**Usuario**: Sebastian **Contraseña**: qwerty123
