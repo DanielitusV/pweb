@@ -119,3 +119,58 @@ python server.py
 - El servidor quedará accesible en [`http://localhost:5000`](http://localhost:5000)
 
 8. #### (Opcional) Exponer el servidor con Ngrok
+
+    1. #### Crear Cuenta y Obtener token
+        - Registrarse en [Ngrok](https://dashboard.ngrok.com/signup)
+        - Seguir el *onboarding* y obtener el **authtoken**
+
+    2. #### Instalar Ngrok
+        - **Linux**:
+        ```bash
+        curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null
+        echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list
+        sudo apt update
+        sudo apt install ngrok
+        ```
+        - **Mac**:
+        ```bash
+        brow install ngrok
+        ```
+        - **Windows**:
+        ```bash
+        choco install ngrok
+        ```
+
+    3. #### Configurar token de Ngrok
+        Utilizar el siguiente comando para modificar el archivo de configuración por defecto de Ngrok:
+        ```bash
+        ngrok config add-autoken <token-generado-por-ngrok>
+        ```
+
+    4. ##### Exponer el puerto del servidor
+        - (Recomendable) En la misma página donde se consigue el token de ngrok, seleccionar la opción de **Dominio estático** y *reclamar* dicho dominio
+        - Se creará un link similar al del ejemplo
+        ```bash
+        ngrok http --url=<url-generado-por-ngrok>.ngrok-free.app <puerto>
+        ```
+        Donde **puerto** debe ser `5000` (ya que ahí se encuentra levantado server.py) 
+        - Abrir una segunda terminal en la misma carpeta y con el venv activo, ejecutar:
+        ```bash
+        ngrok http --url=<url-de-ngrok> 5000 
+        ```
+        En la consola se mostrará la IP pública con la cual se puede ingresar a través de internet (no solo red local).
+        - Ejemplo en consola:
+        ```bash
+        Forwarding : https://<url-ngrok>.ngrok-free.app
+        ```
+
+        ### Nota:
+        Saldrá una advertencia de seguridad (por ser la versión gratuita). Haz clic en "Visit Site" para continuar.
+
+&nbsp;
+
+# Recomendaciones
+- No subir el archivo `.env` al repositorio
+- Es recomendable usar un nombre de base de datos y colecciones reconocible.
+- Los comandos como `sudo apt install git`, `sudo apt install curl` y similares solo se requieren si el sistema no los tiene.
+- Para levantar el servidor y ngrok al mismo tiempo, se debe usar dos terminales simultáneamente (con el venv activo): una para `python server.py` y otra para `ngrok http`.
