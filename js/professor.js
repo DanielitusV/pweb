@@ -1,6 +1,6 @@
 const apiBaseUrl = window.location.hostname === "localhost"
     ? "http://localhost:5000"
-    : "https://constantly-top-goshawk.ngrok-free.app";
+    :  window.API_BASE_URL;
 
 document.addEventListener('DOMContentLoaded', () => {
     const usuario = JSON.parse(localStorage.getItem('usuario'));

@@ -1,3 +1,5 @@
+window.API_BASE_URL = "https://constantly-top-goshawk.ngrok-free.app";
+
 document.addEventListener("DOMContentLoaded", () => {
     console.log("INTERAQUIZ cargado");
 

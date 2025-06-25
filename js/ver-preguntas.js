@@ -1,6 +1,7 @@
 const apiBaseUrl = window.location.hostname === "localhost"
     ? "http://localhost:5000"
-    : "https://constantly-top-goshawk.ngrok-free.app";
+    : window.API_BASE_URL;
+
 const BACK_IMAGE = "../assets/icons/back-card.png";
 document.addEventListener("DOMContentLoaded", async () => {
     // Mostrar nombre de usuario si existe el elemento
@@ -52,7 +53,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
-// --- Utilidades ---
 function capitalize(str) {
     if (!str) return '';
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -66,13 +66,11 @@ function blobToBase64(blob) {
     });
 }
 
-// --- Render opciones de respuesta ---
 function renderOptions(opciones, respuestaCorrecta) {
     const letras = ['A', 'B', 'C', 'D'];
     const opcionesContainer = document.getElementById("opcionesContainer");
     opcionesContainer.innerHTML = '';
     
-    // Normalizar la respuesta correcta (eliminar "OPCIÓN " si existe)
     const respuestaNormalizada = (respuestaCorrecta || '').toString()
         .replace('OPCIÓN ', '')
         .replace('Opción ', '')
@@ -90,7 +88,6 @@ function renderOptions(opciones, respuestaCorrecta) {
             const respuestaMsg = document.getElementById("respuestaMsg");
             const letraSeleccionada = letras[idx];
             
-            // Comparación directa con la letra (A, B, C, D)
             if (letraSeleccionada === respuestaNormalizada) {
                 respuestaMsg.innerHTML = `✅ <b>¡Correcto!</b> La respuesta correcta es ${letraSeleccionada}`;
                 respuestaMsg.style.color = "green";
@@ -105,44 +102,6 @@ function renderOptions(opciones, respuestaCorrecta) {
         opcionesContainer.appendChild(btn);
     });
 }
-
-// --- Puzzle: imagen a base64 y renderiza (con fallback) ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function cargarImagenParaPuzzle(imgPath, id, renderCallback) {
     if (imgPath && !imgPath.startsWith('data:')) {
@@ -162,7 +121,6 @@ function cargarImagenParaPuzzle(imgPath, id, renderCallback) {
     }
 }
 
-// --- Renderizar sólo puzzle estático (NO cesta) ---
 function renderPuzzleSolo(imgSrc) {
     const container = document.getElementById('puzzle-container');
     container.innerHTML = '';
@@ -192,7 +150,6 @@ function renderPuzzleSolo(imgSrc) {
     img.src = imgSrc;
 }
 
-// --- Renderizar puzzle + cesta de piezas (basket) con dificultad ---
 function renderPuzzleAndBasket(imgSrc, dificultad = 'novato') {
      const puzzleContainer = document.getElementById('puzzle-container');
     const basketContainer = document.getElementById('basket-container');
@@ -210,7 +167,6 @@ function renderPuzzleAndBasket(imgSrc, dificultad = 'novato') {
         const rows = 3, cols = 3, pieceSize = 95;
         const pieces = [];
 
-        // Cortar piezas
         for (let y = 0; y < rows; y++) {
             for (let x = 0; x < cols; x++) {
                 const canvas = document.createElement('canvas');
@@ -231,7 +187,6 @@ function renderPuzzleAndBasket(imgSrc, dificultad = 'novato') {
             }
         }
 
-        // Configurar puzzle
         puzzleContainer.style.display = "grid";
         puzzleContainer.style.gridTemplateColumns = `repeat(${cols}, ${pieceSize}px)`;
         puzzleContainer.style.gridTemplateRows = `repeat(${rows}, ${pieceSize}px)`;
@@ -239,7 +194,6 @@ function renderPuzzleAndBasket(imgSrc, dificultad = 'novato') {
         puzzleContainer.style.border = "2px solid #ccc";
         puzzleContainer.style.padding = "5px";
 
-        // Crear celdas del puzzle
         for (let i = 0; i < rows * cols; i++) {
             const cell = document.createElement('div');
             cell.className = 'cell';
@@ -253,7 +207,6 @@ function renderPuzzleAndBasket(imgSrc, dificultad = 'novato') {
             cell.style.alignItems = "center";
             cell.style.backgroundColor = "#fafafa";
 
-            // Drag and drop sobre el puzzle
             cell.addEventListener('dragover', e => {
                 e.preventDefault();
                 cell.style.backgroundColor = '#d0f0ff';
@@ -270,12 +223,10 @@ function renderPuzzleAndBasket(imgSrc, dificultad = 'novato') {
                 const draggedPiece = document.querySelector(`img[data-id='${pieceId}']`);
                 if (!draggedPiece) return;
 
-                // Si la celda ya tiene pieza, devolverla a la cesta
                 if (cell.children.length > 0) {
                     const existingPiece = cell.firstChild;
                     basketContainer.appendChild(existingPiece);
 
-                    // La pieza que regresa a la cesta vuelve a posición absoluta con coords originales
                     existingPiece.style.position = "absolute";
                     existingPiece.style.left = existingPiece.dataset.originalX + "px";
                     existingPiece.style.top = existingPiece.dataset.originalY + "px";
@@ -283,7 +234,6 @@ function renderPuzzleAndBasket(imgSrc, dificultad = 'novato') {
                     existingPiece.style.cursor = "grab";
                 }
 
-                // Colocar pieza en celda, posición estática para que quede fija
                 cell.appendChild(draggedPiece);
                 draggedPiece.style.position = "static";
                 draggedPiece.style.left = "";
@@ -296,16 +246,14 @@ function renderPuzzleAndBasket(imgSrc, dificultad = 'novato') {
             puzzleContainer.appendChild(cell);
         }
 
-        // Configurar cesta
-        basketContainer.style.position = "relative";  // para posicionar absolutamente las piezas dentro
-        basketContainer.style.height = `${rows * (pieceSize + 10)}px`; // altura suficiente para las piezas
+        basketContainer.style.position = "relative";
+        basketContainer.style.height = `${rows * (pieceSize + 10)}px`;
         basketContainer.style.display = "block";
         basketContainer.style.border = "2px solid #ccc";
         basketContainer.style.borderRadius = "8px";
         basketContainer.style.maxWidth = `${cols * (pieceSize + 10)}px`;
         basketContainer.style.padding = "10px";
 
-        // Permitir soltar piezas de vuelta en la cesta
         basketContainer.addEventListener('dragover', e => {
             e.preventDefault();
             basketContainer.style.backgroundColor = '#e6f7ff';
@@ -328,7 +276,6 @@ function renderPuzzleAndBasket(imgSrc, dificultad = 'novato') {
 
                 basketContainer.appendChild(draggedPiece);
 
-                // Posición absoluta con coords originales
                 draggedPiece.style.position = "absolute";
                 draggedPiece.style.left = draggedPiece.dataset.originalX + "px";
                 draggedPiece.style.top = draggedPiece.dataset.originalY + "px";
@@ -338,7 +285,6 @@ function renderPuzzleAndBasket(imgSrc, dificultad = 'novato') {
             }
         });
 
-        // Aplicar dificultad y agregar piezas desordenadas en basketContainer
         applyDifficulty(pieces, dificultad, basketContainer, pieceSize);
     };
 
@@ -349,12 +295,10 @@ function renderPuzzleAndBasket(imgSrc, dificultad = 'novato') {
     img.src = imgSrc;
 }
 
-// --- Aplicar configuración según dificultad ---
 function applyDifficulty(pieces, dificultad, basketContainer, pieceSize) {
     const backImage = BACK_IMAGE;
     shuffleArray(pieces);
 
-    // Para intermedio elegir 4 piezas para voltear boca abajo
     let flippedIndexes = [];
     if (dificultad.toLowerCase() === 'intermedio') {
         while (flippedIndexes.length < 4 && flippedIndexes.length < pieces.length) {
@@ -377,7 +321,6 @@ function applyDifficulty(pieces, dificultad, basketContainer, pieceSize) {
         imgEl.style.cursor = "grab";
         imgEl.draggable = true;
 
-        // Posicionar aleatoriamente dentro del basketContainer
         imgEl.style.position = "absolute";
         const maxX = basketContainer.clientWidth - pieceSize;
         const maxY = basketContainer.clientHeight - pieceSize;
@@ -386,7 +329,6 @@ function applyDifficulty(pieces, dificultad, basketContainer, pieceSize) {
         imgEl.style.left = `${randomX}px`;
         imgEl.style.top = `${randomY}px`;
 
-        // Guardar posición original para devolver pieza a su lugar
         imgEl.dataset.originalX = randomX;
         imgEl.dataset.originalY = randomY;
 
@@ -436,7 +378,6 @@ function applyDifficulty(pieces, dificultad, basketContainer, pieceSize) {
     });
 }
 
-// --- Verificar si el puzzle está completo ---
 function checkPuzzleCompletion() {
     const cells = document.querySelectorAll('.cell');
     let isComplete = true;
@@ -463,11 +404,10 @@ function checkPuzzleCompletion() {
 
     if (isComplete) {
         showCelebration();
-        launchConfetti(); // Lanzar confeti por completar el puzzle
+        launchConfetti();
     }
 }
 
-// --- Mostrar mensaje de felicitaciones ---
 function showCelebration() {
     const celebrationMsg = document.createElement('div');
     celebrationMsg.style.position = 'fixed';
@@ -499,7 +439,6 @@ function showCelebration() {
     });
 }
 
-// --- Función para lanzar confeti ---
 function launchConfetti() {
     const canvas = document.createElement('canvas');
     canvas.style.position = 'fixed';
@@ -518,7 +457,6 @@ function launchConfetti() {
     const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
     const confetti = [];
 
-    // Crear partículas de confeti
     for (let i = 0; i < 150; i++) {
         confetti.push({
             x: Math.random() * canvas.width,
@@ -568,14 +506,12 @@ function launchConfetti() {
 
     animate();
 
-    // Detener después de 3 segundos
     setTimeout(() => {
         cancelAnimationFrame(animationFrame);
         document.body.removeChild(canvas);
     }, 3000);
 }
 
-// Fisher-Yates para mezclar arrays
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));

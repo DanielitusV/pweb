@@ -3,7 +3,7 @@ import { subirAImgbb } from "./puzzle-scripts/puzzle-imgbb.js";
 const API_KEY_IMGBB = "4c5c9937ecf5372e5aa92076c7147fa7";
 const apiBaseUrl = window.location.hostname === "localhost"
     ? "http://localhost:5000"
-    : "https://constantly-top-goshawk.ngrok-free.app";
+    : window.API_BASE_URL;
 
 function fileToBase64(file) {
     return new Promise((resolve, reject) => {

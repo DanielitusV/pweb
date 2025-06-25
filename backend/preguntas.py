@@ -1,14 +1,11 @@
 from flask import Blueprint, jsonify, request
 
-#quí db es la conexión a la base de datos MongoDB
 from backend.db import db
 from bson import ObjectId
-# TOOOOODOOO ESTO SI ES UNA API PLASK  ES COMO EL BACKEND AQUI SE ENCARGARA DE CONECTAR CON EL MONGOD DB
-proyectos_bp = Blueprint('preguntas', __name__)  # Define un módulo de rutas llamado 'preguntas' OSEA EN LA RUTA SI O SI TENDRA AL INCIAO PREGUNTA 
+proyectos_bp = Blueprint('preguntas', __name__) 
 
-proyectos_col = db['preguntas']    # Aquí estás "apuntando" a la colección 'preguntas'
+proyectos_col = db['preguntas'] 
 
-#Obtener todas las preguntas de un usuario
 @proyectos_bp.route('/preguntas/<usuario_id>', methods=['GET'])
 def obtener_proyectos(usuario_id):
     try:
@@ -20,7 +17,7 @@ def obtener_proyectos(usuario_id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# CREA UNA NUEVA PREGUNTA
+
 @proyectos_bp.route('/preguntas', methods=['POST'])
 def crear_proyecto():
     try:
@@ -40,7 +37,7 @@ def crear_proyecto():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-#ELIMINA UNA PREGUNTA
+
 @proyectos_bp.route('/preguntas/del/<proyecto_id>', methods=['DELETE'])
 def eliminar_proyecto(proyecto_id):
     try:
@@ -53,7 +50,7 @@ def eliminar_proyecto(proyecto_id):
         return jsonify({"error": str(e)}), 500
     
 
-# ✅ Actualizar una pregunta existente
+
 @proyectos_bp.route('/preguntas/update/<pregunta_id>', methods=['PUT'])
 def actualizar_pregunta(pregunta_id):
     try:
@@ -82,16 +79,6 @@ def actualizar_pregunta(pregunta_id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
-
-
-
-
-
-
-
-
-#VER UNA PREGUNTA ESPECIFICA
 @proyectos_bp.route('/preguntas/ver/<pregunta_id>', methods=['GET'])
 def obtener_pregunta(pregunta_id):
     try:
